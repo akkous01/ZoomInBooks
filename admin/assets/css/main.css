@@ -3162,9 +3162,9 @@
 			border-right: 0;
 		}
 
-			table tbody tr:nth-child(2n + 1) {
-				background-color: rgba(255, 255, 255, 0.05);
-			}
+			/*table tbody tr:nth-child(2n + 1) {*/
+				/*background-color: rgba(255, 255, 255, 0.05);*/
+			/*}*/
 
 		table td {
 			padding: 0.75em 0.75em;
@@ -3210,6 +3210,10 @@
 
 			table.alt tfoot {
 				border-top: 0;
+			}
+			tbody tr:hover,tbody tr.alt:hover {
+				color: #261F1D;
+				background-color: white;
 			}
 
 /* Wrapper */
