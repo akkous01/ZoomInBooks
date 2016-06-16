@@ -1,3 +1,27 @@
+<?php
+// define variables and set to empty values
+$Title_err = $ISBN_err = $Writer_err = $Illustrator_err = "";
+$Title = $ISBN = $Writer = $Illustrator = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["Title"])) {
+    $Title_err = "Title is required";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+  
+  
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
+
 <h3>Νέο Βιβλίο</h3>
 
 <form method="post" action="#">
@@ -5,7 +29,7 @@
 
 		<h4>Τίτλος Βιβλίου</h4>
 		<div class="10u$ 12u$(xsmall)">
-			<input type="text" name="book_id" id="book_id" value="" placeholder="Τίτλος Βιβλίου" />
+			<input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου" />
 		</div>
 		
 		<h4>ISBN</h4>
