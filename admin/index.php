@@ -25,6 +25,12 @@ include "../MySqlConnect.php";
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="assets/js/dataTables.js"></script>
+
+    <script> 
+            $(function(){
+              $("#new_book").load("book_form.php"); 
+            });
+    </script> 
 </head>
 <body>
 

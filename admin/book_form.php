@@ -7,19 +7,23 @@
 		<div class="10u$ 12u$(xsmall)">
 			<input type="text" name="book_id" id="book_id" value="" placeholder="Τίτλος Βιβλίου" />
 		</div>
+		
 		<h4>ISBN</h4>
 		<div class="6u$ 12u$(xsmall)">
 			<input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" />
 		</div>
 
+		<h4>Συγγραφέας</h4>
 		<div class="6u$ 12u$(xsmall)">
 			<input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" />
 		</div>
 
+		<h4>Εικονογράφος</h4>
 		<div class="6u$ 12u$(xsmall)">
 			<input type="text" name="Illustrator" id="Illustrator" value="" placeholder="Εικονογράφος" />
 		</div>
 
+		
 		<div class="6u$ 12u$(xsmall)">
 			<input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" />
 		</div>
