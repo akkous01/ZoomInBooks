@@ -3928,3 +3928,14 @@
 	margin-top: 10%;
 	margin-bottom: 15%;
 }
+.list_of_books .pager{
+	margin-bottom: 2%;
+}
+.list_of_books .pager .page-number{
+	background-color: rgba(255, 255, 255, 0.25);;
+	padding: 5px 5px 5px 5px;
+	margin-left: 1px;
+}
+.list_of_books .pager .page-number:hover{
+	color:red;
+}
