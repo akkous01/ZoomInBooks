@@ -6,8 +6,9 @@
  * Time: 8:41 PM
  */
 include "../Database/MySqlConnect.php";
-include_once "book_form.php"
+include_once "book_form.php";
 ?>
+
 <!DOCTYPE HTML>
 <!--
 	Hyperspace by HTML5 UP
@@ -151,7 +152,7 @@ include_once "book_form.php"
 
     <!-- One -->
     <section id="new_book" class="wrapper style2 spotlights">
-        <h3>Νέο Βιβλίο</h3>
+        <h2>Νέο Βιβλίο</h2>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#new_book" enctype="multipart/form-data">
             <div class="row uniform">
@@ -208,6 +209,9 @@ include_once "book_form.php"
                 <div class="18u$ 12u$(xsmall)">
                     <h4>Οπισθόφυλλο * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="file" name="Back_cover" id="Cover">
                 </div>
+                
+                <div class="12u$"><hr><h4>Κατηγορίες</h4><hr></div>
+                <?php include_once "load_keywords.php"; ?>
 
                 <div class="12u$">
                     <ul class="actions">
