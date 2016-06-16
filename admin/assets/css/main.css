@@ -2335,6 +2335,8 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
+	input[type="number"],
+	input[type="double"],
 	select,
 	textarea {
 		-moz-appearance: none;
@@ -2357,6 +2359,8 @@
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
+		input[type="number"]:invalid,
+		input[type="double"]:invalid,,
 		select:invalid,
 		textarea:invalid {
 			box-shadow: none;
@@ -2366,6 +2370,8 @@
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
+		input[type="number"]:focus,
+		input[type="double"]:focus,
 		select:focus,
 		textarea:focus {
 			border-color: #ffffff;
@@ -2413,6 +2419,8 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
+	input[type="number"],
+	input[type="double"],
 	select {
 		height: 2.75em;
 	}
@@ -3939,3 +3947,5 @@
 .list_of_books .pager .page-number:hover{
 	color:red;
 }
+
+.error {color: #FF0000;}

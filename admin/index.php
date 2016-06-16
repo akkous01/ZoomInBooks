@@ -5,8 +5,8 @@
  * Date: 15-Jun-16
  * Time: 8:41 PM
  */
-include "../MySqlConnect.php";
-
+include "../Database/MySqlConnect.php";
+include_once "book_form.php"
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -26,11 +26,11 @@ include "../MySqlConnect.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="assets/js/dataTables.js"></script>
 
-    <script> 
+ <!--    <script> 
             $(function(){
               $("#new_book").load("book_form.php"); 
             });
-    </script> 
+    </script>  -->
 </head>
 <body>
 
@@ -151,6 +151,74 @@ include "../MySqlConnect.php";
 
     <!-- One -->
     <section id="new_book" class="wrapper style2 spotlights">
+        <h3>Νέο Βιβλίο</h3>
+
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#new_book" enctype="multipart/form-data">
+            <div class="row uniform">
+
+               
+                <div class="8u$ 12u$(xsmall)">
+                    <h4>Τίτλος Βιβλίου * <span class="error"><?php echo $Title_err;?></span></h4> <input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου"/>
+                </div>
+                
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Συγγραφέας * <span class="error"><?php echo $Writer_err;?></span></h4><input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" />
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Εικονογράφος</h4><input type="text" name="Illustrator" id="Illustrator" value="" placeholder="Εικονογράφος" />
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Εκδόσεις * <span class="error"><?php echo $Publisher_err;?></span></h4><input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" />
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>ISBN * <span class="error"><?php echo $ISBN_err;?></span></h4><input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" />
+                </div>
+                
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Σελίδες * <span class="error"><?php echo $Pages_err;?></span></h4><input type="number" name="Pages" id="Pages" value="" />
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Ποσοστό Εικόνων * <span class="error"><?php echo $Persentage_of_images_err;?></span></h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value=""/>
+                </div>
+
+                <div class="16u$ 8u$(xsmall)">
+                    <h4>Ελάχιστη Ηλικία * <span class="error"><?php echo $Min_age_err;?></span></h4><input type="number" name="Min_age" id="Min_age" value="" />
+                </div>
+
+                <div class="16u$ 12u$(xsmall)">
+                    <h4>Μέγιστη Ηλικία * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="number" name="Max_age" id="Max_age" value="" />
+                </div>
+
+                <div class="4u$ 12u$(xsmall)">
+                    <h4>Μέση Τιμή Πώλησης * <span class="error"><?php echo $Price_err;?></span></h4><input type="number" name="Price" id="Price" value="" />
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value="" />
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Εξώφυλλο * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="file" name="Cover" id="Cover">
+                </div>
+
+                <div class="18u$ 12u$(xsmall)">
+                    <h4>Οπισθόφυλλο * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="file" name="Back_cover" id="Cover">
+                </div>
+
+                <div class="12u$">
+                    <ul class="actions">
+                        <li><input type="submit" value="Save Book" class="special" /></li>
+                        <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                </div>
+              
+
+            </div>
+        </form>
     </section>
 
     <!-- Two -->
