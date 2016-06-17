@@ -6,8 +6,8 @@
  * Time: 8:41 PM
  */
 include "../Database/MySqlConnect.php";
-include_once "book_form.php";
-include "load_books_dataTable.php";
+include_once "new_book/submit_new_book.php";
+include "list_book/load_books_dataTable.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -165,7 +165,7 @@ include "load_books_dataTable.php";
                 </div>
                 
                 <div class="12u$"><hr><h4>Κατηγορίες</h4><hr></div>
-                <?php include_once "load_keywords.php"; ?>
+                <?php include_once "keywords/load_keywords.php"; ?>
 
                 <div class="12u$">
                     <ul class="actions">

@@ -40,7 +40,7 @@ $(document).ready(function() {
                 submit:'true'},
             function(data, textStatus, jqXHR)
             {
-                window.open("edit_book_form.php");
+                window.open("../../edit_book/edit_book_form.php");
             });
     });
 })

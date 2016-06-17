@@ -6,7 +6,7 @@
  * Time: 2:37 PM
  */
 session_start();
-include "../Database/MySqlConnect.php";
+include "../../Database/MySqlConnect.php";
 
 $book_query = $conn->prepare("SELECT * FROM `books` WHERE book_id=".$_SESSION['book_id'].";");
 $book_query->execute();
