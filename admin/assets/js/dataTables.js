@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     $('table.paginated').each(function () {
         var currentPage = 0;
-        var numPerPage = 2;
+        var numPerPage = 1;
         var $table = $(this);
         $table.bind('repaginate', function () {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
