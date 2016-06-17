@@ -6,7 +6,7 @@
  * Time: 5:10 PM
  */
 
-include "../MySqlConnect.php";
+
 $load_books_query = $conn->prepare("SELECT * FROM `books`;");
 $load_books_query->execute();
 

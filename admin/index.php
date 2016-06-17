@@ -7,6 +7,7 @@
  */
 include "../Database/MySqlConnect.php";
 include_once "book_form.php";
+include "load_books_dataTable.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -84,64 +85,17 @@ include_once "book_form.php";
                 </tr>
                 </thead>
                 <tbody>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>1</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>2</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>3</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>4</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>5</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-                <tr onclick="$tds=$(this).children('td'); alert($tds[0].innerText)">
-                    <td>6</td>
-                    <td>Ante turpis integer aliquet porttitor.</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
-                </tr>
-
-
-
-
+                <?php for($i=0;$i<count($load_books_to_list);$i++){ ?>
+                    <tr>
+                        <td><?php echo $load_books_to_list[$i]['Book_id'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['ISBN'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['Title'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['Writer'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['Illustrator'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['Publisher'];?></td>
+                        <td><?php echo $load_books_to_list[$i]['Pages'];?></td>
+                    </tr>
+                <?php } ?>
                 </tbody>
                 <tfoot>
 
