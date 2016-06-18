@@ -3275,6 +3275,7 @@
 
 		.wrapper.style2 {
 			background-color:inherit;
+
 		}
 
 		.wrapper.style2-alt {
@@ -3955,10 +3956,13 @@
 .new_book_body{
 	margin-left: 5%;
 	margin-right: 10%;
-	margin-top: 10%;
+
 	margin-bottom: 15%;
 }
 hr{
 	border: 1pt solid #b74e91;
 }
 
+.size_of_keywords{
+	width:50%;
+}

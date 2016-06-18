@@ -31,11 +31,12 @@
 			$keywords_query->execute();
 
 			$keywords= $keywords_query->fetchAll(PDO::FETCH_ASSOC);
-			
+
+
 			for($k = 0; $k < count($keywords) ; $k++){
 				$keyword_id = (integer) $keywords[$k]['Keyword_id'];
 				$keyword_name = (string)$keywords[$k]['Name_of_keyword'];
-				$categories_check_box .= "\r\n<div class='24u$ 12u$(small)'><input type='checkbox' id='{$keyword_id}' name='{$keyword_id}'><label for='{$keyword_id}'>{$keyword_name}</label></div>";
+				$categories_check_box .= "\r\n<div class='size_of_keywords'><input type='checkbox' id='{$keyword_id}' name='{$keyword_id}'><label for='{$keyword_id}'>{$keyword_name}</label></div>";
 			}
 
 
@@ -54,7 +55,7 @@
 	//     $savedCost = $details["Cost"];
 	//     $savedActive = $details["Active"];
 	// }
-                    
+
 ?>
 
  <!-- "\r\n<div class='6u$ 12u$(small)'><input type='checkbox' id='C{$category_id}' name='C{$category_id}'><label for='C{$category_id}'>{$category_name}</label></div>";" -->
