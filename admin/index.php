@@ -309,16 +309,21 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="row uniform">
                             <div class="12u$">
                                 <div class="select-wrapper">
-                                    <select name="select_category" id="select_category">
-                                        <option value="">- Category -</option>
-                                        <?php include "load/load_categories.php";?>
-                                        
+                                    <select name="select_category_2" id="select_category_2">
+                                        <?php include "load/load_categories.php";?> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                                    <select name="select_subcategory" id="select_subcategory">
                                     </select>
                                 </div>
                             </div>
                             <div class="8u$ 12u$(xsmall)">
                                  <input type="text" name="New_subcategory" id="New_subcategory" value="" placeholder="Όνομα Νέας Υποκατηγορίας" required/>
                             </div>
+                            <div 
                              <div class="12u$">
                                 <ul class="actions">
                                     <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
@@ -350,5 +355,24 @@ if (session_status() == PHP_SESSION_NONE) {
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#select_category_2').on('change', load_subcategories);
+    });
+
+    function load_subcategories() {
+        var selected = $('#select_category_2').val();
+        $.ajax({
+            url:        'load/load_subcategories.php',
+            type:       'POST',
+            dataType:   'json',
+            data:       { category_id: selected },
+            success:    function(data) {
+                $('#select_subcategory').innerhtml(data);
+            }
+        });
+    }
+</script>
 </body>
 </html>
