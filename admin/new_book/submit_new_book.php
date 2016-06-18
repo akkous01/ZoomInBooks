@@ -1,79 +1,115 @@
 <?php
 // define variables and set to empty values
-$Title_err = $ISBN_err = $Writer_err = $Publisher_err = $Pages_err = $Persentage_of_images_err = $Min_age_err = $Max_age_err = $Price_err = $Cover_err = $Back_cover_err = "";
+  
+     
+  
 $Title = $ISBN = $Writer = $Publisher = $Pages = $Persentage_of_images =  $Min_age = $Max_age = $Price = $Link = $Cover = $Back_cover = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
   if (empty($_POST["Title"])) {
-    $Title_err = "Title is required";
+    $_SESSION["Title_err"] = "Title is required";
+    $_SESSION["error_found"] = 1;
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Title = test_input($_POST["Title"]);
+     $_SESSION["Title_err"] = "";
   }
 
   if (empty($_POST["ISBN"])) {
-    $ISBN_err = "ISBN is required";
+    $_SESSION["ISBN"] = "ISBN is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $ISBN = test_input($_POST["ISBN"]);
+    $_SESSION["ISBN"] = "";
   }
   
   if (empty($_POST["Writer"])) {
-    $Writer_err = "Writer is required";
+    $_SESSION["Writer_err"] = "Writer is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Writer = test_input($_POST["Writer"]);
+    $_SESSION["Writer_err"] = "";
   }
 
 
   $Illustrator = test_input($_POST["Illustrator"]);
   
   if (empty($_POST["Publisher"])) {
-    $Publisher_err = "Publisher is required";
+    $_SESSION["Publisher_err"] = "Publisher is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Publisher = test_input($_POST["Publisher"]);
+    $_SESSION["Publisher_err"] = "";
   }
 
   if (empty($_POST["Pages"])) {
-    $Pages_err = "Pages is required";
+    $_SESSION["Pages_err"] = "Pages is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Pages = test_input($_POST["Pages"]);
+    $_SESSION["Pages_err"] = "";
   }
 
   if (empty($_POST["Persentage_of_images"])) {
-    $Persentage_of_images_err = "Persentage of images is required";
+    $_SESSION["Persentage_of_images_err"] = "Persentage of images is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Persentage_of_images = test_input($_POST["Persentage_of_images"]);
+    $_SESSION["Persentage_of_images_err"] = "";
   }
 
   if (empty($_POST["Min_age"])) {
-    $Min_age_err = "Minimun age is required";
+    $_SESSION["Min_age_err"] = "Minimun age is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Min_age = test_input($_POST["Min_age"]);
+    $_SESSION["Min_age_err"] = "";
   }
   
    if (empty($_POST["Max_age"])) {
-    $Max_age_err = "Maximun age is required";
+    $_SESSION["Max_age_err"] = "Maximun age is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Max_age = test_input($_POST["Max_age"]);
+    $_SESSION["Max_age_err"] = "";
   }
 
    if (empty($_POST["Price"])) {
-    $Price_err = "Price is required";
+    $_SESSION["Price_err"] = "Price is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
     $Price = test_input($_POST["Price"]);
+    $_SESSION["Price_err"] = "";
   }
 
   $Link = test_input($_POST["Link"]);
 
   if (empty($_FILES["Cover"]["name"])){
-  	$Cover_err = "Cover is required";
+    $_SESSION["Cover_err"] = "Cover is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
   	$Cover=$_FILES["Cover"]["name"]; 
+    $_SESSION["Cover_err"] = "";
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
-  	$Back_cover_err = "Back Cover is required";
+     $_SESSION["Back_cover_err"] = "Back Cover is required";
+    header("Location: ../index.php#new_book");
+    exit();
   } else {
   	$Back_cover=$_FILES["Back_cover"]["name"]; 
+    $_SESSION["Back_cover_err"] = "";
   }
 
 
@@ -102,6 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $books_keywords_query->execute();
     }
   }
+
+  header("Location: ../index.php");
+  exit;
 
 }
 

@@ -5,9 +5,24 @@
  * Date: 15-Jun-16
  * Time: 8:41 PM
  */
-include "../Database/MySqlConnect.php";
-include_once "new_book/submit_new_book.php";
-include "list_book/load_books_dataTable.php";
+
+if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+
+      // if (!isset($_SESSION["error_found"])){
+      // $_SESSION["Title_err"] = $_SESSION["ISBN_err"] = $_SESSION["Writer_err"] = $_SESSION["Publisher_err"] = $_SESSION["Pages_err"] = $_SESSION["Persentage_of_images_err"] = $_SESSION["Min_age_err"] = $_SESSION["Max_age_err"] = $_SESSION["Price_err"] = $_SESSION["Cover_err"] = $_SESSION["Back_cover_err"] = "";
+      // }
+
+  }
+
+  if (!isset($_SESSION["new_book_insert_succ"])){
+    $_SESSION["new_book_insert_succ"]= 0;
+  }
+
+  
+    include "../Database/MySqlConnect.php";
+
+    include "list_book/load_books_dataTable.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -36,6 +51,12 @@ include "list_book/load_books_dataTable.php";
 </head>
 <body>
 
+<?php 
+    if ($_SESSION["new_book_insert_succ"]== 1){
+        echo "<script>alert('Το βιβλίο καταχωρήθηκε επιτυχώς!');</script>";
+        $_SESSION["new_book_insert_succ"]= 0;
+    }
+?>
 <!-- Sidebar -->
 <section id="sidebar">
     <div class="inner">
@@ -44,7 +65,7 @@ include "list_book/load_books_dataTable.php";
                 <li><a href="#list_of_books">Λίστα Βιβλίων</a></li>
                 <li><a href="#new_book">Προσθήκη Νέου Βιβλίου</a></li>
                 <li><a href="#two">Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</a></li>
-                <li><a href="#three">Προσθήκη Κατηγορίας</a></li>
+                <li><a href="#new_category">Προσθήκη Κατηγορίας</a></li>
                 <li><a href="#four">Προσθήκη Υποατηγορίας</a></li>
                 <li><a href="#five">Προσθήκη Λέξης Κλειδί</a></li>
 
@@ -108,15 +129,15 @@ include "list_book/load_books_dataTable.php";
     <section id="new_book" class="wrapper style2 spotlights">
         <h3>Νέο Βιβλίο</h3>
         <section class="new_book_body">
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#new_book" enctype="multipart/form-data">
+            <form method="post" action="new_book/submit_new_book.php" enctype="multipart/form-data">
                 <div class="row uniform">
 
                     <div class="8u$ 12u$(xsmall)">
-                        <h4>Τίτλος Βιβλίου * <span class="error"><?php echo $Title_err;?></span></h4> <input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου"/>
+                        <h4>Τίτλος Βιβλίου * <span class="error"><?php echo $_SESSION["Title_err"];?></span></h4> <input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Συγγραφέας * <span class="error"><?php echo $Writer_err;?></span></h4><input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" />
+                        <h4>Συγγραφέας * <span class="error"><?php echo $_SESSION["Writer_err"];?></span></h4><input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
@@ -124,46 +145,46 @@ include "list_book/load_books_dataTable.php";
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Εκδόσεις * <span class="error"><?php echo $Publisher_err;?></span></h4><input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" />
+                        <h4>Εκδόσεις * <span class="error"><?php echo $_SESSION["Publisher_err"];?></span></h4><input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>ISBN * <span class="error"><?php echo $ISBN_err;?></span></h4><input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" />
+                        <h4>ISBN * <span class="error"><?php echo $_SESSION["ISBN_err"];?></span></h4><input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Σελίδες * <span class="error"><?php echo $Pages_err;?></span></h4><input type="number" name="Pages" id="Pages" value="" />
+                        <h4>Σελίδες * <span class="error"><?php echo $_SESSION["Pages_err"];?></span></h4><input type="number" name="Pages" id="Pages" value="" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Ποσοστό Εικόνων * <span class="error"><?php echo $Persentage_of_images_err;?></span></h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value=""/>
+                        <h4>Ποσοστό Εικόνων * <span class="error"><?php echo $_SESSION["Persentage_of_images_err"];?></span></h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="" required/>
                     </div>
 
-                    <div class="16u$ 8u$(xsmall)">
-                        <h4>Ελάχιστη Ηλικία * <span class="error"><?php echo $Min_age_err;?></span></h4><input type="number" name="Min_age" id="Min_age" value="" />
+                    <div class="18u$ 8u$(xsmall)">
+                        <h4>Ελάχιστη Ηλικία * <span class="error"><?php echo $_SESSION["Min_age_err"];?></span></h4><input type="number" name="Min_age" id="Min_age" value="" required/>
                     </div>
 
-                    <div class="16u$ 12u$(xsmall)">
-                        <h4>Μέγιστη Ηλικία * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="number" name="Max_age" id="Max_age" value="" />
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Μέγιστη Ηλικία * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="number" name="Max_age" id="Max_age" value="" required/>
                     </div>
 
-                    <div class="4u$ 12u$(xsmall)">
-                        <h4>Μέση Τιμή Πώλησης * <span class="error"><?php echo $Price_err;?></span></h4><input type="number" name="Price" id="Price" value="" />
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Μέση Τιμή Πώλησης * <span class="error"><?php echo $_SESSION["Price_err"];?></span></h4><input type="number" name="Price" id="Price" value=""  required/>
                     </div>
 
                     <div class="6u$ 12u$(xsmall)">
-                        <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value="" />
+                        <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value=""/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Εξώφυλλο * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="file" name="Cover" id="Cover">
+                        <h4>Εξώφυλλο * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="file" name="Cover" id="Cover" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Οπισθόφυλλο * <span class="error"><?php echo $Max_age_err;?></span></h4><input type="file" name="Back_cover" id="Cover">
+                        <h4>Οπισθόφυλλο * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="file" name="Back_cover" id="Cover" required/>
                     </div>
 
-                    <div class="12u$"><hr><h4>Κατηγορίες</h4><hr></div>
+                    <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
                     <?php include_once "keywords/load_keywords.php"; ?>
 
                     <div class="12u$">
@@ -223,57 +244,27 @@ include "list_book/load_books_dataTable.php";
     </section>
 
     <!-- Three -->
-    <section id="three" class="wrapper style1 fade-up">
+    <section id="new_category" class="wrapper style1 fade-up">
         <div class="inner">
-            <h2>Get in touch</h2>
-            <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+            <h2>Προσθήκη Νέας Κατηγορίας</h2>
+            <p></p>
             <div class="split style1">
                 <section>
-                    <form method="post" action="#">
-                        <div class="field half first">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
+                    <form method="post" action="add_elements/new_category.php">
+                        <div class="row uniform">
+                            <div class="8u$ 12u$(xsmall)">
+                                 <input type="text" name="New_category" id="New_category" value="" placeholder="Όνομα Νέας Κατηγορίας" required/>
+                            </div>
+                             <div class="12u$">
+                                <ul class="actions">
+                                    <li><a href="" class="button small submit">Sabmit Category</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="field half">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="5"></textarea>
-                        </div>
-                        <ul class="actions">
-                            <li><a href="" class="button submit">Send Message</a></li>
-                        </ul>
                     </form>
                 </section>
                 <section>
-                    <ul class="contact">
-                        <li>
-                            <h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-                        </li>
-                        <li>
-                            <h3>Email</h3>
-                            <a href="#">user@untitled.tld</a>
-                        </li>
-                        <li>
-                            <h3>Phone</h3>
-                            <span>(000) 000-0000</span>
-                        </li>
-                        <li>
-                            <h3>Social</h3>
-                            <ul class="icons">
-                                <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-                                <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-                                <li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
-                                <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-                                <li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                   <h3>Κατηγορίες</h3>
                 </section>
             </div>
         </div>
