@@ -42,18 +42,6 @@
 		}
 	}
 	echo $categories_check_box;
-	// if(isset($_POST["loadbtn"]))
-	// {
-	//     $id = (integer) $_POST["codes"];
-
-	//     $query = "SELECT Name, Cost, Active FROM taxi_services WHERE SID = '$id' ";
-	//     $result = mysql_query($query, $conn);
-	//     $details = mysql_fetch_array($result);
-
-	//     $savedName = $details["Name"];
-	//     $savedCost = $details["Cost"];
-	//     $savedActive = $details["Active"];
-	// }
                     
 ?>
 

@@ -66,8 +66,8 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li><a href="#new_book">Προσθήκη Νέου Βιβλίου</a></li>
                 <li><a href="#two">Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</a></li>
                 <li><a href="#new_category">Προσθήκη Κατηγορίας</a></li>
-                <li><a href="#four">Προσθήκη Υποατηγορίας</a></li>
-                <li><a href="#five">Προσθήκη Λέξης Κλειδί</a></li>
+                <li><a href="#new_subcategory">Προσθήκη Υποατηγορίας</a></li>
+                <li><a href="#new_keyword">Προσθήκη Λέξης Κλειδί</a></li>
 
             </ul>
         </nav>
@@ -185,7 +185,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
-                    <?php include_once "keywords/load_keywords.php"; ?>
+                    <?php include_once "load/load_keywords.php"; ?>
 
                     <div class="12u$">
                         <ul class="actions">
@@ -247,7 +247,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <section id="new_category" class="wrapper style1 fade-up">
         <div class="inner">
             <h2>Προσθήκη Νέας Κατηγορίας</h2>
-            <p></p>
             <div class="split style1">
                 <section>
                     <form method="post" action="add_elements/new_category.php">
@@ -255,7 +254,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <div class="8u$ 12u$(xsmall)">
                                  <input type="text" name="New_category" id="New_category" value="" placeholder="Όνομα Νέας Κατηγορίας" required/>
                             </div>
-                             <div class="12u$">
+                            <div class="12u$">
                                 <ul class="actions">
                                     <li><a href="" class="button small submit">Sabmit Category</a></li>
                                 </ul>
@@ -267,6 +266,67 @@ if (session_status() == PHP_SESSION_NONE) {
                    <h3>Κατηγορίες</h3>
                 </section>
             </div>
+        </div>
+    </section>
+
+
+    
+    <section id="new_subcategory" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>Προσθήκη Νέας Υποκατηγορίας</h2>
+                <section>
+                    <form method="post" action="add_elements/new_subcategory.php">
+                        <div class="row uniform">
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                                    <select name="select_category" id="select_category" required>
+                                        <?php include "load/load_categories.php";?>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="8u$ 12u$(xsmall)">
+                                 <input type="text" name="New_subcategory" id="New_subcategory" value="" placeholder="Όνομα Νέας Υποκατηγορίας" required/>
+                            </div>
+                             <div class="12u$">
+                                <ul class="actions">
+                                    <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+        </div>
+    </section>
+
+
+
+    <section id="new_keyword" class="wrapper style1 spotlights">
+        <div class="inner">
+            <h2>Προσθήκη Νέας Λέξης Κλειδί</h2>
+                <section>
+                    <form method="post" action="add_elements/new_subcategory.php">
+                        <div class="row uniform">
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                                    <select name="select_category" id="select_category">
+                                        <option value="">- Category -</option>
+                                        <?php include "load/load_categories.php";?>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="8u$ 12u$(xsmall)">
+                                 <input type="text" name="New_subcategory" id="New_subcategory" value="" placeholder="Όνομα Νέας Υποκατηγορίας" required/>
+                            </div>
+                             <div class="12u$">
+                                <ul class="actions">
+                                    <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
         </div>
     </section>
 
