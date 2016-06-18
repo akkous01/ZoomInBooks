@@ -35,7 +35,7 @@
 			for($k = 0; $k < count($keywords) ; $k++){
 				$keyword_id = (integer) $keywords[$k]['Keyword_id'];
 				$keyword_name = (string)$keywords[$k]['Name_of_keyword'];
-				$categories_check_box .= "\r\n<div class='24u$ 12u$(small)'><input type='checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label></div>";
+				$categories_check_box .= "\r\n<div class='24u$ 12u$(small)'><input type='checkbox' id='{$keyword_id}' name='{$keyword_id}'><label for='{$keyword_id}'>{$keyword_name}</label></div>";
 			}
 
 
