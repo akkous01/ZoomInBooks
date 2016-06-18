@@ -133,11 +133,11 @@ if (session_status() == PHP_SESSION_NONE) {
                 <div class="row uniform">
 
                     <div class="8u$ 12u$(xsmall)">
-                        <h4>Τίτλος Βιβλίου * <span class="error"><?php echo $_SESSION["Title_err"];?></span></h4> <input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου" required/>
+                        <h4>Τίτλος Βιβλίου * </h4> <input type="text" name="Title" id="Title" value="" placeholder="Τίτλος Βιβλίου" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Συγγραφέας * <span class="error"><?php echo $_SESSION["Writer_err"];?></span></h4><input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" required/>
+                        <h4>Συγγραφέας * </h4><input type="text" name="Writer" id="Writer" value="" placeholder="Συγγραφέας" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
@@ -145,31 +145,31 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Εκδόσεις * <span class="error"><?php echo $_SESSION["Publisher_err"];?></span></h4><input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" required/>
+                        <h4>Εκδόσεις * </h4><input type="text" name="Publisher" id="Publisher" value="" placeholder="Εκδόσεις" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>ISBN * <span class="error"><?php echo $_SESSION["ISBN_err"];?></span></h4><input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" required/>
+                        <h4>ISBN * </h4><input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Σελίδες * <span class="error"><?php echo $_SESSION["Pages_err"];?></span></h4><input type="number" name="Pages" id="Pages" value="" required/>
+                        <h4>Σελίδες * </h4><input type="number" name="Pages" id="Pages" value="" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Ποσοστό Εικόνων * <span class="error"><?php echo $_SESSION["Persentage_of_images_err"];?></span></h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="" required/>
+                        <h4>Ποσοστό Εικόνων * </h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="" required/>
                     </div>
 
                     <div class="18u$ 8u$(xsmall)">
-                        <h4>Ελάχιστη Ηλικία * <span class="error"><?php echo $_SESSION["Min_age_err"];?></span></h4><input type="number" name="Min_age" id="Min_age" value="" required/>
+                        <h4>Ελάχιστη Ηλικία * </h4><input type="number" name="Min_age" id="Min_age" value="" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Μέγιστη Ηλικία * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="number" name="Max_age" id="Max_age" value="" required/>
+                        <h4>Μέγιστη Ηλικία * </h4><input type="number" name="Max_age" id="Max_age" value="" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Μέση Τιμή Πώλησης * <span class="error"><?php echo $_SESSION["Price_err"];?></span></h4><input type="number" name="Price" id="Price" value=""  required/>
+                        <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value=""  required/>
                     </div>
 
                     <div class="6u$ 12u$(xsmall)">
@@ -177,11 +177,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Εξώφυλλο * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="file" name="Cover" id="Cover" required/>
+                        <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" required/>
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Οπισθόφυλλο * <span class="error"><?php echo $_SESSION["Max_age_err"];?></span></h4><input type="file" name="Back_cover" id="Cover" required/>
+                        <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
                     </div>
 
                     <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
