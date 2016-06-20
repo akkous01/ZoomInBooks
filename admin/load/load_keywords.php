@@ -1,6 +1,6 @@
 <?php 
 	//Database initialization
-	include "../Database/MySqlConnect.php";
+//	include "../Database/MySqlConnect.php";
 
 	// CATEGORIES
 	$categories_query = $conn->prepare("SELECT * FROM categories ORDER BY Category_id");
