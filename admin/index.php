@@ -43,13 +43,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="assets/js/dataTables.js"></script>
 
- <!--    <script> 
-            $(function(){
-              $("#new_book").load("book_form.php"); 
-            });
-    </script>  -->
-</head>
-<body>
+
+    
+<body onload="loadSubCategories()">
 
 <?php 
     if ($_SESSION["new_book_insert_succ"]== 1){
@@ -278,6 +274,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <form method="post" action="add_elements/new_subcategory.php">
                         <div class="row uniform">
                             <div class="12u$">
+                                <h4>Κατηγορία</h4>
                                 <div class="select-wrapper">
                                     <select name="select_category" id="select_category" required>
                                         <?php include "load/load_categories.php";?>
@@ -305,9 +302,10 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="inner">
             <h2>Προσθήκη Νέας Λέξης Κλειδί</h2>
                 <section>
-                    <form method="post" action="add_elements/new_subcategory.php">
+                    <form method="post" action="add_elements/new_keyword.php">
                         <div class="row uniform">
                             <div class="12u$">
+                                <h4>Κατηγορία</h4>
                                 <div class="select-wrapper">
                                     <select name="select_category_2" id="select_category_2">
                                         <?php include "load/load_categories.php";?> 
@@ -315,13 +313,14 @@ if (session_status() == PHP_SESSION_NONE) {
                                 </div>
                             </div>
                             <div class="12u$">
+                                <h4>Υποκατηγορία</h4>
                                 <div class="select-wrapper">
                                     <select name="select_subcategory" id="select_subcategory">
                                     </select>
                                 </div>
                             </div>
                             <div class="8u$ 12u$(xsmall)">
-                                 <input type="text" name="New_subcategory" id="New_subcategory" value="" placeholder="Όνομα Νέας Υποκατηγορίας" required/>
+                                 <input type="text" name="New_keyword" id="New_keyword" value="" placeholder="Όνομα Νέας Λέξης Κλειδί" required/>
                             </div>
                             <div 
                              <div class="12u$">
@@ -355,7 +354,6 @@ if (session_status() == PHP_SESSION_NONE) {
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#select_category_2').on('change', load_subcategories);
@@ -366,10 +364,31 @@ if (session_status() == PHP_SESSION_NONE) {
         $.ajax({
             url:        'load/load_subcategories.php',
             type:       'POST',
-            dataType:   'json',
-            data:       { category_id: selected },
+            // dataType:   'json',
+            data:       "category_id="+selected,
             success:    function(data) {
-                $('#select_subcategory').innerhtml(data);
+                $('#select_subcategory').html(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert("some error");
+                alert(textStatus);
+            }
+        });
+    }
+
+    function loadSubCategories(){
+        var selected = 1;
+        $.ajax({
+            url:        'load/load_subcategories.php',
+            type:       'POST',
+            // dataType:   'json',
+            data:       "category_id="+selected,
+            success:    function(data) {
+                $('#select_subcategory').html(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert("some error");
+                alert(textStatus);
             }
         });
     }
