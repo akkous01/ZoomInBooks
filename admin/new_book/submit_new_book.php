@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Max_age = test_input($_POST["Max_age"]);
     $_SESSION["Max_age_err"] = "";
   }
-// rc="../../Database/Covers/'. $book['Cover']
+
    if (empty($_POST["Price"])) {
     $_SESSION["Price_err"] = "Price is required";
     header("Location: ../index.php#new_book");
