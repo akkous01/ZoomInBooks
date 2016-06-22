@@ -56,23 +56,7 @@ if(!$book){
     </script>
 </head>
 <body>
-<!-- Sidebar -->
-<section id="sidebar">
-    <div class="inner" style="text-align: center">
-        <br> <br>
-        <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Cover'] ).'"/>';?>
-        <a href="#" class="button special small" id="change_cover">Αλλαγή Εξωφύλλου </a>
-        <div class="18u$ 12u$(xsmall)" id="upload_cover" style="display:none">
-            <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" required/>
-        </div>
-        <br>
-        <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Back_cover'] ).'"/>';?>
-        <a href="#" class="button special small" id="change_back_cover">Αλλαγή Πισθοφύλλου</a>
-        <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
-            <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
-        </div>
-    </div>
-</section>
+
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -80,68 +64,82 @@ if(!$book){
         <h2><?php echo $book['Title'];?></h2>
         <form method="post" action="submit_edit_book.php" enctype="multipart/form-data" >
             <div class="row uniform">
-
-                <div class="8u$ 12u$(xsmall)">
-                    <h4>ID Βιβλίου</h4> <input type="text" name="id" id="id" value="<?php echo $book['Book_id'];?>" readonly/>
+                <div style="width:20%">
+                    <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Cover'] ).'"/>';?>
+                    <a href="#" class="button special small" id="change_cover">Αλλαγή Εξωφύλλου </a>
+                    <div class="18u$ 12u$(xsmall)" id="upload_cover" style="display:none">
+                        <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" required/>
+                    </div>
+                    <br>
+                    <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Back_cover'] ).'"/>';?>
+                    <a href="#" class="button special small" id="change_back_cover">Αλλαγή Πισθοφύλλου</a>
+                    <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
+                        <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
+                    </div>
                 </div>
+                <div style="width: 80%">
+                    <div class="8u$ 12u$(xsmall)">
+                        <h4>ID Βιβλίου</h4> <input type="text" name="Book_id" id="Book_id" value="<?php echo $book['Book_id'];?>" readonly/>
+                    </div>
 
-                <div class="8u$ 12u$(xsmall)">
-                    <h4>Τίτλος Βιβλίου * </h4> <input type="text" name="Title" id="Title" value="<?php echo $book['Title'];?>" placeholder="Τίτλος Βιβλίου" required/>
+                    <div class="8u$ 12u$(xsmall)">
+                        <h4>Τίτλος Βιβλίου * </h4> <input type="text" name="Title" id="Title" value="<?php echo $book['Title'];?>" placeholder="Τίτλος Βιβλίου" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Συγγραφέας * </h4><input type="text" name="Writer" id="Writer" value="<?php echo $book['Writer'];?>" placeholder="Συγγραφέας" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Εικονογράφος</h4><input type="text" name="Illustrator" id="Illustrator" value="<?php echo $book['Illustrator'];?>" placeholder="Εικονογράφος" />
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Εκδόσεις * </h4><input type="text" name="Publisher" id="Publisher" value="<?php echo $book['Publisher'];?>" placeholder="Εκδόσεις" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>ISBN * </h4><input type="text" name="ISBN" id="ISBN" value="<?php echo $book['ISBN'];?>" placeholder="ISBN" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Σελίδες * </h4><input type="number" name="Pages" id="Pages" value="<?php echo $book['Pages'];?>" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Ποσοστό Εικόνων * </h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="<?php echo $book['Persentage_of_images'];?>" required/>
+                    </div>
+
+                    <div class="18u$ 8u$(xsmall)">
+                        <h4>Ελάχιστη Ηλικία * </h4><input type="number" name="Min_age" id="Min_age" value="<?php echo $book['Min_age'];?>" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Μέγιστη Ηλικία * </h4><input type="number" name="Max_age" id="Max_age" value="<?php echo $book['Max_age'];?>" required/>
+                    </div>
+
+                    <div class="18u$ 12u$(xsmall)">
+                        <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value="<?php echo $book['Price'];?>"  required/>
+                    </div>
+
+                    <div class="6u$ 12u$(xsmall)">
+                        <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value="<?php echo $book['Link'];?>"/>
+                    </div>
                 </div>
+                    <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
+                    <?php include_once "../load/load_keywords.php";
+                    for($i=0;$i<count($book_keywards);$i++){
+                        echo "<script>$('#K".$book_keywards[$i]['Keyword_id']."').prop('checked', true);</script>";
+                    }
+                    ?>
 
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Συγγραφέας * </h4><input type="text" name="Writer" id="Writer" value="<?php echo $book['Writer'];?>" placeholder="Συγγραφέας" required/>
-                </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><input type="submit" value="Save Book" class="special" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
 
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Εικονογράφος</h4><input type="text" name="Illustrator" id="Illustrator" value="<?php echo $book['Illustrator'];?>" placeholder="Εικονογράφος" />
-                </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Εκδόσεις * </h4><input type="text" name="Publisher" id="Publisher" value="<?php echo $book['Publisher'];?>" placeholder="Εκδόσεις" required/>
-                </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>ISBN * </h4><input type="text" name="ISBN" id="ISBN" value="<?php echo $book['ISBN'];?>" placeholder="ISBN" required/>
-                </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Σελίδες * </h4><input type="number" name="Pages" id="Pages" value="<?php echo $book['Pages'];?>" required/>
-                </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Ποσοστό Εικόνων * </h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="<?php echo $book['Persentage_of_images'];?>" required/>
-                </div>
-
-                <div class="18u$ 8u$(xsmall)">
-                    <h4>Ελάχιστη Ηλικία * </h4><input type="number" name="Min_age" id="Min_age" value="<?php echo $book['Min_age'];?>" required/>
-                </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Μέγιστη Ηλικία * </h4><input type="number" name="Max_age" id="Max_age" value="<?php echo $book['Max_age'];?>" required/>
-            </div>
-
-                <div class="18u$ 12u$(xsmall)">
-                    <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value="<?php echo $book['Price'];?>"  required/>
-                </div>
-
-                <div class="6u$ 12u$(xsmall)">
-                    <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value="<?php echo $book['Link'];?>"/>
-                </div>
-
-                <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
-                <?php include_once "../load/load_keywords.php";
-                for($i=0;$i<count($book_keywards);$i++){
-                    echo "<script>$('#K".$book_keywards[$i]['Keyword_id']."').prop('checked', true);</script>";
-                }
-                ?>
-
-                <div class="12u$">
-                    <ul class="actions">
-                        <li><input type="submit" value="Save Book" class="special" /></li>
-                        <li><input type="reset" value="Reset" /></li>
-                    </ul>
-                </div>
             </div>
         </form>
 
