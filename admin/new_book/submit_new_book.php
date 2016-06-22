@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Max_age = test_input($_POST["Max_age"]);
     $_SESSION["Max_age_err"] = "";
   }
-
+// rc="../../Database/Covers/'. $book['Cover']
    if (empty($_POST["Price"])) {
     $_SESSION["Price_err"] = "Price is required";
     header("Location: ../index.php#new_book");
@@ -99,8 +99,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../index.php#new_book");
     exit();
   } else {
-  	$Cover=$_FILES["Cover"]["name"]; 
-    $_SESSION["Cover_err"] = "";
+    $target_dir = '../../Database/Covers/'; // upload directory
+    $target_file = $target_dir . basename($_FILES["Cover"]["name"]);
+    $Cover = basename($_FILES["Cover"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    $check = getimagesize($_FILES["Cover"]["tmp_name"]);
+    if($check !== false) {
+        // echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+        exit();
+    }
+
+    if ($_FILES["Cover"]["size"] > 500000) {
+      echo "Sorry, your file is too large.";
+      $uploadOk = 0;
+      exit();
+    }
+
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+      exit();
+    }
+
+    if (move_uploaded_file($_FILES["Cover"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["Cover"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+        exit();
+    }
+    
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
@@ -108,8 +140,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../index.php#new_book");
     exit();
   } else {
-  	$Back_cover=$_FILES["Back_cover"]["name"]; 
-    $_SESSION["Back_cover_err"] = "";
+  	$target_dir = '../../Database/Back_Covers/'; // upload directory
+    $target_file = $target_dir . basename($_FILES["Back_cover"]["name"]);
+    $Back_cover = basename($_FILES["Back_cover"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    $check = getimagesize($_FILES["Back_cover"]["tmp_name"]);
+    if($check !== false) {
+        // echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+        exit();
+    }
+
+    if ($_FILES["Back_cover"]["size"] > 500000) {
+      echo "Sorry, your file is too large.";
+      $uploadOk = 0;
+      exit();
+    }
+
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+      exit();
+    }
+
+    if (move_uploaded_file($_FILES["Back_cover"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["Back_cover"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+        exit();
+    }
   }
 
 
@@ -145,12 +208,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
+
 ?>
 
 <!-- UPLOAD FILE MYSQL PHP -->
