@@ -3,96 +3,101 @@
   
 include "../../Database/MySqlConnect.php";
   
-$Title = $ISBN = $Writer = $Publisher = $Pages = $Persentage_of_images =  $Min_age = $Max_age = $Price = $Link = $Cover = $Back_cover = "";
+$Title = $ISBN = $Writer = $Publisher = $Pages = $Persentage_of_images =  $Min_age_no_read = $Min_age_read = $For_parents = $Price = $Hard_copy = $E_book = $Audio_book = $Link = $Curriculum = $Cover = $Back_cover = $Show_to_user ="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
   if (empty($_POST["Title"])) {
-    $_SESSION["Title_err"] = "Title is required";
-    $_SESSION["error_found"] = 1;
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Title = test_input($_POST["Title"]);
-     $_SESSION["Title_err"] = "";
+    
   }
 
   if (empty($_POST["ISBN"])) {
-    $_SESSION["ISBN"] = "ISBN is required";
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $ISBN = test_input($_POST["ISBN"]);
-    $_SESSION["ISBN"] = "";
   }
   
   if (empty($_POST["Writer"])) {
-    $_SESSION["Writer_err"] = "Writer is required";
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Writer = test_input($_POST["Writer"]);
-    $_SESSION["Writer_err"] = "";
   }
 
 
   $Illustrator = test_input($_POST["Illustrator"]);
   
   if (empty($_POST["Publisher"])) {
-    $_SESSION["Publisher_err"] = "Publisher is required";
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Publisher = test_input($_POST["Publisher"]);
-    $_SESSION["Publisher_err"] = "";
   }
 
   if (empty($_POST["Pages"])) {
-    $_SESSION["Pages_err"] = "Pages is required";
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Pages = test_input($_POST["Pages"]);
-    $_SESSION["Pages_err"] = "";
   }
 
   if (empty($_POST["Persentage_of_images"])) {
-    $_SESSION["Persentage_of_images_err"] = "Persentage of images is required";
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Persentage_of_images = test_input($_POST["Persentage_of_images"]);
-    $_SESSION["Persentage_of_images_err"] = "";
   }
 
-  if (empty($_POST["Min_age"])) {
-    $_SESSION["Min_age_err"] = "Minimun age is required";
+  if (empty($_POST["Min_age_no_read"])) {
     header("Location: ../index.php#new_book");
     exit();
   } else {
-    $Min_age = test_input($_POST["Min_age"]);
-    $_SESSION["Min_age_err"] = "";
+    $Min_age_no_read = test_input($_POST["Min_age_no_read"]);
   }
   
-   if (empty($_POST["Max_age"])) {
-    $_SESSION["Max_age_err"] = "Maximun age is required";
+   if (empty($_POST["Min_age_read"])) {
     header("Location: ../index.php#new_book");
     exit();
   } else {
-    $Max_age = test_input($_POST["Max_age"]);
-    $_SESSION["Max_age_err"] = "";
+    $Min_age_read = test_input($_POST["Min_age_read"]);
   }
-// rc="../../Database/Covers/'. $book['Cover']
-   if (empty($_POST["Price"])) {
-    $_SESSION["Price_err"] = "Price is required";
+
+  if(! empty($_POST["For_parents"])){
+    $For_parents = "1";
+  }
+
+  if (empty($_POST["Price"])) {
     header("Location: ../index.php#new_book");
     exit();
   } else {
     $Price = test_input($_POST["Price"]);
-    $_SESSION["Price_err"] = "";
+  }
+
+  if(! empty($_POST["Hard_copy"])){
+    $Hard_copy = "1";
+  }
+  
+  if(! empty($_POST["E_book"])){
+    $E_book = "1";
+  }
+  
+  if(! empty($_POST["Audio_book"])){
+    $Audio_book = "1";
   }
 
   $Link = test_input($_POST["Link"]);
+
+   if (empty($_POST["Curriculum"])) {
+    header("Location: ../index.php#new_book");
+    exit();
+  } else {
+    $Curriculum = test_input($_POST["Curriculum"]);
+  }
 
   if (empty($_FILES["Cover"]["name"])){
     $_SESSION["Cover_err"] = "Cover is required";
@@ -132,7 +137,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Sorry, there was an error uploading your file.";
         exit();
     }
-    
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
@@ -175,9 +179,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
+  if(! empty($_POST["Show_to_user"])){
+    $Show_to_user = "1";
+  }
+
 
   // NEW BOOK ENTRY
-  $new_book_query = $conn->prepare("INSERT INTO books (ISBN, Title, Writer, Illustrator, Publisher, Pages, Persentage_of_images, Min_age, Max_age, Cover, Back_cover, Link, Price) VALUES ('{$ISBN}', '{$Title}', '{$Writer}', '{$Illustrator}', '{$Publisher}', '{$Pages}', '{$Persentage_of_images}', '{$Min_age}', '{$Max_age}', '{$Cover}', '{$Back_cover}', '{$Link}', '{$Price}' )");
+  $new_book_query = $conn->prepare("INSERT INTO books (ISBN, Title, Writer, Illustrator, Publisher, Pages, Persentage_of_images, Min_age_no_read, Min_age_read,For_parents, Cover, Back_cover, Link, Price, Hard_copy, E_book, Audio_book, Curriculum, Show_to_user) VALUES ('{$ISBN}', '{$Title}', '{$Writer}', '{$Illustrator}', '{$Publisher}', '{$Pages}', '{$Persentage_of_images}', '{$Min_age_no_read}', '{$Min_age_read}', '{$For_parents}', '{$Cover}', '{$Back_cover}', '{$Link}', '{$Price}', '{$Hard_copy}', '{$E_book}','{$Audio_book}', '{$Curriculum}', '{$Show_to_user}' )");
   $new_book_query->execute();
 
   // GET BOOK ID

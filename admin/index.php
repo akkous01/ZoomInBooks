@@ -156,21 +156,43 @@ if (session_status() == PHP_SESSION_NONE) {
                         <h4>Ποσοστό Εικόνων * </h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="" required/>
                     </div>
 
-                    <div class="18u$ 8u$(xsmall)">
-                        <h4>Ελάχιστη Ηλικία * </h4><input type="number" name="Min_age" id="Min_age" value="" required/>
+                    <div class="24u$ 12u$(xsmall)">
+                        <h4>Ελάχιστη Ηλικία για παιδία που δεν διεβάζουν* </h4><input type="number" name="Min_age_no_read" id="Min_age_no_read" value="" required/>
                     </div>
 
-                    <div class="18u$ 12u$(xsmall)">
-                        <h4>Μέγιστη Ηλικία * </h4><input type="number" name="Max_age" id="Max_age" value="" required/>
+                    <div class="24u$ 12u$(xsmall)">
+                        <h4>Ελάχιστη Ηλικία για παιδία που διεβάζουν* </h4><input type="number" name="Min_age_read" id="Min_age_read" value="" required/>
                     </div>
 
-                    <div class="18u$ 12u$(xsmall)">
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type='checkbox' id="For_parents" name="For_parents"'>
+                        <label for="For_parents">Κατάλληλο για γονείς</label>
+                    </div>
+
+                    <div class="6u$ 12u$(xsmall)">
                         <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value=""  required/>
+                    </div>
+
+                    <div class="12u$ 12u$(xsmall)">
+                        <h4>Μορφή* </h4>
+                        <input type='checkbox' id="Hard_copy" name="Hard_copy"'>
+                        <label for="Hard_copy">Έντυπη Μορφή</label>
+                        <input type='checkbox' id="E_book" name="E_book"'>
+                        <label for="E_book">E-book</label>
+                        <input type='checkbox' id="Audio_book" name="Audio_book"'>
+                        <label for="Audio_book">Audio-book</label>
                     </div>
 
                     <div class="6u$ 12u$(xsmall)">
                         <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value=""/>
                     </div>
+
+                    <div class="12u$ 12u$(xsmall)">
+                        <h4>Δραστηριότητες και Θέματα προς συζήτηση</h4>
+                        <textarea name="Curriculum" id="Curriculum" rows="4" value=""></textarea>
+                    </div>
+
+                     
 
                     <div class="18u$ 12u$(xsmall)">
                         <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" required/>
@@ -183,6 +205,12 @@ if (session_status() == PHP_SESSION_NONE) {
                     <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
                     <?php include_once "load/load_keywords.php"; ?>
 
+                    <div class="12u$ 12u$(xsmall)">
+                        <input type='checkbox' id="Show_to_user" name="Show_to_user"'>
+                        <label for="Show_to_user"><h3>Το βιβλίο να εμφανίζεται στους χρήστες</h3></label>
+                        
+
+                    </div>
                     <div class="12u$">
                         <ul class="actions">
                             <li><input type="submit" value="Save Book" class="special" /></li>
