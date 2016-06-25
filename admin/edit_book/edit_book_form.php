@@ -60,13 +60,13 @@ if(!$book){
 <section id="sidebar">
     <div class="inner" style="text-align: center">
         <br> <br>
-        <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="../../Database/Covers/'. $book['Cover'].'"/>';?>
+        <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Cover'] ).'"/>';?>
         <a href="#" class="button special small" id="change_cover">Αλλαγή Εξωφύλλου </a>
         <div class="18u$ 12u$(xsmall)" id="upload_cover" style="display:none">
             <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" required/>
         </div>
         <br>
-        <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="../../Database/Back_Covers/'.$book['Back_cover'].'"/>';?>
+        <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="data:image/jpeg;base64,'.base64_encode( $book['Back_cover'] ).'"/>';?>
         <a href="#" class="button special small" id="change_back_cover">Αλλαγή Πισθοφύλλου</a>
         <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
             <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
