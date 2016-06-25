@@ -21,6 +21,29 @@ if(!$book){
     print("error");
 }
 
+$For_parents_check = $Hard_copy_check = $E_book_check = $Audio_book_check = $Show_to_user_check ='false';
+
+if($book['For_parents'] == 1){
+    $For_parents_check = 'true';
+}
+
+if($book['Hard_copy'] == 1){
+    $Hard_copy_check = 'true';
+}
+
+if($book['E_book'] == 1){
+    $E_book_check = 'true';
+}
+
+if($book['Audio_book'] == 1){
+    $Audio_book_check = 'true';
+}
+
+if($book['Show_to_user'] == 1){
+    $Show_to_user_check = 'true';
+}
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -113,21 +136,42 @@ if(!$book){
                     <h4>Ποσοστό Εικόνων * </h4><input type="double" name="Persentage_of_images" id="Persentage_of_images" value="<?php echo $book['Persentage_of_images'];?>" required/>
                 </div>
 
-                <div class="18u$ 8u$(xsmall)">
-                    <h4>Ελάχιστη Ηλικία * </h4><input type="number" name="Min_age" id="Min_age" value="<?php echo $book['Min_age'];?>" required/>
+                <div class="24u$ 12u$(xsmall)">
+                    <h4>Ελάχιστη Ηλικία για παιδία που δεν διεβάζουν * </h4><input type="number" name="Min_age_no_read" id="Min_age_no_read" value="<?php echo $book['Min_age_no_read'];?>" required/>
                 </div>
 
                 <div class="18u$ 12u$(xsmall)">
-                    <h4>Μέγιστη Ηλικία * </h4><input type="number" name="Max_age" id="Max_age" value="<?php echo $book['Max_age'];?>" required/>
-            </div>
+                    <h4>Ελάχιστη Ηλικία για παιδία που διεβάζουν *</h4><input type="number" name="Min_age_read" id="Min_age_read" value="<?php echo $book['Min_age_read'];?>" required/>
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                        <input type='checkbox' id="For_parents" name="For_parents"'>
+                        <label for="For_parents">Κατάλληλο για γονείς</label>
+                </div>
 
                 <div class="18u$ 12u$(xsmall)">
                     <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value="<?php echo $book['Price'];?>"  required/>
                 </div>
 
+                 <div class="12u$ 12u$(xsmall)">
+                        <h4>Μορφή* </h4>
+                        <input type='checkbox' id="Hard_copy" name="Hard_copy"'>
+                        <label for="Hard_copy">Έντυπη Μορφή</label>
+                        <input type='checkbox' id="E_book" name="E_book"'>
+                        <label for="E_book">E-book</label>
+                        <input type='checkbox' id="Audio_book" name="Audio_book"'>
+                        <label for="Audio_book">Audio-book</label>
+                </div>
+
                 <div class="6u$ 12u$(xsmall)">
                     <h4>Σύνδεσμος</h4><input type="text" name="Link" id="Link" value="<?php echo $book['Link'];?>"/>
                 </div>
+
+                <div class="12u$ 12u$(xsmall)">
+                    <h4>Δραστηριότητες και Θέματα προς συζήτηση</h4>
+                    <textarea name="Curriculum" id="Curriculum" rows="4" value=""><?php echo $book['Curriculum'];?></textarea>
+                </div>
+
 
                 <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
                 <?php include_once "../load/load_keywords.php";
@@ -135,6 +179,21 @@ if(!$book){
                     echo "<script>$('#K".$book_keywards[$i]['Keyword_id']."').prop('checked', true);</script>";
                 }
                 ?>
+
+                <div class="12u$ 12u$(xsmall)">
+                    <input type='checkbox' id="Show_to_user" name="Show_to_user"'>
+                    <label for="Show_to_user"><h3>Το βιβλίο να εμφανίζεται στους χρήστες</h3></label>
+                </div>
+
+
+                <script type="text/javascript">
+                    $("#For_parents").prop('checked',<?php echo $For_parents_check?>);
+                    $("#Hard_copy").prop('checked',<?php echo $Hard_copy_check?>);
+                    $("#E_book").prop('checked',<?php echo $E_book_check?>);
+                    $("#Audio_book").prop('checked',<?php echo $Audio_book_check?>);
+                    $("#Show_to_user").prop('checked',<?php echo $Show_to_user_check?>);
+
+                </script>
 
                 <div class="12u$">
                     <ul class="actions">

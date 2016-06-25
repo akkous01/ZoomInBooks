@@ -157,11 +157,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="24u$ 12u$(xsmall)">
-                        <h4>Ελάχιστη Ηλικία για παιδία που δεν διεβάζουν* </h4><input type="number" name="Min_age_no_read" id="Min_age_no_read" value="" required/>
+                        <h4>Ελάχιστη Ηλικία για παιδία που δεν διεβάζουν * </h4><input type="number" name="Min_age_no_read" id="Min_age_no_read" value="" required/>
                     </div>
 
                     <div class="24u$ 12u$(xsmall)">
-                        <h4>Ελάχιστη Ηλικία για παιδία που διεβάζουν* </h4><input type="number" name="Min_age_read" id="Min_age_read" value="" required/>
+                        <h4>Ελάχιστη Ηλικία για παιδία που διεβάζουν * </h4><input type="number" name="Min_age_read" id="Min_age_read" value="" required/>
                     </div>
 
                     <div class="6u$ 12u$(xsmall)">
@@ -208,8 +208,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     <div class="12u$ 12u$(xsmall)">
                         <input type='checkbox' id="Show_to_user" name="Show_to_user"'>
                         <label for="Show_to_user"><h3>Το βιβλίο να εμφανίζεται στους χρήστες</h3></label>
-                        
-
                     </div>
                     <div class="12u$">
                         <ul class="actions">
