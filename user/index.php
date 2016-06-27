@@ -24,11 +24,24 @@
 
   <header>
     <ul class="nav">
-    <li><img src=""></li>
-    <li>vdfd</li>
+        <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>
+        <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
+        <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>
+        <li><a href="#"><img src="images/navbar/4_Communicate.png"></a></li>
+        <li><a href="#"><img src="images/navbar/5_LogIn.png"></a></li>
+        <li><a href="#"><img src="images/navbar/6_CreateAccount.png"></a></li>
+        <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>
+        <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>
     </ul>
  </header>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+  </ul>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

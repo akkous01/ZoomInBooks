@@ -34,10 +34,16 @@ header{
     bottom: 0;
     left: 0;
     right: 0;
-    width: 50%;
     height: 0.02%;
     margin: auto;
   }
-.nav li{
-  display: inline;
+
+.nav li {
+	display: inline;
+
 }
+.nav  a{
+	display: inline-block;
+
+}
+
