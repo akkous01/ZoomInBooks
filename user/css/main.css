@@ -1,0 +1,25 @@
+html, body { 
+	  height:100%;
+	  width: 100%;
+  background: url(../images/backround.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*overflow: auto ;*/
+}
+
+header{
+	margin-top: 0%;
+	height: 15%;
+	width:100%;
+	
+	/*background-color: black; */
+	background: url(../images/header-4.png) no-repeat center center; 
+	background-size: 80% 100% ;
+/*	  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+*/
+}
