@@ -75,7 +75,11 @@ if($book['Show_to_user'] == 1){
                 $('#img_back_cover').css("display","none");
                 $('#upload_back_cover').css("display","block");
             });
-        });
+            function show(sub_category){
+                var name="#".sub_xategory."+";
+                $(name).css("display","none");
+
+            };
     </script>
 </head>
 <body>

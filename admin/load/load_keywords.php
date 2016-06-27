@@ -23,24 +23,37 @@
 		// $categories_check_box .= "<br><br><hr>";
 		for($j = 0; $j < count($subcategories) ; $j++){
 			$subcategory_id = (integer) $subcategories[$j]['Subcategory_id'];
-			$subcategory_name = (string)$subcategories[$j]['Name_of_subcategory'];
-			$categories_check_box .= "\r\n<div class='12u$'><h5 style='color:grey'>$subcategory_name</h5></div>";
+			$subcategory_name = (string)$subcategories[$j]['Name_of_subcategory']."  ";
+			$categories_check_box .= "\r\n<div class='12u$'>
+				<h5 style='color:grey'>
+					$subcategory_name
+					<a role=\"button\" class='show' ><img  src='images/show.png'> </a>
+					<a role=\"button\" class='hide'  style='display:none;'><img  src='images/hide.png'></a>
+				</h5>
+			</div>";
 
 			// KEYWORDS
 			$keywords_query = $conn->prepare("SELECT * FROM keywords WHERE Subcategory_id = {$subcategory_id}");
 			$keywords_query->execute();
 
 			$keywords= $keywords_query->fetchAll(PDO::FETCH_ASSOC);
-			
+			$categories_check_box .= "\r\n<section class='show_hide'>";
 			for($k = 0; $k < count($keywords) ; $k++){
 				$keyword_id = (integer) $keywords[$k]['Keyword_id'];
 				$keyword_name = (string)$keywords[$k]['Name_of_keyword'];
 				$categories_check_box .= "\r\n<div class='size_of_keyword'><input type='checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label></div>";
 			}
-
+			$categories_check_box .= "\r\n</section>";
 
 		}
 	}
+	$categories_check_box .="\r\n<script>
+		 $(\".show \").click(function(){
+		 	$(this).css(\"display\",\"none\");
+		 	$(this).next().css( \"display\",\"block\" );
+			$(this).next().nec.css( \"display\",\"block\" );
+          });
+	</script>";
 	echo $categories_check_box;
                     
 ?>
