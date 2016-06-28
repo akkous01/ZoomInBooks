@@ -40,7 +40,13 @@ header{
 	display: inline-block;
 
 }
-
+.my_nav a:hover img {
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+    transform:scale(1.25);
+}
 #main{
   height: 77%;
   width:80%;
