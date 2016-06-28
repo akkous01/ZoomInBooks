@@ -20,7 +20,7 @@ header{
 
 }
 
-.nav{
+.my_nav{
    display: inline-block;
    position: absolute;
     top: 0;
@@ -31,12 +31,12 @@ header{
     margin: auto;
   }
 
-.nav li {
+.my_nav li {
 	display: inline;
     margin-left:2%;
 
 }
-.nav  a{
+.my_nav  a{
 	display: inline-block;
 
 }
@@ -46,7 +46,7 @@ header{
   width:80%;
   margin-left: 10%;
   background: url(../images/main-wide-01.png) no-repeat center center; 
-  background-size: 100% 100% ;
+  background-size: 96% 100% ;
 
 }
 
@@ -58,8 +58,8 @@ header{
 
 #search_bar_book{
   height: 100%;
-  width:60%;
-  margin-left: 20%;
+  width:50%;
+  margin-left: 25%;
   border:4px solid red ; 
 
 

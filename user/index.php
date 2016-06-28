@@ -23,7 +23,7 @@
 
 
   <header>
-    <ul class="nav">
+    <ul class="my_nav">
         <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>
         <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
         <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>
