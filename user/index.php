@@ -47,7 +47,11 @@
 
 <div id="main">
   <div id="main-top" >
-     <div id="search_bar_book"></div>
+    <div id="search_bar_book">
+      <div id="search_bar"></div>  
+
+      <div id="book"></div>  
+    </div>
   </div>
 <div style="border:4px solid black ; height: 35% ; width:100%" ></div>
 
