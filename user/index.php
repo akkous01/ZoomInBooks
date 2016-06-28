@@ -45,9 +45,13 @@
 <!--    </ul>-->
  </header>
 
- <div id="main">
- 
- </div>
+<div id="main">
+  <div id="main-top" >
+     <div id="search_bar_book"></div>
+  </div>
+<div style="border:4px solid black ; height: 35% ; width:100%" ></div>
+
+</div>
 
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -4,7 +4,7 @@ html, body {
       -webkit-background-size: contain;
       -moz-background-size: contain;
       -o-background-size: contain;
-      background-size: 90%;
+      background-size: 80%;
 
 }
 
@@ -15,7 +15,7 @@ header{
 	text-align: center;
 	/*background-color: black; */
 	background: url(../images/he1-01.png) no-repeat center center; 
-	background-size: 100% 100% ;
+	background-size: 90% 100% ;
   position: relative;
 
 }
@@ -43,9 +43,24 @@ header{
 
 #main{
   height: 77%;
-  width:100%;
-  background: url(../images/mian3-01.png) no-repeat center center; 
-  background-size: 90% 100% ;
+  width:80%;
+  margin-left: 10%;
+  background: url(../images/main-wide-01.png) no-repeat center center; 
+  background-size: 100% 100% ;
 
 }
 
+#main-top{
+  border:4px solid black ; 
+  height: 65% ; 
+  width:100%
+}
+
+#search_bar_book{
+  height: 100%;
+  width:60%;
+  margin-left: 20%;
+  border:4px solid red ; 
+
+
+}
