@@ -81,8 +81,8 @@ header{
 
 #book{
   height: 55%;
-  width:80%;
-  margin-left: 10%;
+  width:90%;
+  margin-left: 5%;
   margin-top: 10%;
   border:4px solid yellow ; 
   background: url(../images/book.png) no-repeat center; 
