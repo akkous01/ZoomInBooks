@@ -50,7 +50,35 @@
     <div id="search_bar_book">
       <div id="search_bar"></div>  
 
-      <div id="book"></div>  
+      <div id="book">
+
+      <div class="bookmarks_left">
+        <div class="bookmark_left">
+          <img id="ithika" src="images/bookmark-1.png" class="bookmark_tag">
+          <img id="ithika_new" src="images/bookmark-1-new.png" class="bookmark_tag_new" style="display: none">
+        </div>
+        <div class="bookmark_left">
+          <img id="sindesi" src="images/bookmark-2.png" class="bookmark_tag">
+          <img id="sindesi_new" src="images/bookmark-2-new.png" class="bookmark_tag_new" style="display: none">
+        </div>
+        <div class="bookmark_left">
+          <img id="epipleon" src="images/bookmark-3.png" class="bookmark_tag">
+          <img id="epipleon_new" src="images/bookmark-3-new.png" class="bookmark_tag_new" style="display: none">
+        </div>
+      </div>
+      <div class="book_img"></div>
+      <div class="bookmarks_right">
+        <div class="bookmark_right">
+          <img id="analisi" src="images/bookmark-4.png" class="bookmark_tag">
+          <img id="analisi_new" src="images/bookmark-4-new.png" class="bookmark_tag_new" style="display: none">
+        </div>
+        <div class="bookmark_right_2">
+          <img id="gramatiki" src="images/bookmark-5.png" class="bookmark_tag">
+          <img id="gramatiki_new" src="images/bookmark-5-new.png" class="bookmark_tag_new" style="display: none">
+        </div>
+      </div>
+
+      </div>  
     </div>
   </div>
 <div style="border:4px solid black ; height: 35% ; width:100%" ></div>
@@ -62,5 +90,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/front-end.js"></script>
   </body>
 </html>
