@@ -19,27 +19,32 @@
     <![endif]-->
   </head>
   <body>
-  
+  <div id="wrapper">
 
 
-  <header>
-    <ul class="nav">
-        <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>
-        <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
-        <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>
-        <li><a href="#"><img src="images/navbar/4_Communicate.png"></a></li>
-        <li><a href="#"><img src="images/navbar/5_LogIn.png"></a></li>
-        <li><a href="#"><img src="images/navbar/6_CreateAccount.png"></a></li>
-        <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>
-        <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>
-    </ul>
- </header>
-  <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-  </ul>
+      <header>
+    <!--    <ul class="nav">-->
+    <!--        <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/4_Communicate.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/5_LogIn.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/6_CreateAccount.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>-->
+    <!--        <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>-->
+    <!--    </ul>-->
+          <ul class="nav">
+              <li id="nav_1_HomePage"><img src="images/navbar/1_HomePage.png"></li>
+              <li id="nav_2_OurPhilosophy"><img src="images/navbar/2_OurPhilosophy.png"></li>
+              <li id="nav_3_Blog"><img src="images/navbar/3_Blog.png"></li>
+              <li id="nav_4_Communicate"><img src="images/navbar/4_Communicate.png"></li>
+              <li id="nav_5_LogIn"><img src="images/navbar/5_LogIn.png"></li>
+              <li id="nav_6_CreateAccount"><img src="images/navbar/6_CreateAccount.png"></li>
+              <li id="nav_7_Gallery"><img src="images/navbar/7_Gallery.png"></li>
+              <li id="nav_8_ZoomIn"><img src="images/navbar/8_ZoomIn.png"></li>
+          </ul>
+     </header>
+    </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
