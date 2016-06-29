@@ -465,6 +465,20 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         });
     }
+    $(".collapse_sub_categories").click(function () {
+        $("#collapse_"+$(this).attr('id')).slideToggle("3000");
+        hide="#hide_"+$(this).attr('id');
+        show="#show_"+$(this).attr('id');
+        if($(show).css('display') == 'none') {
+            $(show).css({'display':'block'});
+            $(hide).css({'display':'none'});
+
+        }else{
+            $(show).css({'display':'none'});
+            $(hide).css({'display':'block'});
+        }
+
+    });
 </script>
 </body>
 </html>
