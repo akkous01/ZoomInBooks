@@ -53,7 +53,7 @@ header{
   height: 77%;
   width:80%;
   margin-left: 10%;
-  background: url(../images/main-wide-01.png) no-repeat center center;
+  background: url(../images/main-wide-01.png) no-repeat center top;
   background-size: 96% 100% ;
 
 }
@@ -64,11 +64,109 @@ header{
   width:100%
 }
 
+#main-bottom{
+  border:4px solid black ;
+  height: 55% ; 
+  width:95%;
+  margin-left: 2%;
+  margin-top: 4%;
+}
+
+#new_inserts{
+  float: left;
+  height: 99%;
+  width: 35%;
+  margin-left: 5%;
+  margin-right: 0%;
+  margin-top: 0.1%;
+  background: url(../images/news2.png) no-repeat right center;
+  background-size: 100% 100%;
+    border:4px solid black ; 
+
+}
+
+#new_books_show{
+  height: 50%;
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 10%;
+      border:1px solid black ; 
+
+}
+
+#middle{
+  float: left;
+  height: 100%;
+  width: 25%;
+  margin-top: 0%;
+  margin-right: 0%;
+      border:4px solid black ; 
+
+}
+
+
+#facebook_div{
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  margin-top: 0%;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  margin-right: 0%;
+
+}
+
+#facebook_icon{
+   position: absolute;
+   bottom: 0px;
+  right: 0px;
+}
+
+#instagram_div{
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  margin-top: 0%;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  margin-right: 0%;
+}
+
+#instagram_icon{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+
+#anakinosis{
+  float: left;
+  height: 99%;
+  width: 35%;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0.1%;
+  background: url(../images/anakinosis.png) no-repeat left center;
+  background-size: 100% 100%;
+    border:4px solid black ; 
+
+}
+
+#anakinosis_show{
+  height: 50%;
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 10%;
+      border:1px solid black ; 
+}
+
 #search_bar_book{
   height: 100%;
   width:50%;
   margin-left: 25%;
-  border:4px solid red ;
+  /*border:4px solid red ;*/
 
 
 }
@@ -78,7 +176,7 @@ header{
     height: 21%;
     margin-left: 10%;
 
-    border:4px solid yellow ;
+    /*border:4px solid yellow ;*/
     background: url(../images/search.png) no-repeat center center;
     background-size: 50% 90% ;
     text-align: center;
@@ -117,7 +215,7 @@ header{
   height: 55%;
   width:100%;
   margin-top: 10%;
-  border:4px solid yellow ; 
+  /*border:4px solid yellow ; */
   
 
 }
@@ -126,7 +224,7 @@ header{
   height: 20%;
   width:100%;
   margin-top: 1%;
-  border:4px solid blue ; 
+  /*border:4px solid blue ; */
 
 }
 
@@ -170,7 +268,7 @@ header{
   margin-top: 0%;
   margin-left: 0%;
   margin-right: 0%;
-    border:4px solid orange ; 
+    /*border:4px solid orange ; */
 
 }
 .bookmarks_left{
@@ -181,7 +279,7 @@ header{
   margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
-      border:1px solid orange ; 
+      /*border:1px solid orange ; */
 
 }
 
@@ -193,7 +291,7 @@ header{
   margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
-  border:1px solid orange ; 
+  /*border:1px solid orange ; */
   background: url(../images/book.png) no-repeat center;
   background-size: 100% 100%;  
 
@@ -207,7 +305,7 @@ header{
   margin-top: 0px;
   margin-left: 0px;
   margin-right:0px;
-  border:1px solid orange ; 
+  /*border:1px solid orange ; */
 
 }
 
@@ -226,7 +324,7 @@ header{
   width: 80%;
   /*position: absolute;*/
   margin-left: 10%;
-  border:4px solid #33ccff ;
+  /*border:4px solid #33ccff ;*/
   background-color: white; 
 
 }
@@ -236,7 +334,7 @@ header{
   width: 70%;
   margin-top: 1%;
   margin-left: 20%;
-  border:1px solid orange ; 
+  /*border:1px solid orange ; */
 
 }
 
@@ -244,7 +342,7 @@ header{
   height: 75%;
   width: 73%;
   margin-left: 15%;
-  border:1px solid orange ; 
+  /*border:1px solid orange ; */
     background: url(../images/table-dragon-3.png) no-repeat center bottom;
   background-size: 100% 50%;
 
@@ -256,7 +354,7 @@ header{
   margin-right: 0%;
   height: 100%;
   width: 10%;
-      border:1px solid orange ; 
+      /*border:1px solid orange ; */
 
 }
 
@@ -265,7 +363,7 @@ header{
   width: 90%;
   margin-top: 20%;
   margin-left: 5%;
-          border:1px solid orange ; 
+          /*border:1px solid orange ; */
 
 }
 

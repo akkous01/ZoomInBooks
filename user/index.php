@@ -91,8 +91,23 @@
       </div>  
     </div>
   </div>
-<div style="border:4px solid black ; height: 35% ; width:100%" ></div>
 
+<div id="main-bottom" >
+  
+  <div id="new_inserts">
+    <div id="new_books_show">
+
+    </div>
+  </div>
+
+  <div id="middle">
+      <div id="facebook_div"><img id="facebook_icon" src="images/facebook-02.png" ></div>
+      <div id="instagram_div"><img id="instagram_icon" src="images/instagram-02.png" ></div>
+  </div>
+
+  <div id="anakinosis">
+    <div id="anakinosis_show"></div>
+  </div>
 </div>
 
 
