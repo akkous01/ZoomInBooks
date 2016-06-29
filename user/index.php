@@ -48,9 +48,10 @@
 <div id="main">
   <div id="main-top" >
     <div id="search_bar_book">
-      <div id="search_bar"></div>  
+            <div id="search_bar"></div>
+            <div id="search_box" style="display:none"></div>
 
-      <div id="book">
+            <div id="book">
 
       <div class="bookmarks_left">
         <div class="bookmark_left">
@@ -91,5 +92,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/front-end.js"></script>
+  <script>
+      $( document ).ready(function() {
+          $("#search_bar").click(function () {
+
+              $("#search_bar").css({'display':'none'});
+              $("#search_box").slideToggle("slow");
+          });
+      });
+  </script>
   </body>
 </html>
