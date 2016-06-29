@@ -192,3 +192,20 @@ header{
 }
 
 
+#main_search {
+  height: 77%;
+  width:80%;
+  margin-left: 10%;
+  background: url(../images/main-search-1.png) no-repeat center bottom; 
+  background-size: 90% 85% ;
+
+}
+
+#search_box{
+  height: 15%;
+  width: 80%;
+  margin-left: 10%;
+
+  border:4px solid #33ccff ; 
+
+}
