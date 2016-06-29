@@ -64,6 +64,8 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li><a href="#new_category">Προσθήκη Κατηγορίας</a></li>
                 <li><a href="#new_subcategory">Προσθήκη Υποατηγορίας</a></li>
                 <li><a href="#new_keyword">Προσθήκη Λέξης Κλειδί</a></li>
+                <li><a href="#announcements">Προσθήκη Ανακοίνωσης</a></li>
+                <li><a href="#blog">Προσθήκη στο Blog</a></li>
 
             </ul>
         </nav>
@@ -348,7 +350,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <div class="8u$ 12u$(xsmall)">
                                  <input type="text" name="New_keyword" id="New_keyword" value="" placeholder="Όνομα Νέας Λέξης Κλειδί" required/>
                             </div>
-                            <div 
+                            <div> 
                              <div class="12u$">
                                 <ul class="actions">
                                     <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
@@ -360,7 +362,52 @@ if (session_status() == PHP_SESSION_NONE) {
         </div>
     </section>
 
-</div>
+
+    <section id="announcements" class="wrapper style1 spotlights">
+    	<div class="inner">
+
+            <h2>Προσθήκη Ανακοίνωσης</h2>
+            <section>
+                <form method="post" action="add_elements/new_announcement.php">
+                    <div class="row uniform">
+                    	<div class="12u$">
+                            <textarea name="announcement_content" id="announcement_content" rows="4" value=""></textarea>
+                        </div>
+                         <div class="12u$">
+                            <ul class="actions">
+                                <li><a href="" class="button small submit">Sabmit announcement</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+             </section>
+		</div>
+    </section>
+
+    <section id="blog" class="wrapper style1 spotlights">
+    	<div class="inner">
+
+            <h2>Προσθήκη στο Blog</h2>
+            <section>
+                <form method="post" action="add_elements/new_blog.php">
+                    <div class="row uniform">
+                    	<div class="6u$ 12u$(xsmall)">
+                        	<h4>Τίτλος</h4><input type="text" name="blog_title" id="blog_title" value="" required />
+                    	</div>
+                        <div class="12u$">
+                            <textarea name="blog_content" id="blog_content" rows="6" value=""></textarea>
+                        </div>
+                         <div class="12u$">
+                            <ul class="actions">
+                                <li><a href="" class="button small submit">Sabmit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+             </section>
+		</div>
+    </section>
+
 
 <!-- Footer -->
 <footer id="footer" class="wrapper style1-alt">
