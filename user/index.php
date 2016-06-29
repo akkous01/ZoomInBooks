@@ -48,7 +48,7 @@
 <div id="main">
   <div id="main-top" >
     <div id="search_bar_book">
-            <div id="search_box" style="display:none"></div>
+            <div id="search_box_dropdown" style="display:none"></div>
             <div id="search_bar"></div>
 
 
@@ -97,8 +97,8 @@
       $( document ).ready(function() {
           $("#search_bar").click(function () {
               $("#search_bar").css({'display':'none'});
-              $("#book").css({'margin-top':'21%'});
-              $("#search_box").slideToggle("30000");
+
+              $("#search_box_dropdown").slideToggle("30000");
           });
       });
   </script>
