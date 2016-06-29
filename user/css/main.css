@@ -95,6 +95,24 @@ header{
     background-position:center 50%;
 }
 
+.search_box_dropdown_elements #close_button img{
+    width:40px;
+    height: 40px;
+    margin-top:6%;
+    margin-left:35%
+}
+.search_in_dropdown {
+
+    padding:10px 15px 6px 30px;
+    margin-top:55%;
+    width: 38%;
+    border:3px solid #26b8db;
+    border-radius:15px;
+    /*-moz-border-radius:15px;*/
+    /*-webkit-border-radius:15px;*/
+    position:relative;
+}
+
 #book{
   height: 55%;
   width:100%;

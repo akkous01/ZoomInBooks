@@ -48,8 +48,16 @@
 <div id="main">
   <div id="main-top" >
     <div id="search_bar_book">
-            <div id="search_box_dropdown" style="display:none"></div>
-            <div id="search_bar"></div>
+            <div id="search_box_dropdown" style="display:none">
+                <div class="search_box_dropdown_elements" style="display: none">
+                    <a href="#" id="close_button"><img  src="images/close_button.ico"></a></li>
+                    <div><input type="text" class="search_in_dropdown " placeholder="Search..."></div>
+
+
+                </div>
+            </div>
+            <div id="search_bar">
+            </div>
 
 
             <div id="book">
@@ -97,8 +105,14 @@
       $( document ).ready(function() {
           $("#search_bar").click(function () {
               $("#search_bar").css({'display':'none'});
+              $("#search_box_dropdown").slideToggle("3000");
+              $(".search_box_dropdown_elements").css({'display':'block'});
+          });
+          $("#close_button").click(function () {
+              $(".search_box_dropdown_elements").css({'display':'none'});
+              $("#search_box_dropdown").slideToggle("3000");
+              $("#search_bar").css({'display':'block'});
 
-              $("#search_box_dropdown").slideToggle("30000");
           });
       });
   </script>
