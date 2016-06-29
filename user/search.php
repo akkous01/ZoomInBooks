@@ -36,7 +36,13 @@
   </header>
 
   <div id="main_search">
-    <div id="search_box"></div>
+    <div id="search_box">
+      
+    </div>
+
+    <div id="results">
+      
+    </div>
   </div>
 
 
