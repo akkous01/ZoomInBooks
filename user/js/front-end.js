@@ -83,6 +83,70 @@ $(document).ready(
 	    	}
 	    );
 
+
+	    $("#ithika_new").click(
+	    	function(){
+	    		$("#first_table").hide();
+        	   	$("#ithika_table").show();
+	        	$("#sindesi_table").hide();
+	        	$("#epipleon_table").hide();
+	        	$("#analisi_table").hide();
+	        	$("#gramatiki_table").hide();
+	        	
+	    	}
+	    );
+
+
+	   	$("#sindesi_new").click(
+	    	function(){
+	    		$("#first_table").hide();
+        	   	$("#ithika_table").hide();
+	        	$("#sindesi_table").show();
+	        	$("#epipleon_table").hide();
+	        	$("#analisi_table").hide();
+	        	$("#gramatiki_table").hide();
+	        	
+	    	}
+	    );
+
+
+	    $("#epipleon_new").click(
+	    	function(){
+	    		$("#first_table").hide();
+        	   	$("#ithika_table").hide();
+	        	$("#sindesi_table").hide();
+	        	$("#epipleon_table").show();
+	        	$("#analisi_table").hide();
+	        	$("#gramatiki_table").hide();
+	        	
+	    	}
+	    );
+
+
+	    $("#analisi_new").click(
+	    	function(){
+	    		$("#first_table").hide();
+        	   	$("#ithika_table").hide();
+	        	$("#sindesi_table").hide();
+	        	$("#epipleon_table").hide();
+	        	$("#analisi_table").show();
+	        	$("#gramatiki_table").hide();
+	        	
+	    	}
+	    );
+
+	    $("#gramatiki_new").click(
+	    	function(){
+	    		$("#first_table").hide();
+        	   	$("#ithika_table").hide();
+	        	$("#sindesi_table").hide();
+	        	$("#epipleon_table").hide();
+	        	$("#analisi_table").hide();
+	        	$("#gramatiki_table").show();
+	        	
+	    	}
+	    );
+
 	    var top = $('header').offset().top - parseFloat($('header').css('marginTop').replace(/auto/, 0));
     	$(window).scroll(function (event) {
 	        var y = $(this).scrollTop();

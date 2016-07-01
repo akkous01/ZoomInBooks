@@ -1,3 +1,7 @@
+<?php 
+include_once "session/load_data_from_database.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -110,8 +114,18 @@ queries -->
           </div>
         </div>
 
-        <div class="book_img"></div>
-      
+		<div class="book_img">
+          <div id="subcategories_area">
+            <table id = "first_table" class="subcategories_table">
+              <tr>
+                <td><h4>Δες τους σελιδοδείκτες για...</h4></td>
+                <td></td>
+              </tr>
+            </table>
+            <?php echo $ithika_table; echo $sindesi_table; echo $epipleon_table; echo $analisi_table; echo $gramatiki_table;?>
+          </div>
+        </div>     
+
         <div class="bookmarks_right">
           <div class="bookmark_right">
           <img id="analisi" src="images/bookmark-4.png" class="bookmark_tag">
@@ -131,7 +145,7 @@ queries -->
     
     <div id="new_inserts">
       <div id="new_books_show">
-
+      		<?php echo $new_books_script; ?>
       </div>
     </div>
 
@@ -141,7 +155,9 @@ queries -->
     </div>
 
     <div id="anakinosis">
-      <div id="anakinosis_show"></div>
+      <div id="anakinosis_show">
+      	<?php echo $anakinosis_script; ?>
+      </div>
     </div>
   </div>
 </div>

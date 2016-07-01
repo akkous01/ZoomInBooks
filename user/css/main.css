@@ -90,6 +90,8 @@ header{
   width: 80%;
   margin-top: 5%;
   margin-left: 10%;
+  overflow-y: scroll;
+  text-align: center; 
       border:1px solid black ; 
 
 }
@@ -159,6 +161,8 @@ header{
   width: 80%;
   margin-top: 5%;
   margin-left: 10%;
+  overflow-y: scroll;
+  text-align: center; 
       border:1px solid black ; 
 }
 
@@ -318,7 +322,7 @@ header{
   margin-left: 0px;
   margin-right: 0px;
   /*border:1px solid orange ; */
-  background: url(../images/book.png) no-repeat center;
+  background: url(../images/book-2.png) no-repeat center;
   background-size: 100% 100%;  
 
 }
@@ -456,4 +460,38 @@ header{
   margin-left: 15%;
   border: 1px solid red;
 
+}
+
+
+.myhr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 0;
+  border-top: 2px solid #8a6d3b;
+}
+
+
+#subcategories_area{
+  height: 86%;
+  width: 86%;
+  margin-left: 7%;
+  margin-top: 4%;
+  /*border: 3px solid red;*/
+  /*overflow-y: scroll;*/
+
+}
+
+
+.subcategories_table{
+  height: 100%;
+  width: 100%;
+  margin: 1% 1% 1% 1%;
+
+}
+.subcategories_table td{
+  width: 45%;
+  padding-left: 2%;
+  /*margin: 5% 5% 5% 5%;*/
+  text-align: center;
+  /*background-color: #ffe6b3; */
 }
