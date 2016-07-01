@@ -48,68 +48,70 @@
 <div id="main">
   <div id="main-top" >
     <div id="search_bar_book">
-            <div id="search_box_dropdown" style="display:none">
-                <div class="search_box_dropdown_elements" style="display: none">
-                    <a href="#" id="close_button"><img  src="images/close_button.ico"></a></li>
-                    <div><input type="text" class="search_in_dropdown " placeholder="Search..."></div>
-
-
-                </div>
-            </div>
-            <div id="search_bar">
-            </div>
-
-
-            <div id="book">
-
-      <div class="bookmarks_left">
-        <div class="bookmark_left">
-          <img id="ithika" src="images/bookmark-1.png" class="bookmark_tag">
-          <img id="ithika_new" src="images/bookmark-1-new.png" class="bookmark_tag_new" style="display: none">
-        </div>
-        <div class="bookmark_left">
-          <img id="sindesi" src="images/bookmark-2.png" class="bookmark_tag">
-          <img id="sindesi_new" src="images/bookmark-2-new.png" class="bookmark_tag_new" style="display: none">
-        </div>
-        <div class="bookmark_left">
-          <img id="epipleon" src="images/bookmark-3.png" class="bookmark_tag">
-          <img id="epipleon_new" src="images/bookmark-3-new.png" class="bookmark_tag_new" style="display: none">
+      <div id="search_box_dropdown" style="display:none">
+        <div class="search_box_dropdown_elements" style="display: none">
+          <a href="#" id="close_button"><img  src="images/close_button.ico"></a>
+          <div>
+            <input type="text" class="search_in_dropdown " placeholder="Search...">
+          </div>
         </div>
       </div>
-      <div class="book_img"></div>
-      <div class="bookmarks_right">
-        <div class="bookmark_right">
+            
+      <div id="search_bar">
+      </div>
+
+
+      <div id="book">
+        <div class="bookmarks_left">
+          <div class="bookmark_left">
+            <img id="ithika" src="images/bookmark-1.png" class="bookmark_tag">
+            <img id="ithika_new" src="images/bookmark-1-new.png" class="bookmark_tag_new" style="display: none">
+          </div>
+          <div class="bookmark_left">
+            <img id="sindesi" src="images/bookmark-2.png" class="bookmark_tag">
+            <img id="sindesi_new" src="images/bookmark-2-new.png" class="bookmark_tag_new" style="display: none">
+          </div>
+          <div class="bookmark_left">
+            <img id="epipleon" src="images/bookmark-3.png" class="bookmark_tag">
+            <img id="epipleon_new" src="images/bookmark-3-new.png" class="bookmark_tag_new" style="display: none">
+          </div>
+        </div>
+
+        <div class="book_img"></div>
+      
+        <div class="bookmarks_right">
+          <div class="bookmark_right">
           <img id="analisi" src="images/bookmark-4.png" class="bookmark_tag">
           <img id="analisi_new" src="images/bookmark-4-new.png" class="bookmark_tag_new" style="display: none">
+          </div>
+          <div class="bookmark_right_2">
+            <img id="gramatiki" src="images/bookmark-5.png" class="bookmark_tag">
+            <img id="gramatiki_new" src="images/bookmark-5-new.png" class="bookmark_tag_new" style="display: none">
+          </div>
         </div>
-        <div class="bookmark_right_2">
-          <img id="gramatiki" src="images/bookmark-5.png" class="bookmark_tag">
-          <img id="gramatiki_new" src="images/bookmark-5-new.png" class="bookmark_tag_new" style="display: none">
-        </div>
-      </div>
 
       </div>  
     </div>
   </div>
 
-<div id="main-bottom" >
-  
-  <div id="new_inserts">
-    <div id="new_books_show">
+  <div id="main-bottom" >
+    
+    <div id="new_inserts">
+      <div id="new_books_show">
 
+      </div>
+    </div>
+
+    <div id="middle">
+        <div id="facebook_div"><img id="facebook_icon" src="images/facebook-02.png" ></div>
+        <div id="instagram_div"><img id="instagram_icon" src="images/instagram-02.png" ></div>
+    </div>
+
+    <div id="anakinosis">
+      <div id="anakinosis_show"></div>
     </div>
   </div>
-
-  <div id="middle">
-      <div id="facebook_div"><img id="facebook_icon" src="images/facebook-02.png" ></div>
-      <div id="instagram_div"><img id="instagram_icon" src="images/instagram-02.png" ></div>
-  </div>
-
-  <div id="anakinosis">
-    <div id="anakinosis_show"></div>
-  </div>
 </div>
-
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
