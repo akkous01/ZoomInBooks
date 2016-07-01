@@ -11,11 +11,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
   </head>
   <body>
@@ -33,32 +34,64 @@
         <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>
         <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>
     </ul>
-<!--      <ul class="nav">-->
-<!--        <li id="nav_1_HomePage"><img src="images/navbar/1_HomePage.png"></li>-->
-<!--        <li id="nav_2_OurPhilosophy"><img src="images/navbar/2_OurPhilosophy.png"></li>-->
-<!--        <li id="nav_3_Blog"><img src="images/navbar/3_Blog.png"></li>-->
-<!--        <li id="nav_4_Communicate"><img src="images/navbar/4_Communicate.png"></li>-->
-<!--        <li id="nav_5_LogIn"><img src="images/navbar/5_LogIn.png"></li>-->
-<!--        <li id="nav_6_CreateAccount"><img src="images/navbar/6_CreateAccount.png"></li>-->
-<!--        <li id="nav_7_Gallery"><img src="images/navbar/7_Gallery.png"></li>-->
-<!--        <li id="nav_8_ZoomIn"><img src="images/navbar/8_ZoomIn.png"></li>-->
-<!--    </ul>-->
+
  </header>
 
 <div id="main">
   <div id="main-top" >
     <div id="search_bar_book">
-      <div id="search_box_dropdown" style="display:none">
-        <div class="search_box_dropdown_elements" style="display: none">
-          <a href="#" id="close_button"><img  src="images/close_button.ico"></a>
-          <div>
-            <input type="text" class="search_in_dropdown " placeholder="Search...">
-          </div>
-        </div>
-      </div>
-            
-      <div id="search_bar">
-      </div>
+        <form id="search">
+            <div id="search_box_dropdown" style="display: none">
+                <div class="search_box_dropdown_elements" style="display: none">
+                    <a href="#" id="close_button"><img  src="images/close_button.ico"></a>
+                    <div id="search_elements">
+                        <div class="form-group">
+                            <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
+                            <input type="text" class="form-control input-sm" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="theme">ΘΕΜΑ:</label>
+                            <select class="form-control input-sm" id="theme">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
+                            <input type="text" class="form-control input-sm" id="writer">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">ΗΛΙΚΙΑ:</label>
+                            <input type="number" class="form-control input-sm" id="age">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
+                            <input type="number" class="form-control input-sm" id="age" placeholder="--%">
+                        </div>
+                        <div class="form-group">
+                            <label for="keywards">ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
+                            <input type="hidden" name="count" value="1" />
+                            <div id="field" style="text-align: center">
+                                <input  autocomplete="off" class=" form-control input-sm" id="field1" name="prof1" type="text"/>
+                                <button  id="b1" class="btn btn-xs add-more" type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">ΤΙΜΗ:</label>
+
+                        </div>
+                    </div>
+                    <div id="search_footer">
+                        <button id="search_submit" type="submit" class="btn btn-info btn-sm " style="border-radius: 24px;">Round</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="search_bar"></div>
+        </form>
 
 
       <div id="book">
@@ -131,6 +164,29 @@
               $("#search_bar").css({'display':'block'});
 
           });
+              var next = 1;
+              $(".add-more").click(function(e){
+                  e.preventDefault();
+                  var addto = "#field" + next;
+                  var addRemove = "#field" + (next);
+                  next = next + 1;
+                  var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+                  var newInput = $(newIn);
+                  var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-xs btn-danger remove-me" >-</button></div><div id="field">';
+                  var removeButton = $(removeBtn);
+                  $(addto).after(newInput);
+                  $(addRemove).after(removeButton);
+                  $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+                  $("#count").val(next);
+
+                  $('.remove-me').click(function(e){
+                      e.preventDefault();
+                      var fieldNum = this.id.charAt(this.id.length-1);
+                      var fieldID = "#field" + fieldNum;
+                      $(this).remove();
+                      $(fieldID).remove();
+                  });
+            });
       });
   </script>
   </body>

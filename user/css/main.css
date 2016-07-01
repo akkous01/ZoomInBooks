@@ -60,13 +60,13 @@ header{
 
 #main-top{
   border:4px solid black ; 
-  height: 70% ; 
+  height: 65% ;
   width:100%
 }
 
 #main-bottom{
   border:4px solid black ;
-  height: 30% ; 
+  height: 35% ;
   width:95%;
   margin-left: 2%;
   margin-top: 4%;
@@ -167,52 +167,78 @@ header{
   width:50%;
   margin-left: 25%;
   /*border:4px solid red ;*/
-
-
 }
 
-#search_bar{
+#search{
     width:80%;
     height: 21%;
     margin-left: 10%;
+    border:1px solid yellow;
+}
 
-    /*border:4px solid yellow ;*/
+#search_bar{
+    height: 100%;
     background: url(../images/search.png) no-repeat center center;
-    background-size: 50% 90% ;
+    background-size: 50% 75% ;
+    background-position:center top;
     text-align: center;
+    border:1px solid red;
+
 }
 #search_box_dropdown{
 
-    width:40%;
+    width:31.5%;
     background: url(../images/search_box.png) no-repeat center center;
-    background-size: 40% 95% ;
+    background-size: 50% 100% ;
     text-align: center;
-    height: 60%;
+    height: 75%;
+    border:1px solid green;
     position:absolute;
-    border-top: 0;
-    background-position:center 50%;
+    background-position:50% 50%;
 }
-
+.search_box_dropdown_elements{
+    height: 100%;
+}
 .search_box_dropdown_elements #close_button img{
-    width:40px;
-    height: 40px;
-    margin-top:6%;
-    margin-left:35%
+    width:25px;
+    height: 25px;
+    margin-top:8%;
+    margin-left:40%
 }
-.search_in_dropdown {
+.search_box_dropdown_elements #search_elements{
+    width:40%;
+    height:79%;
+    /*border:1px solid rosybrown;*/
+    padding:5px;
+    margin-left: 30%;
+    text-align: left;
+    margin-top:2%;
+    margin-bottom:1.5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
-    padding:10px 15px 6px 30px;
-    margin-top:55%;
-    width: 38%;
-    border:3px solid #26b8db;
-    border-radius:15px;
-    /*-moz-border-radius:15px;*/
-    /*-webkit-border-radius:15px;*/
-    position:relative;
 }
+#search_submit{
+    border-radius: 24px;
+    /*background-color: white;*/
+    /*color:black;*/
+    /*width:48%;*/
+}
+
+/*.search_in_dropdown {*/
+
+    /*padding:5px 15px 6px 30px;*/
+    /*margin-top:93%;*/
+    /*width: 50%;*/
+    /*border:3px solid #26b8db;*/
+    /*border-radius:15px;*/
+    /*!*-moz-border-radius:15px;*!*/
+    /*!*-webkit-border-radius:15px;*!*/
+    /*position:relative;*/
+/*}*/
 
 #book{
-  height: 50%;
+  height: 55%;
   width:100%;
   margin-top: 10%;
   /*border:4px solid yellow ; */
