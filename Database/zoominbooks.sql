@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 25 Ιουν 2016 στις 17:10:34
+-- Χρόνος δημιουργίας: 03 Ιουλ 2016 στις 09:22:43
 -- Έκδοση διακομιστή: 10.1.13-MariaDB
 -- Έκδοση PHP: 7.0.6
 
@@ -19,6 +19,45 @@ SET time_zone = "+00:00";
 --
 -- Βάση δεδομένων: `zoominbooks`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `announcement_id` int(11) NOT NULL,
+  `announcement_content` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `announcement_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `announcements`
+--
+
+INSERT INTO `announcements` (`announcement_id`, `announcement_content`, `announcement_date`) VALUES
+(1, 'cnjksdncks cnsdjcnks\r\ncdkscksmdc\r\nansckamnclka', '2016-06-29');
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `blog`
+--
+
+CREATE TABLE `blog` (
+  `blog_id` int(11) NOT NULL,
+  `blog_title` varchar(100) COLLATE utf8_bin NOT NULL,
+  `blog_content` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `blog_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `blog`
+--
+
+INSERT INTO `blog` (`blog_id`, `blog_title`, `blog_content`, `blog_date`) VALUES
+(1, 'vfnjkdnjk', 'kncdlknsl dmksmklds', '2016-06-29 18:46:47');
 
 -- --------------------------------------------------------
 
@@ -58,7 +97,11 @@ INSERT INTO `books` (`Book_id`, `ISBN`, `Title`, `Writer`, `Illustrator`, `Publi
 (2, 'jkb', 'vnfjks', 'j', 'kn', 'jkb', 1, 1, 1, 1, b'0', '202824.png', 'aa.png', '1', 1, b'0', b'0', b'0', '', b'0'),
 (3, 'vgvk', 'vgjkjbjk', 'ghjqcgkh', 'vhjk', 'vho', 155115, 965, 85, 164, b'0', '', 'aa.png', 'cgvjhkl', 965, b'0', b'0', b'0', '', b'0'),
 (4, 'b', 'vnsdj', 'njk', 'bnjk', 'bjk', 96, 9, 6, 9, b'0', 'aa.png', 'aa.png', '996', 6, b'0', b'0', b'0', '', b'0'),
-(5, 'jkb', 'fbhj', 'njkn', 'jkb', 'jb', 1212, 1212, 1212, 121212, b'0', 'aa.png', 'aa.png', 'g hjmk', 1212, b'0', b'0', b'0', '', b'0');
+(5, 'jkb', 'fbhj', 'njkn', 'jkb', 'jb', 1212, 1212, 1212, 121212, b'0', 'aa.png', 'aa.png', 'g hjmk', 1212, b'0', b'0', b'0', '', b'0'),
+(6, '451-592-222', 'Σοκ', 'Καπιοσς', 'Μαλλο', 'Κοκαοα', 65, 21, 4, 7, b'1', 'group.png', 'group2.png', 'ψδβηαψαηξ', 95, b'1', b'1', b'1', 'δνμκαοψφξδιω ωνξφδνωοδ\r\nφιθηωιοσω\r\nημιογξτιηοδποιηξροπτ', b'1'),
+(7, '48496', 'ψδνξκσνψκα', 'μκομκοψ', 'ομκομ', 'μκομο', 66, 65, 5, 5, b'1', 'grad.png', 'pan.png', 'ψξιοδσξοψσ', 555, b'1', b'1', b'1', 'ψδσ', b'1'),
+(8, '156', 'νωξκσδ', 'μκνκο', 'νξ', 'νξ', 156, 156, 156, 156, b'0', 'ire.png', 'and.png', 'ψδξκσνσ', 66, b'0', b'0', b'0', 'κμνκνκνκ\r\nμκμκλ', b'0'),
+(9, 'mom', 'cmosdn', 'mopmopm', 'mkomok', 'mkomk', 54, 54, 54, 54, b'1', 'and.png', 'aa.png', 'cdsop', 54, b'0', b'1', b'1', 'cmdks\r\ncmksdomcos\r\ncomksdc', b'0');
 
 -- --------------------------------------------------------
 
@@ -81,6 +124,16 @@ CREATE TABLE `books_keywords` (
   `Book_id` int(11) NOT NULL,
   `Keyword_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `books_keywords`
+--
+
+INSERT INTO `books_keywords` (`Book_id`, `Keyword_id`) VALUES
+(6, 7),
+(6, 9),
+(9, 1),
+(9, 5);
 
 -- --------------------------------------------------------
 
@@ -410,6 +463,18 @@ INSERT INTO `subcategories` (`Subcategory_id`, `Name_of_subcategory`, `Category_
 --
 
 --
+-- Ευρετήρια για πίνακα `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`announcement_id`);
+
+--
+-- Ευρετήρια για πίνακα `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`blog_id`);
+
+--
 -- Ευρετήρια για πίνακα `books`
 --
 ALTER TABLE `books`
@@ -472,10 +537,20 @@ ALTER TABLE `subcategories`
 --
 
 --
+-- AUTO_INCREMENT για πίνακα `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT για πίνακα `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT για πίνακα `books`
 --
 ALTER TABLE `books`
-  MODIFY `Book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT για πίνακα `bookshops`
 --
