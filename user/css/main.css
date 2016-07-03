@@ -330,7 +330,7 @@ header{
   margin-left: 0px;
   margin-right: 0px;
   /*border:1px solid orange ; */
-  background: url(../images/book-2.png) no-repeat center;
+  background: url(../images/book.png) no-repeat center;
   background-size: 100% 100%;  
 
 }
@@ -500,7 +500,13 @@ header{
 .subcategories_table td{
   width: 45%;
   padding-left: 2%;
+  padding-right: 2%;
   /*margin: 5% 5% 5% 5%;*/
 
   /*background-color: #ffe6b3; */
+}
+.subcategories_table .page_background td{
+    background-color: rgba(195, 185, 185, 0.62);
+
+
 }

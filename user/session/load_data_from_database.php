@@ -114,6 +114,19 @@ for($i=0; $i<count($gramatiki_sub) ; $i+=2){
 }
 $gramatiki_table = $gramatiki_table."</table>";
 
+$book_query=$conn->prepare("SELECT books.Title,books.Writer FROM books");
+$book_query->execute();
+$book = $book_query->fetchAll(PDO::FETCH_ASSOC);;
+$titles="[";
+$writers="[";
+for($i=0; $i<count($book) ; $i+=2){
+	$titles=$titles."'".$book[$i]['Title']."',";
+	$writers=$writers."'".$book[$i]['Writer']."',";
+}
+$titles=$titles."]";
+$writers=$writers."]";
+//print_r($titles);
+//print_r($writers);
 
 ?>
 
