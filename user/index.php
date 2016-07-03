@@ -14,16 +14,19 @@ include_once "session/load_data_from_database.php";
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-    <![endif]-->
+
   </head>
   <body>
+
 
 
 
@@ -41,13 +44,19 @@ queries -->
 
  </header>
 
+
 <div id="main">
+
   <div id="main-top" >
     <div id="search_bar_book">
         <form id="search">
-            <div id="search_box_dropdown" style="display: none">
+            <div id="search_box_dropdown"  style="display: none">
                 <div class="search_box_dropdown_elements" style="display: none">
-                    <a href="#" id="close_button"><img  src="images/close_button.ico"></a>
+                    <div id="search_header">
+                        <div id="close_button">
+                            <a href="#" ><img  src="images/close_button.ico"></a>
+                        </div>
+                    </div>
                     <div id="search_elements">
                         <div class="form-group">
                             <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
@@ -84,12 +93,15 @@ queries -->
                         </div>
                         <div class="form-group">
                             <label for="price">ΤΙΜΗ:</label>
-
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            <div id="slider-range"></div>
                         </div>
+
                     </div>
                     <div id="search_footer">
-                        <button id="search_submit" type="submit" class="btn btn-info btn-sm " style="border-radius: 24px;">Round</button>
+                        <button id="search_submit" type="submit" class="btn btn-info btn-sm">Search</button>
                     </div>
+
                 </div>
 
             </div>
@@ -163,47 +175,58 @@ queries -->
 </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/front-end.js"></script>
-  <script>
-      $( document ).ready(function() {
-          $("#search_bar").click(function () {
-              $("#search_bar").css({'display':'none'});
-              $("#search_box_dropdown").slideToggle("3000");
-              $(".search_box_dropdown_elements").css({'display':'block'});
-          });
-          $("#close_button").click(function () {
-              $(".search_box_dropdown_elements").css({'display':'none'});
-              $("#search_box_dropdown").slideToggle("3000");
-              $("#search_bar").css({'display':'block'});
+<!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+      <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/front-end.js"></script>
+      <script>
+          $( document ).ready(function() {
+              $("#search_bar").click(function () {
+                  $("#search_bar").css({'display':'none'});
+                  $("#search_box_dropdown").slideToggle("3000");
+                  $(".search_box_dropdown_elements").css({'display':'block'});
+              });
+              $("#close_button").click(function () {
+                  $(".search_box_dropdown_elements").css({'display':'none'});
+                  $("#search_box_dropdown").slideToggle("3000");
+                  $("#search_bar").css({'display':'block'});
 
-          });
-              var next = 1;
-              $(".add-more").click(function(e){
-                  e.preventDefault();
-                  var addto = "#field" + next;
-                  var addRemove = "#field" + (next);
-                  next = next + 1;
-                  var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-                  var newInput = $(newIn);
-                  var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-xs btn-danger remove-me" >-</button></div><div id="field">';
-                  var removeButton = $(removeBtn);
-                  $(addto).after(newInput);
-                  $(addRemove).after(removeButton);
-                  $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-                  $("#count").val(next);
-
-                  $('.remove-me').click(function(e){
+              });
+                  var next = 1;
+                  $(".add-more").click(function(e){
                       e.preventDefault();
-                      var fieldNum = this.id.charAt(this.id.length-1);
-                      var fieldID = "#field" + fieldNum;
-                      $(this).remove();
-                      $(fieldID).remove();
-                  });
-            });
-      });
-  </script>
+                      var addto = "#field" + next;
+                      var addRemove = "#field" + (next);
+                      next = next + 1;
+                      var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+                      var newInput = $(newIn);
+                      var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-xs btn-danger remove-me" >-</button></div><div id="field">';
+                      var removeButton = $(removeBtn);
+                      $(addto).after(newInput);
+                      $(addRemove).after(removeButton);
+                      $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+                      $("#count").val(next);
+
+                      $('.remove-me').click(function(e){
+                          e.preventDefault();
+                          var fieldNum = this.id.charAt(this.id.length-1);
+                          var fieldID = "#field" + fieldNum;
+                          $(this).remove();
+                          $(fieldID).remove();
+                      });
+                });
+              $( "#slider-range" ).slider({
+                  range: true,
+                  min: 0,
+                  max: 100,
+                  values: [ 5, 50 ],
+                  slide: function( event, ui ) {
+                      $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                  }
+              });
+              $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+          });
+    </script>
   </body>
 </html>
