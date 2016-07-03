@@ -3970,3 +3970,27 @@ hr{
 	/*height:200px;*/
 
 /*}*/
+
+.keywords_table{
+	height: 100%;
+  	width: 100%;
+}
+
+
+.keywords_table td{
+	width: 30%;
+  	padding-left: 1%;
+  	margin: 0% 0% 0% 0%;
+  	text-align: left;
+}
+
+.keywords_table td label{
+	font-size: 18px;
+
+}
+.keywords_table tr:hover{
+	background-color: none;
+}
+
+
+

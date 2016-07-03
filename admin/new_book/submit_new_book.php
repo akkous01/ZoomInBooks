@@ -8,6 +8,7 @@ $Title = $ISBN = $Writer = $Publisher = $Pages = $Persentage_of_images =  $Min_a
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
   if (empty($_POST["Title"])) {
+    echo "error in title";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -16,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["ISBN"])) {
+    echo "error in isbn";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -23,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   
   if (empty($_POST["Writer"])) {
+    echo "error in witer";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -33,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Illustrator = test_input($_POST["Illustrator"]);
   
   if (empty($_POST["Publisher"])) {
+     echo "error in publicher";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -40,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["Pages"])) {
+     echo "error in pages";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -47,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["Persentage_of_images"])) {
+     echo "error in Persentage_of_images";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -54,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["Min_age_no_read"])) {
+     echo "error in age min";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -61,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   
    if (empty($_POST["Min_age_read"])) {
+     echo "error in max age";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -72,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["Price"])) {
+     echo "error in price";
     header("Location: ../index.php#new_book");
     exit();
   } else {
@@ -92,14 +101,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $Link = test_input($_POST["Link"]);
 
-   if (empty($_POST["Curriculum"])) {
-    header("Location: ../index.php#new_book");
-    exit();
-  } else {
-    $Curriculum = test_input($_POST["Curriculum"]);
-  }
+  $Curriculum = test_input($_POST["Curriculum"]);
 
   if (empty($_FILES["Cover"]["name"])){
+    echo "error in cover img";
     $_SESSION["Cover_err"] = "Cover is required";
     header("Location: ../index.php#new_book");
     exit();
@@ -140,6 +145,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
+        echo "error in back cover img";
+
      $_SESSION["Back_cover_err"] = "Back Cover is required";
     header("Location: ../index.php#new_book");
     exit();
@@ -185,33 +192,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   // NEW BOOK ENTRY
-  $new_book_query = $conn->prepare("INSERT INTO books (ISBN, Title, Writer, Illustrator, Publisher, Pages, Persentage_of_images, Min_age_no_read, Min_age_read,For_parents, Cover, Back_cover, Link, Price, Hard_copy, E_book, Audio_book, Curriculum, Show_to_user) VALUES ('{$ISBN}', '{$Title}', '{$Writer}', '{$Illustrator}', '{$Publisher}', '{$Pages}', '{$Persentage_of_images}', '{$Min_age_no_read}', '{$Min_age_read}', '{$For_parents}', '{$Cover}', '{$Back_cover}', '{$Link}', '{$Price}', '{$Hard_copy}', '{$E_book}','{$Audio_book}', '{$Curriculum}', '{$Show_to_user}' )");
-  $new_book_query->execute();
+  try{ 
+    $new_book_query = $conn->prepare("INSERT INTO books (ISBN, Title, Writer, Illustrator, Publisher, Pages, Persentage_of_images, Min_age_no_read, Min_age_read,For_parents, Cover, Back_cover, Link, Price, Hard_copy, E_book, Audio_book, Curriculum, Show_to_user) VALUES ('{$ISBN}', '{$Title}', '{$Writer}', '{$Illustrator}', '{$Publisher}', '{$Pages}', '{$Persentage_of_images}', '{$Min_age_no_read}', '{$Min_age_read}', '{$For_parents}', '{$Cover}', '{$Back_cover}', '{$Link}', '{$Price}', '{$Hard_copy}', '{$E_book}','{$Audio_book}', '{$Curriculum}', '{$Show_to_user}' )");
+    $new_book_query->execute();
 
-  // GET BOOK ID
-  $book_id_query = $conn->prepare("SELECT * FROM books ORDER BY Book_id DESC LIMIT 0, 1");
-  $book_id_query->execute();
-  $book_id= $book_id_query->fetchAll(PDO::FETCH_ASSOC);
+    // GET BOOK ID
+    $book_id_query = $conn->prepare("SELECT * FROM books ORDER BY Book_id DESC LIMIT 0, 1");
+    $book_id_query->execute();
+    $book_id= $book_id_query->fetchAll(PDO::FETCH_ASSOC);
 
-  $book_id = (integer) $book_id[0]['Book_id'];
+    $book_id = (integer) $book_id[0]['Book_id'];
 
-  // GET KEYWORDS
-  $max_keyword_id_query = $conn->prepare("SELECT * FROM keywords ORDER BY Keyword_id DESC LIMIT 0, 1");
-  $max_keyword_id_query->execute();
-  $max_keyword_id= $max_keyword_id_query->fetchAll(PDO::FETCH_ASSOC);
+    // GET KEYWORDS
+    $max_keyword_id_query = $conn->prepare("SELECT * FROM keywords ORDER BY Keyword_id DESC LIMIT 0, 1");
+    $max_keyword_id_query->execute();
+    $max_keyword_id= $max_keyword_id_query->fetchAll(PDO::FETCH_ASSOC);
 
-  $max_keyword_id = (integer) $max_keyword_id[0]['Keyword_id'];
+    $max_keyword_id = (integer) $max_keyword_id[0]['Keyword_id'];
 
- 
-  for ($i = 1 ; $i <= $max_keyword_id ; $i++){
-    if (!empty($_POST['K'.$i])){
-      $books_keywords_query = $conn->prepare("INSERT INTO books_keywords (Book_id, Keyword_id) VALUES ('{$book_id}','{$i}')");
-      $books_keywords_query->execute();
+   
+    for ($i = 1 ; $i <= $max_keyword_id ; $i++){
+      if (!empty($_POST['K'.$i])){
+        $books_keywords_query = $conn->prepare("INSERT INTO books_keywords (Book_id, Keyword_id) VALUES ('{$book_id}','{$i}')");
+        $books_keywords_query->execute();
+      }
     }
-  }
 
-  header("Location: ../index.php");
-  exit;
+    header("Location: ../index.php");
+    exit;
+  }catch(PDOException $e){
+      handle_sql_errors($selectQuery, $e->getMessage());
+  }
 
 
 }
@@ -227,5 +238,5 @@ function test_input($data) {
 ?>
 
 <!-- UPLOAD FILE MYSQL PHP -->
-<!-- http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php -->
-
+<!-- http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
+ -->

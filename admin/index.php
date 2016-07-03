@@ -201,7 +201,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
+                        <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Back_cover" required/>
                     </div>
 
                     <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
@@ -409,14 +409,14 @@ if (session_status() == PHP_SESSION_NONE) {
     </section>
 
 
-<!-- Footer -->
+<!-- 
 <footer id="footer" class="wrapper style1-alt">
     <div class="inner">
         <ul class="menu">
             <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </div>
-</footer>
+</footer> -->
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
@@ -430,6 +430,22 @@ if (session_status() == PHP_SESSION_NONE) {
 <script type="text/javascript">
     $(document).ready(function() {
         $('#select_category_2').on('change', load_subcategories);
+
+
+        $(".collapse_sub_categories").click(function () {
+            $("#collapse_"+$(this).attr('id')).toggle();
+            hide="#hide_"+$(this).attr('id');
+            show="#show_"+$(this).attr('id');
+            if($(show).css('display') == 'none') {
+                $(show).css({'display':'block'});
+                $(hide).css({'display':'none'});
+
+            }else{
+                $(show).css({'display':'none'});
+                $(hide).css({'display':'block'});
+            }
+
+        });
     });
 
     function load_subcategories() {
@@ -465,20 +481,7 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         });
     }
-    $(".collapse_sub_categories").click(function () {
-        $("#collapse_"+$(this).attr('id')).slideToggle("3000");
-        hide="#hide_"+$(this).attr('id');
-        show="#show_"+$(this).attr('id');
-        if($(show).css('display') == 'none') {
-            $(show).css({'display':'block'});
-            $(hide).css({'display':'none'});
-
-        }else{
-            $(show).css({'display':'none'});
-            $(hide).css({'display':'block'});
-        }
-
-    });
+   
 </script>
 </body>
 </html>

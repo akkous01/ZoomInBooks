@@ -76,15 +76,18 @@ if($book['Show_to_user'] == 1){
                 $('#upload_back_cover').css("display","block");
             });
             function show(sub_category){
-                var name="#".sub_xategory."+";
+                var name="#"+sub_category+"+";
                 $(name).css("display","none");
 
             };
+        });
+
+
     </script>
 </head>
 <body>
 <!-- Sidebar -->
-<section id="sidebar">
+<!-- <section id="sidebar">
     <div class="inner" style="text-align: center">
         <br> <br>
         <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="../../Database/Covers/'. $book['Cover'].'"/>';?>
@@ -99,7 +102,7 @@ if($book['Show_to_user'] == 1){
             <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Cover" required/>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -177,8 +180,26 @@ if($book['Show_to_user'] == 1){
                 </div>
 
 
+                <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="../../Database/Covers/'. $book['Cover'].'"/>';?>
+                <input type="input" name="same_cover" id="same_cover" style="display:none" value="<?php echo $book['Cover']?>" />
+
+                <input type="button" class="button special small" id="change_cover" value="Αλλαγή Εξωφύλλου" />
+                
+                <div class="18u$ 12u$(xsmall)" id="upload_cover" style="display:none">
+                    <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" value="<?php echo $book['Cover']?>" />
+                </div>
+
+                <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="../../Database/Back_Covers/'. $book['Back_cover'].'"/>';?>
+                <input type="input" name="same_back_cover" id="same_back_cover" style="display:none" value="<?php echo $book['Back_cover']?>" />
+
+                <input type="button" class="button special small" id="change_back_cover" value="Αλλαγή Πισθοφύλλου"/>
+                <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
+                    <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Back_cover" value="<?php echo $book['Back_cover'] ?>" />
+                </div>
+
+
                 <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
-                <?php include_once "../load/load_keywords.php";
+                <?php include_once "../load/load_keywords2.php";
                 for($i=0;$i<count($book_keywards);$i++){
                     echo "<script>$('#K".$book_keywards[$i]['Keyword_id']."').prop('checked', true);</script>";
                 }
@@ -222,5 +243,38 @@ if($book['Show_to_user'] == 1){
 <!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="../assets/js/main.js"></script>
 
+
+<script type="text/javascript">
+     function loadSubCategories(){
+        var selected = 1;
+        $.ajax({
+            url:        'load/load_subcategories.php',
+            type:       'POST',
+            // dataType:   'json',
+            data:       "category_id="+selected,
+            success:    function(data) {
+                $('#select_subcategory').html(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert("some error");
+                alert(textStatus);
+            }
+        });
+    }
+    $(".collapse_sub_categories").click(function () {
+        $("#collapse_"+$(this).attr('id')).toggle();
+        hide="#hide_"+$(this).attr('id');
+        show="#show_"+$(this).attr('id');
+        if($(show).css('display') == 'none') {
+            $(show).css({'display':'block'});
+            $(hide).css({'display':'none'});
+
+        }else{
+            $(show).css({'display':'none'});
+            $(hide).css({'display':'block'});
+        }
+
+    });
+</script>
 </body>
 </html>
