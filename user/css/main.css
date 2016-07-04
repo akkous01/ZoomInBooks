@@ -59,13 +59,13 @@ header{
 }
 
 #main-top{
-  border:4px solid black ; 
+  /*border:4px solid black ; */
   height: 65% ;
   width:100%
 }
 
 #main-bottom{
-  border:4px solid black ;
+  /*border:4px solid black ;*/
   height: 35% ;
   width:95%;
   margin-left: 2%;
@@ -81,18 +81,18 @@ header{
   margin-top: 0.1%;
   background: url(../images/news2.png) no-repeat right center;
   background-size: 100% 100%;
-    border:4px solid black ; 
+    /*border:4px solid black ; */
 
 }
 
 #new_books_show{
-  height: 50%;
-  width: 80%;
-  margin-top: 5%;
+  height: 48%;
+  width: 83%;
+  margin-top: 6%;
   margin-left: 10%;
   overflow-y: scroll;
-  text-align: center; 
-      border:1px solid black ; 
+  text-align: center;
+    /*border:1px solid black ; */
 
 }
 
@@ -102,7 +102,7 @@ header{
   width: 25%;
   margin-top: 0%;
   margin-right: 0%;
-      border:4px solid black ; 
+      /*border:4px solid black ; */
 
 }
 
@@ -245,6 +245,7 @@ header{
     margin-top: 1%;
     border-radius: 24px;
     width: 100%;
+    height: 100%;
 }
 
 
@@ -330,7 +331,7 @@ header{
   margin-left: 0px;
   margin-right: 0px;
   /*border:1px solid orange ; */
-  background: url(../images/book.png) no-repeat center;
+  background: url(../images/book-2.png) no-repeat center;
   background-size: 100% 100%;  
 
 }
@@ -480,10 +481,10 @@ header{
 
 
 #subcategories_area{
-  height: 86%;
-  width: 86%;
+  height: 81%;
+  width: 88%;
   margin-left: 7%;
-  margin-top: 4%;
+  margin-top: 6%;
   /*border: 3px solid red;*/
   /*overflow-y: scroll;*/
 
@@ -499,11 +500,29 @@ header{
 }
 .subcategories_table td{
   width: 45%;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: bold;
   /*margin: 5% 5% 5% 5%;*/
 
   /*background-color: #ffe6b3; */
+}
+.subcategories_table td a:link{
+    color:black;
+}
+
+.subcategories_table td a:visited {
+    text-decoration: none;
+
+}
+
+.subcategories_table td a:hover {
+    text-decoration: underline;
+}
+
+.subcategories_table td a:active {
+    text-decoration: underline;
 }
 .subcategories_table .page_background td{
     background-color: rgba(195, 185, 185, 0.62);

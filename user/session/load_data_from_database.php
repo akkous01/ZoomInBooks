@@ -35,9 +35,9 @@ $ithika_table = "<table id='ithika_table' class='subcategories_table' style='dis
 
 for($i=0; $i<count($ithika_sub) ; $i+=2){
 
-	$ithika_table = $ithika_table."<tr><td>".$ithika_sub[$i]['Name_of_subcategory']."</td>";
+	$ithika_table = $ithika_table."<tr><td>".$ithika_sub[$i]['Name_of_subcategory']."</a></td>";
 	if($i+1 < count($ithika_sub)){
-		$ithika_table = $ithika_table."<td>".$ithika_sub[$i+1]['Name_of_subcategory']."</td>";
+		$ithika_table = $ithika_table."<td>".$ithika_sub[$i+1]['Name_of_subcategory']."</a></td>";
 	}
 	$ithika_table = $ithika_table."</tr>";
 }
@@ -52,9 +52,9 @@ $sindesi_table = "<table id='sindesi_table' class='subcategories_table' style='d
 
 for($i=0; $i<count($sindesi_sub) ; $i+=2){
 
-	$sindesi_table = $sindesi_table."<tr><td>".$sindesi_sub[$i]['Name_of_subcategory']."</td>";
+	$sindesi_table = $sindesi_table."<tr><td><a href='#'>".$sindesi_sub[$i]['Name_of_subcategory']."</a></td>";
 	if($i+1 < count($sindesi_sub)){
-		$sindesi_table = $sindesi_table."<td>".$sindesi_sub[$i+1]['Name_of_subcategory']."</td>";
+		$sindesi_table = $sindesi_table."<td><a href='#'>".$sindesi_sub[$i+1]['Name_of_subcategory']."</a></td>";
 	}
 	$sindesi_table = $sindesi_table."</tr>";
 }
@@ -69,9 +69,9 @@ $epipleon_table = "<table id='epipleon_table' class='subcategories_table' style=
 
 for($i=0; $i<count($epipleon_sub) ; $i+=2){
 
-	$epipleon_table = $epipleon_table."<tr><td>".$epipleon_sub[$i]['Name_of_subcategory']."</td>";
+	$epipleon_table = $epipleon_table."<tr><td><a href='#'>".$epipleon_sub[$i]['Name_of_subcategory']."</a></td>";
 	if($i+1 < count($epipleon_sub)){
-		$epipleon_table = $epipleon_table."<td>".$epipleon_sub[$i+1]['Name_of_subcategory']."</td>";
+		$epipleon_table = $epipleon_table."<td><a href='#'>".$epipleon_sub[$i+1]['Name_of_subcategory']."</a></td>";
 	}
 	$epipleon_table = $epipleon_table."</tr>";
 }
@@ -87,9 +87,9 @@ $analisi_table = "<table id='analisi_table' class='subcategories_table' style='d
 
 for($i=0; $i<count($analisi_sub) ; $i+=2){
 
-	$analisi_table = $analisi_table."<tr><td>".$analisi_sub[$i]['Name_of_subcategory']."</td>";
+	$analisi_table = $analisi_table."<tr><td><a href='#'>".$analisi_sub[$i]['Name_of_subcategory']."</a></td>";
 	if($i+1 < count($analisi_sub)){
-		$analisi_table = $analisi_table."<td>".$analisi_sub[$i+1]['Name_of_subcategory']."</td>";
+		$analisi_table = $analisi_table."<td><a href='#'>".$analisi_sub[$i+1]['Name_of_subcategory']."</a></td>";
 	}
 	$analisi_table = $analisi_table."</tr>";
 }
@@ -106,9 +106,9 @@ $gramatiki_table = "<table id='gramatiki_table' class='subcategories_table' styl
 
 for($i=0; $i<count($gramatiki_sub) ; $i+=2){
 
-	$gramatiki_table = $gramatiki_table."<tr><td>".$gramatiki_sub[$i]['Name_of_subcategory']."</td>";
+	$gramatiki_table = $gramatiki_table."<tr><td><a href='#'>".$gramatiki_sub[$i]['Name_of_subcategory']."</a></td>";
 	if($i+1 < count($gramatiki_sub)){
-		$gramatiki_table = $gramatiki_table."<td>".$gramatiki_sub[$i+1]['Name_of_subcategory']."</td>";
+		$gramatiki_table = $gramatiki_table."<td><a href='#'>".$gramatiki_sub[$i+1]['Name_of_subcategory']."</a></td>";
 	}
 	$gramatiki_table = $gramatiki_table."</tr>";
 }
@@ -119,14 +119,23 @@ $book_query->execute();
 $book = $book_query->fetchAll(PDO::FETCH_ASSOC);;
 $titles="[";
 $writers="[";
-for($i=0; $i<count($book) ; $i+=2){
+for($i=0; $i<count($book) ; $i++){
 	$titles=$titles."'".$book[$i]['Title']."',";
 	$writers=$writers."'".$book[$i]['Writer']."',";
 }
 $titles=$titles."]";
 $writers=$writers."]";
-//print_r($titles);
-//print_r($writers);
+
+$list_of_keywords_query=$conn->prepare("SELECT keywords.Name_of_keyword FROM keywords");
+$list_of_keywords_query->execute();
+$list_of_keywords = $list_of_keywords_query->fetchAll(PDO::FETCH_ASSOC);;
+$keywords="[";
+for($i=0; $i<count($list_of_keywords) ; $i++){
+	$keywords=$keywords."'".$list_of_keywords[$i]['Name_of_keyword']."',";
+}
+$keywords=$keywords."]";
+
+
 
 ?>
 
