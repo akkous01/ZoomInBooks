@@ -1,0 +1,28 @@
+
+#main_search {
+  height: 77%;
+  width:80%;
+  margin-left: 10%;
+  background: url(../images/main-search-3.png) no-repeat center bottom; 
+  background-size: 90% 78% ;
+
+}
+
+#search_box{
+  height: 20%;
+  width: 80%;
+  /*position: absolute;*/
+  margin-left: 10%;
+  /*border:4px solid #33ccff ;*/
+  background-color: white; 
+
+}
+
+#results {
+  height: 50%;
+  width: 70%;
+  margin-top: 1%;
+  margin-left: 20%;
+  /*border:1px solid orange ; */
+
+}
