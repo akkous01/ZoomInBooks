@@ -23,6 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
     include "../Database/MySqlConnect.php";
 
     include "list_book/load_books_dataTable.php";
+    include "load/load_keywords_not_found.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -61,7 +62,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li><a href="#list_of_books">Λίστα Βιβλίων</a></li>
                 <li><a href="#new_book">Προσθήκη Νέου Βιβλίου</a></li>
                 <li><a href="#two">Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</a></li>
-                <li><a href="#new_category">Προσθήκη Κατηγορίας</a></li>
+                <!-- <li><a href="#new_category">Προσθήκη Κατηγορίας</a></li> -->
                 <li><a href="#new_subcategory">Προσθήκη Υποατηγορίας</a></li>
                 <li><a href="#new_keyword">Προσθήκη Λέξης Κλειδί</a></li>
                 <li><a href="#announcements">Προσθήκη Ανακοίνωσης</a></li>
@@ -225,77 +226,16 @@ if (session_status() == PHP_SESSION_NONE) {
     </section>
 
     <!-- Two -->
-    <section id="two" class="wrapper style3 fade-up">
+    <section id="two" class="wrapper style1 spotlights">
         <div class="inner">
-            <h2>What we do</h2>
-            <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-            <div class="features">
-                <section>
-                    <span class="icon major fa-code"></span>
-                    <h3>Lorem ipsum amet</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-lock"></span>
-                    <h3>Aliquam sed nullam</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-cog"></span>
-                    <h3>Sed erat ullam corper</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-desktop"></span>
-                    <h3>Veroeros quis lorem</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-chain"></span>
-                    <h3>Urna quis bibendum</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-diamond"></span>
-                    <h3>Aliquam urna dapibus</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-            </div>
-            <ul class="actions">
-                <li><a href="#" class="button">Learn more</a></li>
-            </ul>
+            <h2>Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</h2>
+            <?php echo $not_found?>
+            
         </div>
     </section>
 
-    <!-- Three -->
-    <section id="new_category" class="wrapper style1 fade-up">
-        <div class="inner">
-            <h2>Προσθήκη Νέας Κατηγορίας</h2>
-            <div class="split style1">
-                <section>
-                    <form method="post" action="add_elements/new_category.php">
-                        <div class="row uniform">
-                            <div class="8u$ 12u$(xsmall)">
-                                 <input type="text" name="New_category" id="New_category" value="" placeholder="Όνομα Νέας Κατηγορίας" required/>
-                            </div>
-                            <div class="12u$">
-                                <ul class="actions">
-                                    <li><a href="" class="button small submit">Sabmit Category</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-                <section>
-                   <h3>Κατηγορίες</h3>
-                </section>
-            </div>
-        </div>
-    </section>
-
-
-    
-    <section id="new_subcategory" class="wrapper style3 fade-up">
+       
+    <section id="new_subcategory" class="wrapper style2 spotlights">
         <div class="inner">
             <h2>Προσθήκη Νέας Υποκατηγορίας</h2>
                 <section>
@@ -384,7 +324,7 @@ if (session_status() == PHP_SESSION_NONE) {
 		</div>
     </section>
 
-    <section id="blog" class="wrapper style1 spotlights">
+    <section id="blog" class="wrapper style2 spotlights">
     	<div class="inner">
 
             <h2>Προσθήκη στο Blog</h2>
