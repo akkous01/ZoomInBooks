@@ -1,3 +1,7 @@
+<?php 
+  include "session/search_book.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,12 +42,55 @@
 
   <div id="main_book">
     <div id="small_images">
-      <div id="cover"></div>
-      <div id="back_cover"></div>
+      <div id="cover">
+        <?php echo '<img class="mini_img" id="cover_img" src="../Database/Covers/'. $Cover.'"/>';?>
+      </div>
+      <div id="back_cover">
+        <?php echo '<img class="mini_img" id="back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
+      </div>
 
     </div>
-    <div id="show_image"></div>
-    <div id="main_characteristics"></div>
+    <div id="show_image">
+      <div id="image_area">
+        <?php echo '<img class="big_img" id="big_cover_img" src="../Database/Covers/'. $Cover.'"/>';?>
+        <?php echo '<img class="big_img" style="display:none" id="big_back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
+      </div>
+      <div id="mark_area">
+        <img class="mark_img" src="images/mark-1-1.png" <?php echo $mark1?>/>
+        <img class="mark_img" src="images/mark-1-2.png" <?php echo $mark2?>/>
+        <img class="mark_img" src="images/mark-1-3.png" <?php echo $mark3?>/>
+        <img class="mark_img" src="images/mark-1-4.png" <?php echo $mark4?>/>
+        <img class="mark_img" src="images/mark-1-5.png" <?php echo $mark5?>/>
+
+      </div>
+    </div>
+    <div id="main_characteristics">
+      <div id="main_characteristics_top">
+        <table id="main_characteristics_table">
+          <tr>
+            <td>
+              <div class="title_div" ><h4>Τίτλος</h4></div>
+              <div class="data_div" ><p><?php echo $Title?></p></div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="title_div" ><h4>Συγγραφέας</h4></div>
+        <div class="data_div" style="width: 30%;"><p><?php echo $Writer?></p></div>
+            </td>
+            <td>
+              <div class="title_div" ><h4>Συγγραφέας</h4></div>
+        <div class="data_div" ><p><?php echo $Writer?></p></div>
+            </td>
+          </tr>
+        </table>
+        
+        
+
+      </div>
+
+      <div id="main_characteristics_bottom"></div>
+    </div>
   </div>
   
   <!-- <div id="table_img"></div> -->
@@ -78,5 +125,22 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/front-end.js"></script>
+
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $("#cover_img").click(function () {
+          $("#big_cover_img").show();
+          $("#big_back_cover_img").hide();
+          
+        });
+
+        $("#back_cover_img").click(function () {
+          $("#big_cover_img").hide();
+          $("#big_back_cover_img").show();
+          
+        });
+      });
+
+    </script>
 </body>
 </html>
