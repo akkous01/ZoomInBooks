@@ -50,7 +50,7 @@ queries -->
 
   <div id="main-top" >
     <div id="search_bar_book">
-        <form id="search" autocomplete="on" >
+        <form id="search" autocomplete="on" method="post" action="search.php">
             <div id="search_box_dropdown"  style="display: none">
                 <div class="search_box_dropdown_elements" style="display: none">
                     <div id="search_header">
@@ -61,41 +61,41 @@ queries -->
                     <div id="search_elements">
                         <div class="form-group">
                             <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
-                            <input type="text" class="form-control input-sm" id="title">
+                            <input type="text" class="form-control input-sm" id="title" name="title">
                         </div>
                         <div class="form-group">
                             <label for="theme">ΘΕΜΑ:</label>
-                            <select class="form-control input-sm" id="theme">
-                                <option>Ηθική / Πνευματική Ανάπτυξη</option>
-                                <option>Σύνδεση Με Άλλα Θέματα</option>
-                                <option>Επιπλέον Χαρακτηριστικά</option>
-                                <option>Ανάλυση / Κατανόηση / Παραγωγή Γραπτού Λόγου</option>
-                                <option>Γραμματική / Σύνταξη / Λεξιλόγιο</option>
+                            <select class="form-control input-sm" id="theme" name="theme">
+                                <option>Ηθικά/ Πνευματικά μηνυματα</option>
+                                <option>Σύνδεση με διάφορα άλλα θέματα</option>
+                                <option>Επιπλέον χαρακτηριστικά</option>
+                                <option>Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
+                                <option>Γραμματική – Σύνταξη – Λεξιλόγιο</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
-                            <input type="text" class="form-control input-sm" id="writer">
+                            <input type="text" class="form-control input-sm" id="writer" name="writer">
                         </div>
                         <div class="form-group">
                             <label for="age">ΗΛΙΚΙΑ:</label>
-                            <input type="number" class="form-control input-sm" id="age">
+                            <input type="number" class="form-control input-sm" id="age" name="age">
                         </div>
                         <div class="form-group">
-                            <label for="age">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
-                            <input type="number" class="form-control input-sm" id="age" placeholder="--%">
+                            <label for="percentage_of_images">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
+                            <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
                         </div>
                         <div class="form-group" id="all_keywards">
                             <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
                             <input type="hidden" name="count" value="1" />
                             <div id="field" style="text-align: center">
-                                <input   class=" form-control input-sm keywords" id="field1"  name="prof1" type="text"/>
+                                <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text"/>
                                 <button  id="b1" class="btn btn-xs add-more" type="button">+</button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="price">ΤΙΜΗ:</label>
-                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                             <div id="slider-range"></div>
                         </div>
 
@@ -199,7 +199,7 @@ queries -->
                       var addto = "#field" + next;
                       var addRemove = "#field" + (next);
                       next = next + 1;
-                      var newIn = '<input class=" form-control input-sm " id="field' + next + '" name="field' + next + '" type="text">';
+                      var newIn = '<input class=" form-control input-sm " id="field' + next + '" name="keyword' + next + '" type="text">';
                       var newInput = $(newIn);
                       var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-xs btn-danger remove-me" >-</button></div><div id="field">';
                       var removeButton = $(removeBtn);

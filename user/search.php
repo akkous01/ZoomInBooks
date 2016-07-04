@@ -1,3 +1,73 @@
+<?php
+
+include "../Database/MySqlConnect.php";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $list_of_keywords="";
+    foreach ($_POST as $key => $value):
+          $keyword=substr($key, 0,-1);
+        if(strcmp ( $keyword , 'keyword' )==0){
+            $list_of_keywords=$list_of_keywords." keywords.Name_of_keyword='".$value."' or ";
+        }
+    endforeach;
+    $list_of_keywords=substr($list_of_keywords, 0,-5);
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Title,books.Cover FROM books WHERE Title='".$_POST['title']."'or Writer='".$_POST['writer']."' ");
+    $book_query->execute();
+    $books_step_1 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Title,books.Cover FROM books WHERE Min_age_read='".$_POST['age']."'or Min_age_no_read='".$_POST['age']."'or Persentage_of_images='".$_POST['percentage_of_images']."' ");
+    $book_query->execute();
+    $books_step_2 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+    print_r($books_step_2 ) ;
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Title,books.Cover FROM books WHERE Min_age_read='".$_POST['age']."'or Min_age_no_read='".$_POST['age']."'or Persentage_of_images='".$_POST['percentage_of_images']."' ");
+    $book_query->execute();
+    $books_step_2 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+    print_r($books_step_2 ) ;
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Title, books.Cover FROM books INNER JOIN books_keywords ON
+books_keywords.Book_id=books.Book_id INNER JOIN keywords ON books_keywords.Keyword_id=keywords.Keyword_id WHERE ".$list_of_keywords."' ") ;
+    $book_query->execute();
+    $books_step_3 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+    print_r($books_step_3 ) ;
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Title, books.Cover FROM books INNER JOIN books_keywords ON
+books_keywords.Book_id=books.Book_id INNER JOIN keywords ON books_keywords.Keyword_id=keywords.Keyword_id
+INNER JOIN subcategories ON keywords.Subcategory_id=subcategories.Subcategory_id INNER JOIN categories
+On subcategories.Subcategory_id=categories.Category_id WHERE categories.Name_of_category='".$_POST['theme']."'");
+    $book_query->execute();
+    $books_step_4 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+    print_r($books_step_4 ) ;
+
+    $list_of_books=array();
+    for($i=0;$i<count($books_step_1);$i++){
+            array_push($list_of_books,$books_step_1[$i]);
+    }
+    for($i=0;$i<count($books_step_2);$i++){
+        if (!in_array($books_step_2[$i], $list_of_books)) {
+            array_push($list_of_books,$books_step_2[$i]);
+
+        }
+    }
+    for($i=0;$i<count($books_step_3);$i++){
+        if (!in_array($books_step_3[$i], $list_of_books)) {
+            array_push($list_of_books,$books_step_3[$i]);
+
+        }
+    }
+    for($i=0;$i<count($books_step_4);$i++){
+        if (!in_array($books_step_4[$i], $list_of_books)) {
+            array_push($list_of_books,$books_step_4[$i]);
+
+        }
+    }
+    print_r($list_of_books);
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
