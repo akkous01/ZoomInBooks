@@ -25,5 +25,45 @@
   margin-top: 1%;
   margin-left: 20%;
   border:1px solid orange ;
+  overflow-y: scroll;
 
+
+}
+
+
+#table_of_books{
+  width: 98%;
+  height: 95%;
+  margin: 1%;
+
+}
+#table_of_books tr{
+  height: 50%;
+  width: 100%;
+
+}
+#table_of_books td{
+  width:30%;
+  height:50%;
+  border:4px solid green;
+}
+#show_image{
+  height: 100%;
+  width: 100%;
+}
+#image_area{
+  width:70%;
+  height:80%;
+}
+#image_area img{
+  width:inherit;
+  height: inherit;
+}
+#mark_area{
+  width:20%;
+  border:4px solid red;
+}
+#mark_img{
+  height: 10%;
+  width:100%;
 }
