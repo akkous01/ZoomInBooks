@@ -66,21 +66,80 @@
     </div>
     <div id="main_characteristics">
       <div id="main_characteristics_top">
-        <table id="main_characteristics_table">
+        <div class="title_div" style="width:15%;margin-left:42%"><h4>Τίτλος</h4></div>
+        <div class="data_div" style="width:80%;margin-left:10%"><h4><?php echo $Title?></h4></div>
+        <table class="main_characteristics_table">
           <tr>
             <td>
-              <div class="title_div" ><h4>Τίτλος</h4></div>
-              <div class="data_div" ><p><?php echo $Title?></p></div>
+              <div class="title_div" style="width:40%;margin-left:3%"><h4>Συγγραφέας</h4></div>
+              <div class="data_div" style="width:95%;margin-left:3%"><h4><?php echo $Writer?></h4></div>
+            </td>
+            <td>
+              <div class="title_div" style="width:50%;margin-left:3%" ><h4>Εικονογράφος</h4></div>
+              <div class="data_div" style="width:95%;margin-left:3%"><h4><?php echo $Illustrator?></h4></div>
             </td>
           </tr>
           <tr>
             <td>
-              <div class="title_div" ><h4>Συγγραφέας</h4></div>
-        <div class="data_div" style="width: 30%;"><p><?php echo $Writer?></p></div>
+              <div class="title_div" style="width:30%;margin-left:3%"><h4>Εκδόσεις</h4></div>
+              <div class="data_div" style="width:95%;margin-left:3%"><h4><?php echo $Publisher?></h4></div>
             </td>
             <td>
-              <div class="title_div" ><h4>Συγγραφέας</h4></div>
-        <div class="data_div" ><p><?php echo $Writer?></p></div>
+              <div class="title_div" style="width:20%;margin-left:3%" ><h4>ISBN</h4></div>
+              <div class="data_div" style="width:50%;margin-left:3%"><h4><?php echo $ISBN?></h4></div>
+            </td>
+          </tr>
+          <tr>
+            
+        </table>
+        
+        <table class="main_characteristics_table_2">
+          <tr>
+            <td style="width:25%;" >
+              <div class="title_div_2" style="width:50%;margin-left:4%" ><h4>Σελίδες</h4></div>
+              <div class="data_div_2" style="width:40%;margin-left:1%"><h4><?php echo $Pages?></h4></div>
+            </td>
+            <td style="width:25%;">
+              <div class="title_div_2" style="width:40%;margin-left:2%" ><h4>Τιμή</h4></div>
+              <div class="data_div_2" style="width:50%;margin-left:3%"><h4><?php echo $Price -3 ;?> - <?php echo $Price +3 ;?>€</h4></div>
+            </td>
+            <td  >
+              <div class="title_div_2" style="width:70%;margin-left:3%" ><h4>Αναλογία Εικόνων- Κειμένου</h4></div>
+              <div class="data_div_2" style="width:20%;margin-left:1%"><h4><?php echo $Persentage_of_images?>:<?php echo 100-$Persentage_of_images?></h4></div>
+            </td>
+            
+          </tr>
+        </table>
+        <table class="main_characteristics_table_2">
+          <tr>
+            <td style="width:30%;" >
+              <div class="title_div_2" style="width:45%;margin-left:3%" ><h4> Ηλικία</h4></div>
+              <div class="data_div_2" style="width:40%;margin-left:2%"><h4><?php echo $age?></h4></div>
+            </td>
+            <td >
+              <div class="data_div_2" style="width:50%;margin-left:6%;<?php echo $parents_show?>"  ><h4> <?php echo $parents?></h4></div>
+            </td>
+            
+          </tr>
+
+        </table>
+        <table class="main_characteristics_table_2">
+          <tr >
+            <td style="width:100%">
+              <div class="title_div_2" style="width:12%;margin-left:1%" ><h4>Μορφή</h4></div>
+              <div class="data_div_2" style="width:50%;margin-left:1%"><h4><?php echo $morfi?></h4></div>
+            </td>
+          </tr>
+          <tr <?php echo $link_show?>>
+            <td style="width:100%">
+              <div class="title_div_2" style="width:12%;margin-left:1%" ><h4>Link</h4></div>
+              <div class="data_div_2" style="width:70%;margin-left:1%"><h4><?php echo $Link?></h4></div>
+            </td>
+          </tr>
+          <tr <?php echo $curriculum_show?>>
+            <td style="width:100%">
+              <div class="title_div" style="width:70%;margin-left:1%" ><h4>Δραστηριότητες και Θέματα προς συζήτηση</h4></div>
+              <div class="data_div" style="width:95%;margin-left:1%"><h4><?php echo $Curriculum?></h4></div>
             </td>
           </tr>
         </table>
@@ -89,35 +148,37 @@
 
       </div>
 
-      <div id="main_characteristics_bottom"></div>
+      <div id="main_characteristics_bottom">
+        
+      </div>
     </div>
   </div>
   
   <!-- <div id="table_img"></div> -->
   
   <div id="categories_nav">
-    <div id="ithiki_tab" class="categories_tab">
+    <div id="ithiki_tab" class="categories_tab" <?php echo $tab1?>>
       <img src="images/ithiki-tab.png" class="tab_img">
     </div>
-    <div id="sindesi_tab" class="categories_tab">
+    <div id="sindesi_tab" class="categories_tab" <?php echo $tab2?>>
       <img src="images/sindesi-tab.png" class="tab_img">
     </div>
-    <div id="epipleon_tab" class="categories_tab" >
+    <div id="epipleon_tab" class="categories_tab" <?php echo $tab3?>>
       <img src="images/epipleon-tab.png" class="tab_img">
     </div>
-    <div id="gramatiki_tab" class="categories_tab">
+    <div id="gramatiki_tab" class="categories_tab" <?php echo $tab4?>>
       <img src="images/grammatiki-tab.png" class="tab_img">      
     </div>
-    <div id="analisi_tab" class="categories_tab">
+    <div id="analisi_tab" class="categories_tab" <?php echo $tab5?>>
       <img src="images/analisi-tab.png" class="tab_img">
     </div>
   </div>
 
-  <div id="ithiki_box" class="categories_box">ithiki_box</div>
-  <div id="sindesi_box" class="categories_box" style="display:none;">sindesi_box</div>
-  <div id="epipleon_box" class="categories_box" style="display:none;">epipleon_box</div>
-  <div id="gramatiki_box" class="categories_box" style="display:none;">gramatiki_box</div>
-  <div id="analisi_box" class="categories_box" style="display:none;">analisi_box</div>
+  <div id="ithiki_box" class="categories_box"><?php echo $ithiki?></div>
+  <div id="sindesi_box" class="categories_box" style="display:none;"><?php echo $sindesi?></div>
+  <div id="epipleon_box" class="categories_box" style="display:none;"><?php echo $epipleon?></div>
+  <div id="gramatiki_box" class="categories_box" style="display:none;"><?php echo $gramatiki?></div>
+  <div id="analisi_box" class="categories_box" style="display:none;"><?php echo $analisi?></div>
 
 
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

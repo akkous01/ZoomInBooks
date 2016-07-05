@@ -2,7 +2,7 @@
   height: 75%;
   width: 75%;
   margin-left: 13%;
-  border:1px solid black ; 
+  /*border:1px solid black ; */
     background: url(../images/table-dragon-3.png) no-repeat center bottom;
   background-size: 100% 50%;
 
@@ -93,9 +93,9 @@
 }
 
 .mark_img{
-  margin-top: 3%;
-  margin-bottom: 2%;
-  height: 10%;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  height: 8%;
   width: 100%;
 }
 
@@ -103,7 +103,7 @@
   float: left;
   height: 100%;
   width: 58%;
-            border:1px solid orange ; 
+            /*border:1px solid orange ; */
 
   /*background: url(../images/dragon-2.png) no-repeat right bottom;*/
 
@@ -116,7 +116,7 @@
   margin-left: 2%;
   padding-left: 3%;
   overflow-y: scroll;
-              border:1px solid red ; 
+              /*border:1px solid red ; */
 
 
 }
@@ -130,26 +130,37 @@
 
 }
 
-#main_characteristics_table {
-  width: 90%;
-  border: 1px solid black;
+.main_characteristics_table {
+  width: 100%;
+  /*border: 1px solid black;*/
   text-align: center;
 }
 
 
-#main_characteristics_table tr, td{
-  width: 100%;
-  border: 1px solid black;
+.main_characteristics_table tr, td{
+  /*width: 50%;*/
+  /*border: 1px solid black;*/
 }
 
+
+.main_characteristics_table_2{
+  width: 100%;
+  /*border: 1px solid black;*/
+  text-align: center;
+  /*padding: 10px 10px 10px 10px;*/
+}
+.main_characteristics_table_2 td{
+  padding: 5px 5px 5px 5px;
+
+}
 .title_div{
   text-align: center;
-
+  border-radius: 15px;
+  background: rgb(35, 184, 219);
+  margin-bottom: 1px;
   
 }
 .title_div h4{
-  border-radius: 15px;
-  background: #33ccff;
   color: white;
   padding: 5px 5px 5px 5px;
 
@@ -157,18 +168,53 @@
 
 .data_div{
   border-radius: 15px;
-  border: 2px solid #33ccff;
+  border: 3px solid rgb(35, 184, 219);
   background-color: white;
   word-wrap: break-word;
   text-align: center;
-
+  margin-top: 1px;
 
 }
 
-.data_div p {
-  color: #33ccff;
-  font-weight: bold;
-  padding: 5px 5px 5px 5px;
+.data_div h4 {
+  color: rgb(35, 184, 219);
+  padding: 0px 0px 0px 0px;
+   margin-top: 3px;
+  margin-bottom: 3px;
+  
+}
+
+.title_div_2{
+  float:left;
+  text-align: center;
+  border-radius: 15px;
+  background: rgb(35, 184, 219);
+  
+}
+
+.title_div_2 h4{
+  color: white;
+  padding: 0px 0px 0px 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.data_div_2{
+  float: left;
+  border-radius: 15px;
+  border: 3px solid rgb(35, 184, 219);
+  background-color: white;
+  word-wrap: break-word;
+  text-align: center;
+  
+}
+
+.data_div_2 h4 {
+  color: rgb(35, 184, 219);
+  padding: 0px 0px 0px 0px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 #categories_nav{
@@ -176,7 +222,6 @@
   width: 70%;
   margin-left: 15%;
   margin-top: 0.5%;
-  border: 3px solid black;
 }
 
 .categories_tab{
@@ -184,7 +229,7 @@
   width: 19%;
   height: 100%;
   margin-right: 1%;
-  border: 1px solid green;
+  /*border: 1px solid green;*/
 
 }
 
@@ -194,9 +239,25 @@
 }
 
 .categories_box{
-  height: 30%;
+  height: 20%;
   width: 70%;
   margin-left: 15%;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
+
+}
+
+.keywords_area {
+  height: 100%;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.keywords_area h3{
+  margin-left: 5%;
+}
+
+.keywords_area h4{
+  margin-left: 10%;
+  /*color: rgb(35, 184, 219);*/
 
 }
