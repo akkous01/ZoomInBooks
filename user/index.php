@@ -67,11 +67,12 @@ queries -->
                         <div class="form-group">
                             <label for="theme">ΘΕΜΑ:</label>
                             <select class="form-control input-sm" id="theme" name="theme">
-                                <option>Ηθικά/ Πνευματικά μηνυματα</option>
-                                <option>Σύνδεση με διάφορα άλλα θέματα</option>
-                                <option>Επιπλέον χαρακτηριστικά</option>
-                                <option>Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
-                                <option>Γραμματική – Σύνταξη – Λεξιλόγιο</option>
+                                <option value="1">Ηθικά/ Πνευματικά μηνυματα</option>
+                                <option value="2">Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
+                                <option value="3">Γραμματική – Σύνταξη – Λεξιλόγιο</option>
+                                <option value="4">Σύνδεση με διάφορα άλλα θέματα</option>
+                                <option value="5">Επιπλέον χαρακτηριστικά</option>
+
                             </select>
                         </div>
                         <div class="form-group">
