@@ -4,22 +4,17 @@ include "../../Database/MySqlConnect.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (empty($_POST["New_keyword"])) {
-    header("Location: ../index.php");
-    exit();
+      $error = "Error in New_keyword";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
   } else {
    	$New_keyword = test_input($_POST["New_keyword"]);
   }
 
-  // if (empty($_POST["select_category_2"])){
-  //   header("Location: ../index.php");
-  //   exit();
-  // }else{
-  //   $Category_id = $_POST["select_category_2"];
-  // }
-
   if (empty($_POST["select_subcategory"])){
-    header("Location: ../index.php");
-    exit();
+      $error = "Error in select_subcategory";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
   }else{
     $Sucategory_id = $_POST["select_subcategory"];
   }
@@ -29,9 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$New_keyword_query = $conn->prepare("INSERT INTO keywords (Name_of_keyword, Subcategory_id) VALUES ('{$New_keyword}', '{$Sucategory_id}')");
 		$New_keyword_query->execute();
 		
-		header("Location: ../index.php");
+    $succ = "New keyword added!";
+    header("Location: ../messages/success2.php?succ=".$succ);
+    exit();
 	}catch(PDOException $e){
-    	handle_sql_errors($selectQuery, $e->getMessage());
+    	$error ="Error in databese.".$e->getMessage();
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
 	}
 }
 
@@ -40,14 +39,6 @@ function test_input($data) {
   	$data = stripslashes($data);
   	$data = htmlspecialchars($data);
   	return $data;
-}
-
-function handle_sql_errors($query, $error_message){
-    echo '<pre>';
-    echo $query;
-    echo '</pre>';
-    echo $error_message;
-    die;
 }
 
 ?>

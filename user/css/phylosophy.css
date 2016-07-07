@@ -1,18 +1,40 @@
 #main_phylosophy{
-	height: 70%;
+	height: 77%;
   	width:80%;
   	margin-top: 0%;
   	margin-left: 10%;
   	background: url(../images/phylosophy-1.png) no-repeat center top;
   	background-size: 90% 100% ;
-  	border: 1px solid rgba(1, 1, 255, 1);
+  	border: 1px solid rgba(1, 1, 255, 0);
 }
 
 #phylosophy_area{
 	height: 50%;
-	width: 33%;
+	width: 31%;
 	margin-top: 7%;
-	margin-left: 33%;
+	margin-left: 35%;
 	/*border: 3px solid black;*/
 	overflow-y: scroll;
+	padding-right: 5px;
+
+}
+
+#main_blog{
+	height: 77%;
+  	width:80%;
+  	margin-top: 0%;
+  	margin-left: 10%;
+  	background: url(../images/blog-1.png) no-repeat center top;
+  	background-size: 90% 100% ;
+  	border: 1px solid rgba(1, 1, 255, 0);
+}
+
+#blog_area{
+	height: 50%;
+	width: 31%;
+	margin-top: 7%;
+	margin-left: 35%;
+	/*border: 3px solid black;*/
+	overflow-y: scroll;
+	padding-right: 5px;
 }
