@@ -14,7 +14,7 @@
   width: 80%;
   /*position: absolute;*/
   margin-left: 10%;
-  border:4px solid #33ccff ;
+  /*border:4px solid #33ccff ;*/
   background-color: white; 
 
 }
@@ -24,46 +24,106 @@
   width: 70%;
   margin-top: 1%;
   margin-left: 20%;
-  border:1px solid orange ;
+  /*border:1px solid orange ;*/
   overflow-y: scroll;
 
 
 }
 
+      #table_of_books{
+        /*border:2px solid yellow;*/
+        width:95%;
+        height: 100%;
+        margin-left:2.5%;
+        table-layout: fixed;
+        overflow-y: scroll;
+      }
+      #table_of_books tr{
+        /*border:2px solid blue;*/
+        width:100%;
+        height:50%;
+        table-layout: fixed;
+      }
+      #table_of_books td{
+        /*border:2px solid green;*/
+        width: 33.3%;
+        height: 50%;
+        table-layout: fixed;
 
-#table_of_books{
-  width: 98%;
-  height: 95%;
-  margin: 1%;
+      }
+      #show_image{
+        /*border:2px solid red;*/
+        width:100%;
+        height: 95%;
+        margin-bottom: 5%;
 
-}
-#table_of_books tr{
-  height: 50%;
-  width: 100%;
+      }
+      #image_area{
+        /*border:2px solid grey;*/
+        width:80%;
+        height: 80%;
+        float: left;
 
-}
-#table_of_books td{
-  width:30%;
-  height:50%;
-  border:4px solid green;
-}
-#show_image{
-  height: 100%;
-  width: 100%;
-}
-#image_area{
-  width:70%;
-  height:80%;
-}
-#image_area img{
-  width:inherit;
-  height: inherit;
-}
-#mark_area{
-  width:20%;
-  border:4px solid red;
-}
-#mark_img{
-  height: 10%;
+      }
+      #mark_area{
+        /*border:2px solid grey;*/
+        width:20%;
+        height: 80%;
+        float: right;
+      }
+      .small_img{
+        width: 100%;
+        height: 160px;
+        margin-bottom:5%;
+
+      }
+      #book_title{
+        /*border:2px solid blue;*/
+        height: 20%;
+        width: 100%;
+        text-align: center;
+      }
+
+#up_box{
   width:100%;
+  height: 50%;
+  /*border:2px solid green;*/
+
+}
+#down_box{
+  width:100%;
+  height: 50%;
+  /*border:2px solid blue;*/
+
+
+}
+
+
+
+.form-group{
+  width:23%;
+  float: left;
+  margin: 0% 1% 1% 1%;
+}
+
+.keywords{
+  width:85%;
+  float: left;
+
+}
+.keywords_button{
+  width:15%;
+  float: left;
+
+}
+#search_button{
+  width:23%;
+  height: 100%;
+  float: left;
+  margin: 0% 0% 1% 1%;
+}
+#search_button button{
+  height: 50%;
+  margin-top:7%;
+  margin-bottom: 7%;
 }

@@ -16,9 +16,9 @@ $( document ).ready(function() {
                       var addto = "#field" + next;
                       var addRemove = "#field" + (next);
                       next = next + 1;
-                      var newIn = '<input class=" form-control input-sm " id="field' + next + '" name="keyword' + next + '" type="text">';
+                      var newIn = '<input class=" form-control input-sm keywords" id="field' + next + '" name="keyword' + next + '" type="text">';
                       var newInput = $(newIn);
-                      var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-xs btn-danger remove-me" >-</button></div><div id="field">';
+                      var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-sm btn-danger remove-me keywords_button" >-</button></div><div id="field">';
                       var removeButton = $(removeBtn);
                       $(addto).after(newInput);
                       $(addRemove).after(removeButton);
