@@ -4,15 +4,17 @@ include "../../Database/MySqlConnect.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (empty($_POST["New_subcategory"])) {
-    header("Location: ../index.php");
-    exit();
+      $error = "Error in New_subcategory";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
   } else {
    	$New_subcategory = test_input($_POST["New_subcategory"]);
   }
 
   if (empty($_POST["select_category"])){
-    header("Location: ../index.php");
-    exit();
+      $error = "Error in select_category";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
   }else{
     $Category_id = $_POST["select_category"];
   }
@@ -21,10 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	try{ 
 		$New_subcategory_query = $conn->prepare("INSERT INTO subcategories (Name_of_subcategory, Category_id) VALUES ('{$New_subcategory}', '{$Category_id}')");
 		$New_subcategory_query->execute();
-		
-		header("Location: ../index.php");
+    $succ = "New subcategory added!";
+    header("Location: ../messages/success2.php?succ=".$succ);
+    exit();
 	}catch(PDOException $e){
-    	handle_sql_errors($selectQuery, $e->getMessage());
+      $error ="Error in databese.".$e->getMessage();
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
 	}
 }
 
@@ -35,12 +40,5 @@ function test_input($data) {
   	return $data;
 }
 
-function handle_sql_errors($query, $error_message){
-    echo '<pre>';
-    echo $query;
-    echo '</pre>';
-    echo $error_message;
-    die;
-}
 
 ?>

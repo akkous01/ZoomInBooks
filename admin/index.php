@@ -264,7 +264,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </div>
                              <div class="12u$">
                                 <ul class="actions">
-                                    <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
+                                    <li><input type="submit" value="Sabmit Subcategory" class="special" /></li>
                                 </ul>
                             </div>
                         </div>
@@ -302,7 +302,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <div> 
                              <div class="12u$">
                                 <ul class="actions">
-                                    <li><a href="" class="button small submit">Sabmit Subcategory</a></li>
+                                    <li><input type="submit" value="Sabmit Keyword" class="special" /></li>
                                 </ul>
                             </div>
                         </div>
@@ -324,7 +324,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>
                          <div class="12u$">
                             <ul class="actions">
-                                <li><a href="" class="button small submit">Sabmit announcement</a></li>
+                                <li><input type="submit" value="Sabmit announcement" class="special" /></li>
                             </ul>
                         </div>
                     </div>
@@ -348,7 +348,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>
                          <div class="12u$">
                             <ul class="actions">
-                                <li><a href="" class="button small submit">Sabmit</a></li>
+                                <li><input type="submit" value="Save Blog" class="special" /></li>
                             </ul>
                         </div>
                     </div>
