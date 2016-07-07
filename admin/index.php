@@ -48,12 +48,20 @@ if (session_status() == PHP_SESSION_NONE) {
     
 <body onload="loadSubCategories()">
 
-<?php 
-    if ($_SESSION["new_book_insert_succ"]== 1){
-        echo "<script>alert('Το βιβλίο καταχωρήθηκε επιτυχώς!');</script>";
-        $_SESSION["new_book_insert_succ"]= 0;
-    }
-?>
+
+
+
+			<header id="header">
+				<a href="index.php" class="title">Zoom in Books</a>
+				<nav>
+					<ul>
+						<li><a href="index.php">Admin</a></li>
+						<li><a href="../user/index.php">Web Page</a></li>
+						<li><a href="login.php">Log out</a></li>
+
+					</ul>
+				</nav>
+			</header>
 <!-- Sidebar -->
 <section id="sidebar">
     <div class="inner">
@@ -73,6 +81,7 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
 </section>
 
+
 <!-- Wrapper -->
     <div id="wrapper">
 
@@ -88,9 +97,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <!--</div>-->
     <!--</section>-->
     <section id="list_of_books" class="list_of_books">
-        <header>
-            <h3>Αποθηκευμένα Βιβλία</h3>
-        </header>
+        <!-- <header> -->
+            <h1 class="major">Αποθηκευμένα Βιβλία</h1>
+        <!-- </header> -->
         <div class="table-wrapper">
             <table class="paginated">
                 <thead>
@@ -126,7 +135,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <!-- One -->
     <section id="new_book" class="wrapper style2 spotlights">
-        <h3>Νέο Βιβλίο</h3>
+        <h1 class="major">Νέο Βιβλίο</h1>
         <section class="new_book_body">
             <form method="post" action="new_book/submit_new_book.php" enctype="multipart/form-data">
                 <div class="row uniform">
@@ -173,7 +182,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="6u$ 12u$(xsmall)">
-                        <h4>Μέση Τιμή Πώλησης * </h4><input type="number" name="Price" id="Price" value=""  required/>
+                        <h4>Μέση Τιμή Πώλησης (€)* </h4><input type="double" name="Price" id="Price" value=""  required/>
                     </div>
 
                     <div class="12u$ 12u$(xsmall)">
@@ -228,7 +237,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- Two -->
     <section id="two" class="wrapper style1 spotlights">
         <div class="inner">
-            <h2>Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</h2>
+            <h1 class="major">Λίστα Λέξεων Κλειδιών που δεν βρέθηκαν</h1>
             <?php echo $not_found?>
             
         </div>
@@ -237,7 +246,7 @@ if (session_status() == PHP_SESSION_NONE) {
        
     <section id="new_subcategory" class="wrapper style2 spotlights">
         <div class="inner">
-            <h2>Προσθήκη Νέας Υποκατηγορίας</h2>
+            <h1 class="major">Προσθήκη Νέας Υποκατηγορίας</h1>
                 <section>
                     <form method="post" action="add_elements/new_subcategory.php">
                         <div class="row uniform">
@@ -268,7 +277,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <section id="new_keyword" class="wrapper style1 spotlights">
         <div class="inner">
-            <h2>Προσθήκη Νέας Λέξης Κλειδί</h2>
+            <h1 class="major">Προσθήκη Νέας Λέξης Κλειδί</h1>
                 <section>
                     <form method="post" action="add_elements/new_keyword.php">
                         <div class="row uniform">
@@ -306,7 +315,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <section id="announcements" class="wrapper style1 spotlights">
     	<div class="inner">
 
-            <h2>Προσθήκη Ανακοίνωσης</h2>
+            <h1 class="major">Προσθήκη Ανακοίνωσης</h1>
             <section>
                 <form method="post" action="add_elements/new_announcement.php">
                     <div class="row uniform">
@@ -327,7 +336,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <section id="blog" class="wrapper style2 spotlights">
     	<div class="inner">
 
-            <h2>Προσθήκη στο Blog</h2>
+            <h1 class="major">Προσθήκη στο Blog</h1>
             <section>
                 <form method="post" action="add_elements/new_blog.php">
                     <div class="row uniform">

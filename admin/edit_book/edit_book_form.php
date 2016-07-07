@@ -103,7 +103,15 @@ if($book['Show_to_user'] == 1){
         </div>
     </div>
 </section> -->
-
+<header id="header">
+                <a href="index.php" class="title">Zoom in Books</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.php">Admin</a></li>
+                        <li><a href="../user/index.php">Web Page</a></li>
+                    </ul>
+                </nav>
+            </header>
 <!-- Wrapper -->
 <div id="wrapper">
     <section id="show_book" class="show_book" >
@@ -180,19 +188,20 @@ if($book['Show_to_user'] == 1){
                 </div>
 
 
-                <?php echo '<img id="img_cover" style="margin-bottom: 2%;" src="../../Database/Covers/'. $book['Cover'].'"/>';?>
+                <?php echo '<div class="4u$"><span class="image fit"><img id="img_cover"  style="margin-bottom: 2%;" src="../../Database/Covers/'. $book['Cover'].'"/></span>';?>
                 <input type="input" name="same_cover" id="same_cover" style="display:none" value="<?php echo $book['Cover']?>" />
 
                 <input type="button" class="button special small" id="change_cover" value="Αλλαγή Εξωφύλλου" />
-                
+                </div>
                 <div class="18u$ 12u$(xsmall)" id="upload_cover" style="display:none">
                     <h4>Εξώφυλλο * </h4><input type="file" name="Cover" id="Cover" value="<?php echo $book['Cover']?>" />
                 </div>
 
-                <?php echo '<img id="img_back_cover" style="margin-bottom: 2%;" src="../../Database/Back_Covers/'. $book['Back_cover'].'"/>';?>
+                <?php echo '<div class="4u$"><span class="image fit"><img id="img_back_cover" style="margin-bottom: 2%;" src="../../Database/Back_Covers/'. $book['Back_cover'].'"/></span>';?>
                 <input type="input" name="same_back_cover" id="same_back_cover" style="display:none" value="<?php echo $book['Back_cover']?>" />
 
                 <input type="button" class="button special small" id="change_back_cover" value="Αλλαγή Πισθοφύλλου"/>
+                </div>
                 <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
                     <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Back_cover" value="<?php echo $book['Back_cover'] ?>" />
                 </div>

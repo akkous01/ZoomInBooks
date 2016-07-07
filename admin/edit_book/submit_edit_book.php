@@ -9,26 +9,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  	$book_id = $_POST["id"];
 
   if (empty($_POST["Title"])) {
-    echo "error in title";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in title";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
     $Title = test_input($_POST["Title"]);
     
   }
 
   if (empty($_POST["ISBN"])) {
-    echo "error in isbn";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in ISBN";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
     $ISBN = test_input($_POST["ISBN"]);
   }
   
   if (empty($_POST["Writer"])) {
-    echo "error in witer";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Writer";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
     $Writer = test_input($_POST["Writer"]);
   }
@@ -37,43 +37,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $Illustrator = test_input($_POST["Illustrator"]);
   
   if (empty($_POST["Publisher"])) {
-     echo "error in publicher";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Publisher";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
     $Publisher = test_input($_POST["Publisher"]);
   }
 
   if (empty($_POST["Pages"])) {
-     echo "error in pages";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Pages";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
-    $Pages = test_input($_POST["Pages"]);
+    $Pages = (int)test_input($_POST["Pages"]);
+    if($Pages <= 0){
+      $error ="Error in Pages <= 0";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
+    }
   }
 
   if (empty($_POST["Persentage_of_images"])) {
-     echo "error in Persentage_of_images";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Persentage_of_images";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
-    $Persentage_of_images = test_input($_POST["Persentage_of_images"]);
+    $Persentage_of_images = (int)test_input($_POST["Persentage_of_images"]);
+    if($Persentage_of_images<0 or $Persentage_of_images>100){
+      $error ="Error in Persentage_of_images";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
+    }
   }
 
   if (empty($_POST["Min_age_no_read"])) {
-     echo "error in age min";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Min age for childen who cannot read";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
-    $Min_age_no_read = test_input($_POST["Min_age_no_read"]);
+    $Min_age_no_read = (int)test_input($_POST["Min_age_no_read"]);
   }
   
    if (empty($_POST["Min_age_read"])) {
-     echo "error in max age";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Min age for childen who can read";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
-    $Min_age_read = test_input($_POST["Min_age_read"]);
+    $Min_age_read = (int)test_input($_POST["Min_age_read"]);
+  }
+
+    if($Min_age_read < $Min_age_no_read){
+    $error ="Error in Min age for childen who cannot read > Min age for childen who can read";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   }
 
   if(! empty($_POST["For_parents"])){
@@ -81,11 +97,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_POST["Price"])) {
-     echo "error in price";
-    // header("Location: ../index.php#new_book");
-    // exit();
+    $error ="Error in Price";
+    header("Location: ../messages/fail.php?error=".$error);
+    exit();
   } else {
-    $Price = test_input($_POST["Price"]);
+    $Price = (double)test_input($_POST["Price"]);
+    if($Price<0){
+      $error ="Error in Price < 0";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
+    }
   }
 
   if(! empty($_POST["Hard_copy"])){
@@ -106,8 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   if (empty($_FILES["Cover"]["name"])){
-  	$Cover = $_POST["same_cover"];
-    
+    $Cover = $_POST['same_cover'];  
   } else {
     $target_dir = '../../Database/Covers/'; // upload directory
     $target_file = $target_dir . basename($_FILES["Cover"]["name"]);
@@ -119,38 +139,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        $error ="Error in Cover img. File is not an image.";
+        header("Location: ../messages/fail.php?error=".$error);
         $uploadOk = 0;
         exit();
     }
 
     if ($_FILES["Cover"]["size"] > 500000) {
-      echo "Sorry, your file is too large.";
+      $error ="Error in Cover img. Sorry, your file is too large.";
+      header("Location: ../messages/fail.php?error=".$error);
       $uploadOk = 0;
       exit();
     }
 
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $error ="Error in Cover img. Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      header("Location: ../messages/fail.php?error=".$error);
       $uploadOk = 0;
       exit();
     }
 
     if (move_uploaded_file($_FILES["Cover"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["Cover"]["name"]). " has been uploaded.";
+        // echo "The file ". basename( $_FILES["Cover"]["name"]). " has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        $error ="Error in Cover img. Sorry, there was an error uploading your file.";
+        header("Location: ../messages/fail.php?error=".$error);
+        $uploadOk = 0;
         exit();
     }
 
-    unlink($target_dir.$_POST["same_cover"]);
-
-
-
+    if (!unlink($target_dir.$_POST["same_cover"])){
+        $error ="Error in Cover img. Sorry, there was an error uploading your file.";
+        header("Location: ../messages/fail.php?error=".$error);
+        $uploadOk = 0;
+        exit();
+    }
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
-  	$Back_cover = $_POST["same_back_cover"];
+    $Back_cover = $_POST['same_ back_cover'];
   } else {
   	$target_dir = '../../Database/Back_Covers/'; // upload directory
     $target_file = $target_dir . basename($_FILES["Back_cover"]["name"]);
@@ -162,31 +189,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        $error ="Error in Back Cover img.File is not an image.";
+        header("Location: ../messages/fail.php?error=".$error);
         $uploadOk = 0;
         exit();
     }
 
     if ($_FILES["Back_cover"]["size"] > 500000) {
-      echo "Sorry, your file is too large.";
+      $error ="Error in Back Cover img.Sorry, your file is too large.";
+      header("Location: ../messages/fail.php?error=".$error);
       $uploadOk = 0;
       exit();
     }
 
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $error ="Error in Back Cover img.Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      header("Location: ../messages/fail.php?error=".$error);
       $uploadOk = 0;
       exit();
     }
 
     if (move_uploaded_file($_FILES["Back_cover"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["Back_cover"]["name"]). " has been uploaded.";
+        // echo "The file ". basename( $_FILES["Back_cover"]["name"]). " has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
-        exit();
+      $error ="Error in Back Cover img.Sorry, there was an error uploading your file.";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
     }
 
-    unlink($target_dir.$_POST["same_back_cover"]);
+    if (!unlink(unlink($target_dir.$_POST["same_back_cover"]))){
+      $error = "Error in Back Cover img.Sorry, there was an error uploading your file.";
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
+    }
   }
 
   if(! empty($_POST["Show_to_user"])){
@@ -217,10 +252,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     }
 
-    header("Location: ../index.php");
-    exit;
+    header("Location: ../messages/succes.php");
+    exit();
   }catch(PDOException $e){
-     echo "ERROR";
+      $error ="Error with the Database.".$e->getMessage();
+      header("Location: ../messages/fail.php?error=".$error);
+      exit();
   }
 
 
