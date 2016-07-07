@@ -4,7 +4,7 @@ html, body {
       -webkit-background-size: contain;
       -moz-background-size: contain;
       -o-background-size: contain;
-      background-size: 80%;
+      background-size: 80% 100%;
 
 }
 
@@ -197,7 +197,7 @@ header{
     text-align: center;
     height: 72%;
     /*border:1px solid green;*/
-    position:absolute;
+    position:fixed;
     background-position:50% 50%;
 }
 .search_box_dropdown_elements{

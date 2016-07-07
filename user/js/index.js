@@ -1,13 +1,17 @@
 $( document ).ready(function() {
               $("#search_bar").click(function () {
-                  $("#search_bar").css({'display':'none'});
-                  $("#search_box_dropdown").slideToggle("3000");
+                  $("#search_bar").hide();
+                  // $("#search_box_dropdown").slideToggle("3000");
+                  $("#search_box_dropdown").show();
+
                   $(".search_box_dropdown_elements").css({'display':'block'});
               });
               $("#close_button").click(function () {
                   $(".search_box_dropdown_elements").css({'display':'none'});
-                  $("#search_box_dropdown").slideToggle("3000");
-                  $("#search_bar").css({'display':'block'});
+                  // $("#search_box_dropdown").slideToggle("3000");
+                  $("#search_box_dropdown").hide();
+
+                  $("#search_bar").show();
 
               });
                   var next = 1;

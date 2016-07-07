@@ -39,8 +39,8 @@ queries -->
     </ul>
  </header>
 
-<div id="main_phylosophy">
-  <div id="phylosophy_area"></div>
+<div id="main_comingsoon">
+  <div id="comingsoon_area"><img src="images/ComingSoon.gif" style="height:80%; width:80%;margin-left: 10%;margin-top: 10%; " "></div>
 </div>
 
 

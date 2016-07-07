@@ -39,7 +39,7 @@ queries -->
     </ul>
  </header>
 
-<div id="main_phylosophy">
+<div id="main_contact">
   <div id="phylosophy_area"></div>
 </div>
 

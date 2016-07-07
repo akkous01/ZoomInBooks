@@ -29,14 +29,14 @@
 
   <header>
     <ul class="my_nav">
-        <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>
-        <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
-        <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>
-        <li><a href="#"><img src="images/navbar/4_Communicate.png"></a></li>
-        <li><a href="#"><img src="images/navbar/5_LogIn.png"></a></li>
-        <li><a href="#"><img src="images/navbar/6_CreateAccount.png"></a></li>
-        <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>
-        <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>
+        <li><a href="index.php"><img src="images/navbar/1_HomePage.png"></a></li>
+        <li><a href="phylosophy.php"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
+        <li><a href="blog.php"><img src="images/navbar/3_Blog.png"></a></li>
+        <li><a href="contact.php"><img src="images/navbar/4_Communicate.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/5_LogIn.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/6_CreateAccount.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/7_Gallery.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/8_ZoomIn.png"></a></li>
     </ul>
   </header>
 
