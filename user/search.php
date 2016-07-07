@@ -1,6 +1,7 @@
 <?php
 
 include "session/search_list_of_book.php";
+include_once "session/load_data_from_database.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,58 +47,60 @@ include "session/search_list_of_book.php";
   </header>
 
   <div id="main_search">
-    <div id="search_box">
-        <div id="up_box">
-            <div class="form-group ">
-                <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
-                <input type="text" class="form-control input-sm" id="title" name="title">
-            </div>
-            <div class="form-group ">
-                <label for="theme">ΘΕΜΑ:</label>
-                <select class="form-control input-sm" id="theme" name="theme">
-                    <option value="1">Ηθικά/ Πνευματικά μηνυματα</option>
-                    <option value="2">Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
-                    <option value="3">Γραμματική – Σύνταξη – Λεξιλόγιο</option>
-                    <option value="4">Σύνδεση με διάφορα άλλα θέματα</option>
-                    <option value="5">Επιπλέον χαρακτηριστικά</option>
+      <div id="search_box">
+          <form  id="search_form" method="post" action="search.php">
+            <div id="up_box">
 
-                </select>
-            </div>
+                <div class="form-group ">
+                    <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
+                    <input type="text" class="form-control input-sm" id="title" name="title">
+                </div>
+                <div class="form-group ">
+                    <label for="theme">ΘΕΜΑ:</label>
+                    <select class="form-control input-sm" id="theme" name="theme">
+                        <option value="1">Ηθικά/ Πνευματικά μηνυματα</option>
+                        <option value="2">Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
+                        <option value="3">Γραμματική – Σύνταξη – Λεξιλόγιο</option>
+                        <option value="4">Σύνδεση με διάφορα άλλα θέματα</option>
+                        <option value="5">Επιπλέον χαρακτηριστικά</option>
 
-            <div class="form-group ">
-                <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
-                <input type="text" class="form-control input-sm" id="writer" name="writer">
+                    </select>
+                </div>
+
+                <div class="form-group ">
+                    <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
+                    <input type="text" class="form-control input-sm" id="writer" name="writer">
+                </div>
+                <div class="form-group search2_div" id="all_keywards">
+                    <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
+                    <input type="hidden" name="count" value="1" />
+                    <div id="field">
+                        <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text" />
+                        <button  id="b1" class="btn btn-sm add-more keywords_button" type="button">+</button>
+                    </div>
+                </div>
+
             </div>
-            <div class="form-group search2_div" id="all_keywards">
-                <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
-                <input type="hidden" name="count" value="1" />
-                <div id="field">
-                    <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text" />
-                    <button  id="b1" class="btn btn-sm add-more keywords_button" type="button">+</button>
+            <div id="down_box">
+                <div class="form-group ">
+                    <label for="percentage_of_images">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
+                    <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
+                </div>
+                <div class="form-group ">
+                    <label for="age">ΗΛΙΚΙΑ:</label>
+                    <input type="number" class="form-control input-sm" id="age" name="age">
+                </div>
+                <div class="form-group ">
+                    <label for="price">ΤΙΜΗ:</label>
+                    <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <div id="slider-range"></div>
+                </div>
+                <div id="search_button">
+                    <button id="search_submit" type="submit" class="btn btn-info btn-sm">Search</button>
                 </div>
             </div>
-
-        </div>
-        <div id="down_box">
-            <div class="form-group ">
-                <label for="percentage_of_images">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
-                <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
-            </div>
-            <div class="form-group ">
-                <label for="age">ΗΛΙΚΙΑ:</label>
-                <input type="number" class="form-control input-sm" id="age" name="age">
-            </div>
-            <div class="form-group ">
-                <label for="price">ΤΙΜΗ:</label>
-                <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                <div id="slider-range"></div>
-            </div>
-            <div id="search_button">
-                <button id="search_submit" type="submit" class="btn btn-info btn-sm">Search</button>
-            </div>
-        </div>
-
-    </div>
+          </form>
+      </div>
 
     <div id="results">
         <table id="table_of_books">
@@ -115,13 +118,13 @@ include "session/search_list_of_book.php";
       <script>
           $( document ).ready(function() {
 
-//
-//              $('#title').typeahead({
-//                  local: <?php //echo $titles;?>
-//              });
-//              $('#writer').typeahead({
-//                  local: <?php //echo $writers;?>
-//              });
+
+              $('#title').typeahead({
+                  local: <?php echo $titles;?>
+              });
+              $('#writer').typeahead({
+                  local: <?php echo $writers;?>
+              });
 //              // $('.keywords').typeahead({
 //              //     local: <?php //echo $keywords;?>
 //              // });
@@ -133,7 +136,7 @@ include "session/search_list_of_book.php";
 //                  });
 //              });
 //
-//              $('.tt-query').css('background-color','#fff');
+              $('.tt-query').css('background-color','#fff');
 
           });
       </script>
