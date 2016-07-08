@@ -83,7 +83,7 @@ include_once "session/load_data_from_database.php";
             </div>
             <div id="down_box">
                 <div class="form-group ">
-                    <label for="percentage_of_images">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
+                    <label for="percentage_of_images">ΑΝΑΛΟΓΙΑ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
                     <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
                 </div>
                 <div class="form-group ">
@@ -103,9 +103,9 @@ include_once "session/load_data_from_database.php";
       </div>
 
     <div id="results">
-        <table id="table_of_books">
+        <div id="table_of_books">
             <?php echo $books; ?>
-        </table>
+        </div>
     </div>
 <!--      <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>-->
 
@@ -116,8 +116,17 @@ include_once "session/load_data_from_database.php";
       <script type="text/javascript" src="js/index.js"></script>
 
       <script>
-          $( document ).ready(function() {
-
+//          $( document ).ready(function() {
+//              $(".search_book").click(function(){
+//                  $.get("session/search_book.php",
+//                      {book_id:$tds[0].innerText,
+//                          /////////////////////////////////////////
+//                          submit:'true'},
+//                      function(data, textStatus, jqXHR)
+//                      {
+//                          window.open("edit_book/edit_book_form.php");
+//                      });
+//              });
 
               $('#title').typeahead({
                   local: <?php echo $titles;?>

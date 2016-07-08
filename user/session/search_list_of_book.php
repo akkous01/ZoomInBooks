@@ -58,7 +58,7 @@ WHERE  ".$list_of_keywords."' ") ;
     $index=0;
     foreach ($list_of_books as $index=>$book_id):
         for($j=0;$j<5;$j++) {
-            $mark[$j]='none';
+            $mark[$j]="none' name='0'";
         }
         $book_query=$conn->prepare("SELECT  DISTINCT   books.Book_id,books.Title,books.Cover,categories.Category_id
                                 FROM       books
@@ -70,35 +70,45 @@ WHERE  ".$list_of_keywords."' ") ;
         $book_query->execute();
         $books_results = $book_query->fetchAll(PDO::FETCH_ASSOC);
         $categories=array();
+        $value=$books_results[0];
         for($i=0;$i< count($books_results);$i++){
             array_push($categories,$books_results[$i]['Category_id']);
         }
         for($j=0;$j<count($categories);$j++){
-            $mark[$categories[$j]-1]='block';
+            $mark[$categories[$j]-1]="block' name='1'";
         }
-        if($index%3==0){$books=$books. "<tr>"."\n";}
-        $value=$books_results[0];
-        $books=$books. "<td>
+        if($index%3==0){$books=$books. "<div class='row'>"."\n";}
+
+        $books=$books. "<div class='column'>
                                         <div id='show_image'>
                                             <div id='book_title'>
-                                                <h5>".$value['Title']."</h5>
+                                                <label>".$value['Title']."</label>
                                             </div>
-                                            <div id='image_area'>
-                                                <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>
+                                            <div id='mark_image'>
+                                                <div id='image_area'>
+                                                    <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>
+                                                </div>
+                                                <div id='mark_area'>
+                                                      <img class='mark_img' src='images/mark-1-1.png' style='display:".$mark[0]."/>
+                                                      <img class='mark_img' src='images/mark-1-2.png' style='display:".$mark[1]."/>
+                                                      <img class='mark_img' src='images/mark-1-3.png' style='display:".$mark[2]."/>
+                                                      <img class='mark_img' src='images/mark-1-4.png' style='display:".$mark[3]."/>
+                                                      <img class='mark_img' src='images/mark-1-5.png' style='display:".$mark[4]."/>
+                                                </div>
+                                             </div>
+                                            <div id='more_button'>
+                                                <button id='button_".$value['Book_id']."' type='submit' class='btn btn-info btn-xs search_book'>Δείτε περισσότερα...</button>
                                             </div>
-                                            <div id='mark_area'>
-                                                  <img class='mark_img' src='images/mark-1-1.png' style='display:".$mark[0]."'/>
-                                                  <img class='mark_img' src='images/mark-1-2.png' style='display:".$mark[1]."'/>
-                                                  <img class='mark_img' src='images/mark-1-3.png' style='display:".$mark[2]."'/>
-                                                  <img class='mark_img' src='images/mark-1-4.png' style='display:".$mark[3]."'/>
-                                                  <img class='mark_img' src='images/mark-1-5.png' style='display:".$mark[4]."'/>
-                                            </div>
+
                                         </div>
-                                    </td>"."\n";
-        if(($index+1)%3==0){$books=$books. "</tr>"."\n";}
+
+                                    </div>"."\n";
+        if(($index+1)%3==0){$books=$books. "</div>"."\n";}
 
         $i++;
     endforeach;
 
 }
 ?>
+<!--<img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>-->
+<!--<button id='search_submit' type='submit' class='btn btn-info btn-sm'>Search</button>-->

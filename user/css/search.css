@@ -29,59 +29,87 @@
 
 }
 
-      #table_of_books{
-        /*border:2px solid yellow;*/
-        width:95%;
-        height: 100%;
-        margin-left:2.5%;
-        table-layout: fixed;
-        overflow-y: scroll;
-      }
-      #table_of_books tr{
-        /*border:2px solid blue;*/
-        width:100%;
-        height:50%;
-        table-layout: fixed;
-      }
-      #table_of_books td{
-        /*border:2px solid green;*/
-        width: 33.3%;
-        height: 50%;
-        table-layout: fixed;
+#table_of_books{
+    /*border:2px solid yellow;*/
+    width:95%;
+    height: 100%;
+    margin-left:5%;
 
-      }
-      #show_image{
-        /*border:2px solid red;*/
-        width:100%;
-        height: 95%;
-        margin-bottom: 5%;
+}
 
-      }
-      #image_area{
-        /*border:2px solid grey;*/
-        width:80%;
-        height: 80%;
-        float: left;
+#table_of_books .row{
+    /*border:2px solid blue;*/
+    width:100%;
+    height:50%;
+    margin-bottom: 3%;
 
-      }
-      #mark_area{
-        /*border:2px solid grey;*/
-        width:20%;
-        height: 80%;
-        float: right;
-      }
-      .small_img{
-        width: 100%;
-        height: 160px;
-        margin-bottom:5%;
+}
+#table_of_books .column{
+    /*border:2px solid green;*/
+    width: 32%;
+    height:100%;
+    float: left;
+    margin-right: 1%;
 
-      }
-      #book_title{
-        /*border:2px solid blue;*/
-        height: 20%;
-        width: 100%;
-        text-align: center;
-      }
+
+}
+#show_image{
+    /*border:2px solid red;*/
+    width:100%;
+    height: 100%;
+}
+#book_title{
+    /*border:2px solid blue;*/
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: small;
+}
+#mark_image{
+    /*border:2px solid blue;*/
+    height: 65%;
+    width: 50%;
+    margin-left: 25%;
+}
+#image_area{
+    /*border:2px solid grey;*/
+    width:85%;
+    height: 100%;
+    float: left;
+
+}
+
+#mark_area{
+    /*border:2px solid grey;*/
+    width:15%;
+    height: 100%;
+    float: right;
+}
+.mark_img{
+    width:100%;
+    height: 20%;
+}
+
+.small_img{
+    width: 100%;
+    height: 100%;
+    margin-bottom:5%;
+
+}
+
+#more_button{
+    /*border:2px solid red;*/
+    height: 15%;
+    width: 100%;
+    text-align: center;
+}
+.search_book{
+    margin-top: 1%;
+    border-radius: 24px;
+    background-color: orange;
+}
+
 
 #up_box{
   width:100%;
