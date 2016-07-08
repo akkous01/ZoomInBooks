@@ -48,17 +48,22 @@
 			for($k = 0; $k < count($keywords) ; $k+=3){
 				$keyword_id = (integer) $keywords[$k]['Keyword_id'];
 				$keyword_name = (string)$keywords[$k]['Name_of_keyword'];
-				$categories_check_box .= "\r\n<tr><td><input type='checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label></td>";
+				$categories_check_box .= "\r\n<td><input type='checkbox'  class='keywords_checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label><input style='display:none' type='text' id='MK{$keyword_id}' name='MK{$keyword_id}'></td>";
 				if($k+1 < count($keywords)){
 					$keyword_id = (integer) $keywords[$k+1]['Keyword_id'];
 					$keyword_name = (string)$keywords[$k+1]['Name_of_keyword'];
-					$categories_check_box .= "\r\n<td><input type='checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label></td>";
+					$categories_check_box .= "\r\n<td><input type='checkbox'  class='keywords_checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label><input style='display:none' type='text' id='MK{$keyword_id}' name='MK{$keyword_id}'></td>";
 				}
 
 				if($k+2 < count($keywords)){
 					$keyword_id = (integer) $keywords[$k+2]['Keyword_id'];
 					$keyword_name = (string)$keywords[$k+2]['Name_of_keyword'];
-					$categories_check_box .= "\r\n<td><input type='checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label></td>";
+					$categories_check_box .= "\r\n<td><input type='checkbox'  class='keywords_checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label><input style='display:none' type='text' id='MK{$keyword_id}' name='MK{$keyword_id}'></td>";
+				}
+				if($k+3 < count($keywords)){
+					$keyword_id = (integer) $keywords[$k+3]['Keyword_id'];
+					$keyword_name = (string)$keywords[$k+3]['Name_of_keyword'];
+					$categories_check_box .= "\r\n<td><input type='checkbox'  class='keywords_checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label><input style='display:none' type='text' id='MK{$keyword_id}' name='MK{$keyword_id}'></td>";
 				}
 				$categories_check_box .= "</tr>";
 			}

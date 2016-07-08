@@ -243,6 +243,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (!empty($_POST['K'.$i])){
         $books_keywords_query = $conn->prepare("INSERT INTO books_keywords (Book_id, Keyword_id) VALUES ('{$book_id}','{$i}')");
         $books_keywords_query->execute();
+        if(!empty($_POST['MK'.$i])){
+          $meaning = $_POST['MK'.$i];
+          $meaning_books_keywords_query = $conn->prepare("INSERT INTO books_keywords_meaning (Book_id, Keyword_id, Meaning_content) VALUES ('{$book_id}','{$i}','{$meaning}')");
+          $meaning_books_keywords_query->execute();
+        }
       }
     }
 

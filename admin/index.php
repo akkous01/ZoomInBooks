@@ -38,10 +38,17 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <script src="assets/js/dataTables.js"></script>
 
 
@@ -83,19 +90,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <!-- Wrapper -->
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Λίστα Βιλίων -->
-        <!--<section id="intro" class="wrapper style1 fullscreen fade-up">-->
-        <!--<div class="inner">-->
-        <!--<h1>Hyperspace</h1>-->
-        <!--<p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br />-->
-        <!--and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>-->
-        <!--<ul class="actions">-->
-        <!--<li><a href="#one" class="button scrolly">Learn more</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</section>-->
+
     <section id="list_of_books" class="list_of_books">
         <!-- <header> -->
             <h1 class="major">Αποθηκευμένα Βιβλία</h1>
@@ -356,6 +353,27 @@ if (session_status() == PHP_SESSION_NONE) {
              </section>
 		</div>
     </section>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="keyword_meaning">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title">Προσθήκη Σιμασίας Λέξης Κλειδί</h4>
+        <h4 id="name_of_check_keyword"></h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" style="display:none" name="keyword_open" id="keyword_open" />
+        <textarea name="meaning_content" id="meaning_content" rows="4" value=""></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary small" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary small" onclick="save_meaning();">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- 
@@ -375,7 +393,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#select_category_2').on('change', load_subcategories);
@@ -394,6 +412,18 @@ if (session_status() == PHP_SESSION_NONE) {
                 $(hide).css({'display':'block'});
             }
 
+        });
+
+        $(".keywords_checkbox").change(function(){
+            if(this.checked){
+                var name = "label[for='";
+                var id = $(this).attr("id");
+                name = name + id + "']";
+                $("#name_of_check_keyword").text($(name).text());
+                $("#keyword_open").val(id);
+
+                $("#keyword_meaning").modal('show');
+            }
         });
     });
 
@@ -429,6 +459,18 @@ if (session_status() == PHP_SESSION_NONE) {
                 alert(textStatus);
             }
         });
+    }
+
+    function save_meaning(){
+        var meaning = $('#meaning_content').val();
+        var key_id= $('#keyword_open').val();
+        $('#meaning_content').val('');
+        $('#keyword_open').val('');
+
+        var input_id = "#M"+key_id;
+        $(input_id).val(meaning);
+        $(input_id).show();
+        $("#keyword_meaning").modal('hide');
     }
    
 </script>
