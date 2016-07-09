@@ -178,9 +178,7 @@ $(document).ready(
 	        	$("#epipleon_box").hide();
 	        	$("#gramatiki_box").hide();
 	        	$("#analisi_box").hide();
-	   
-	        	
-	    	}
+	  	    	}
 	    );
 
    		 $("#epipleon_tab").click(

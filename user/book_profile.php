@@ -51,6 +51,10 @@
 
     </div>
     <div id="show_image">
+	    <div id="title_area">
+	    	<div class="title_div" style="width:15%;margin-left:1%"><h4>Τίτλος</h4></div>
+        	<div class="data_div" style="width:95%;margin-left:1%"><h4><?php echo $Title?></h4></div>
+	    </div>
       <div id="image_area">
         <?php echo '<img class="big_img" id="big_cover_img" src="../Database/Covers/'. $Cover.'"/>';?>
         <?php echo '<img class="big_img" style="display:none" id="big_back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
@@ -66,8 +70,7 @@
     </div>
     <div id="main_characteristics">
       <div id="main_characteristics_top">
-        <div class="title_div" style="width:15%;margin-left:42%"><h4>Τίτλος</h4></div>
-        <div class="data_div" style="width:80%;margin-left:10%"><h4><?php echo $Title?></h4></div>
+        
         <table class="main_characteristics_table">
           <tr>
             <td>
@@ -174,11 +177,13 @@
     </div>
   </div>
 
-  <div id="ithiki_box" class="categories_box"><?php echo $ithiki?></div>
-  <div id="sindesi_box" class="categories_box" style="display:none;"><?php echo $sindesi?></div>
-  <div id="epipleon_box" class="categories_box" style="display:none;"><?php echo $epipleon?></div>
-  <div id="gramatiki_box" class="categories_box" style="display:none;"><?php echo $gramatiki?></div>
-  <div id="analisi_box" class="categories_box" style="display:none;"><?php echo $analisi?></div>
+  <!-- <div class="categories_border"> -->
+	  <div id="ithiki_box" class="categories_box" style="background-color:#D4A6E0"><?php echo $ithiki?></div>
+	  <div id="sindesi_box" class="categories_box" style="display:none;background-color:#FFB3B3"><?php echo $sindesi?></div>
+	  <div id="epipleon_box" class="categories_box" style="display:none;background-color:#87D4FF"><?php echo $epipleon?></div>
+	  <div id="gramatiki_box" class="categories_box" style="display:none;background-color:#86E886"><?php echo $gramatiki?></div>
+	  <div id="analisi_box" class="categories_box" style="display:none;background-color:#FFBA4C"><?php echo $analisi?></div>
+  <!-- </div> -->
 
 
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
