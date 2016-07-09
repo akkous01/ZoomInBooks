@@ -170,9 +170,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
-    $error ="Error in Back Cover img.";
-    header("Location: ../messages/fail.php?error=".$error);
-    exit();
+    $Back_cover = "";
+
   } else {
   	$target_dir = '../../Database/Back_Covers/'; // upload directory
     $target_file = $target_dir . basename($_FILES["Back_cover"]["name"]);
@@ -274,4 +273,5 @@ function test_input($data) {
 
 <!-- UPLOAD FILE MYSQL PHP -->
 <!-- http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
+
  -->
