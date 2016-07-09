@@ -102,8 +102,8 @@ if (session_status() == PHP_SESSION_NONE) {
                 <thead>
                 <tr>
                     <th>BookId</th>
-                    <th>Title</th>
                     <th>ISBN</th>
+                    <th>Title</th>
                     <th>Writer</th>
                     <th>Illustrator</th>
                     <th>Publisher</th>
@@ -208,7 +208,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="18u$ 12u$(xsmall)">
-                        <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Back_cover" required/>
+                        <h4>Οπισθόφυλλο</h4><input type="file" name="Back_cover" id="Back_cover"/>
                     </div>
 
                     <div class="12u$"><hr><h3>Κατηγορίες</h3><hr></div>
@@ -314,10 +314,14 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <h1 class="major">Προσθήκη Ανακοίνωσης</h1>
             <section>
-                <form method="post" action="add_elements/new_announcement.php">
+                <form method="post" action="add_elements/new_announcement.php" enctype="multipart/form-data">
                     <div class="row uniform">
                     	<div class="12u$">
-                            <textarea name="announcement_content" id="announcement_content" rows="4" value=""></textarea>
+                            <textarea name="announcement_content" id="announcement_content" rows="4" value="" required=""></textarea>
+                        </div>
+                        <div class="18u$ 12u$(xsmall)">
+                            <h4>Εικόνα για την ανακοίνωση</h4>
+                            <input type="file" name="announcement_photo" id="announcement_photo"  required="" />
                         </div>
                          <div class="12u$">
                             <ul class="actions">
@@ -335,13 +339,18 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <h1 class="major">Προσθήκη στο Blog</h1>
             <section>
-                <form method="post" action="add_elements/new_blog.php">
+                <form method="post" action="add_elements/new_blog.php" enctype="multipart/form-data">
                     <div class="row uniform">
                     	<div class="6u$ 12u$(xsmall)">
                         	<h4>Τίτλος</h4><input type="text" name="blog_title" id="blog_title" value="" required />
                     	</div>
+                        
                         <div class="12u$">
                             <textarea name="blog_content" id="blog_content" rows="6" value=""></textarea>
+                        </div>
+                        <div class="18u$ 12u$(xsmall)">
+                            <h4>Εικόνα για το blog</h4>
+                            <input type="file" name="blog_photo" id="blog_photo"/>
                         </div>
                          <div class="12u$">
                             <ul class="actions">
@@ -349,6 +358,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </ul>
                         </div>
                     </div>
+
                 </form>
              </section>
 		</div>
@@ -396,6 +406,11 @@ if (session_status() == PHP_SESSION_NONE) {
 <script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+
+        // $('#keyword_meaning').on('shown.bs.modal', function(e) { $("#sidebar").css({position:'absolute'});})
+        $('#keyword_meaning').on('hidden.bs.modal', function(e) { $("#sidebar").css({position:'fixed'});})
+
+
         $('#select_category_2').on('change', load_subcategories);
 
 
@@ -421,7 +436,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 name = name + id + "']";
                 $("#name_of_check_keyword").text($(name).text());
                 $("#keyword_open").val(id);
-
+                $("#sidebar").css({position:'absolute'});
                 $("#keyword_meaning").modal('show');
             }
         });

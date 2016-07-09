@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if (empty($_FILES["Back_cover"]["name"])){
-    $Back_cover = $_POST['same_ back_cover'];
+    $Back_cover = $_POST['same_back_cover'];
   } else {
   	$target_dir = '../../Database/Back_Covers/'; // upload directory
     $target_file = $target_dir . basename($_FILES["Back_cover"]["name"]);
@@ -233,6 +233,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_book_query = $conn->prepare("UPDATE books SET ISBN='{$ISBN}', Title='{$Title}', Writer='{$Writer}', Illustrator='{$Illustrator}', Publisher = '{$Publisher}', Pages='{$Pages}', Persentage_of_images='{$Persentage_of_images}', Min_age_no_read='{$Min_age_no_read}', Min_age_read = '{$Min_age_read}',For_parents = '{$For_parents}', Cover = '{$Cover}', Back_cover = '{$Back_cover}', Link = '{$Link}', Price = '{$Price}', Hard_copy = '{$Hard_copy}', E_book = '{$E_book}', Audio_book = '{$Audio_book}', Curriculum = '{$Curriculum}', Show_to_user = '{$Show_to_user}' WHERE Book_id = '{$book_id}' ");
     $new_book_query->execute();
 
+    $delete_book_keywords_meaning_query = $conn->prepare("DELETE FROM books_keywords_meaning WHERE Book_id='{$book_id}'");
+    $delete_book_keywords_meaning_query -> execute();
+
     $delete_book_keywords_query = $conn->prepare("DELETE FROM books_keywords WHERE Book_id='{$book_id}'");
     $delete_book_keywords_query -> execute();
 
@@ -249,6 +252,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (!empty($_POST['K'.$i])){
         $books_keywords_query = $conn->prepare("INSERT INTO books_keywords (Book_id, Keyword_id) VALUES ('{$book_id}','{$i}')");
         $books_keywords_query->execute();
+        if(!empty($_POST['MK'.$i])){
+          $meaning = $_POST['MK'.$i];
+          $meaning_books_keywords_query = $conn->prepare("INSERT INTO books_keywords_meaning (Book_id, Keyword_id, Meaning_content) VALUES ('{$book_id}','{$i}','{$meaning}')");
+          $meaning_books_keywords_query->execute();
+        }
       }
     }
 

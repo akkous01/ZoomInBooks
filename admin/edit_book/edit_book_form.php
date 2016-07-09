@@ -14,8 +14,13 @@ $book_query->execute();
 $book_keywards_query = $conn->prepare("SELECT * FROM `books_keywords` WHERE Book_id=".$_SESSION['book_id'].";");
 $book_keywards_query->execute();
 
+$books_keywords_meaning_query = $conn->prepare("SELECT * FROM `books_keywords_meaning` WHERE Book_id=".$_SESSION['book_id'].";");
+$books_keywords_meaning_query->execute();
+
+
 $book= $book_query->fetchAll(PDO::FETCH_ASSOC);
 $book_keywards= $book_keywards_query->fetchAll(PDO::FETCH_ASSOC);
+$books_keywords_meaning = $books_keywords_meaning_query->fetchAll(PDO::FETCH_ASSOC);
 $book=$book[0] ;
 if(!$book){
     print("error");
@@ -58,6 +63,8 @@ if($book['Show_to_user'] == 1){
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="../assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
@@ -203,7 +210,7 @@ if($book['Show_to_user'] == 1){
                 <input type="button" class="button special small" id="change_back_cover" value="Αλλαγή Πισθοφύλλου"/>
                 </div>
                 <div class="18u$ 12u$(xsmall)" id="upload_back_cover" style="display:none">
-                    <h4>Οπισθόφυλλο * </h4><input type="file" name="Back_cover" id="Back_cover" value="<?php echo $book['Back_cover'] ?>" />
+                    <h4>Οπισθόφυλλο</h4><input type="file" name="Back_cover" id="Back_cover" value="<?php echo $book['Back_cover'] ?>" />
                 </div>
 
 
@@ -212,6 +219,11 @@ if($book['Show_to_user'] == 1){
                 for($i=0;$i<count($book_keywards);$i++){
                     echo "<script>$('#K".$book_keywards[$i]['Keyword_id']."').prop('checked', true);</script>";
                 }
+
+                for ($i =0 ; $i<count($books_keywords_meaning); $i++){
+                     echo "<script>$('#MK".$books_keywords_meaning[$i]['Keyword_id']."').val('".$books_keywords_meaning[$i]['Meaning_content']."'); $('#MK".$books_keywords_meaning[$i]['Keyword_id']."').show();</script>";
+                }
+
                 ?>
 
                 <div class="12u$ 12u$(xsmall)">
@@ -242,6 +254,25 @@ if($book['Show_to_user'] == 1){
 
 </div>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="keyword_meaning">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title">Προσθήκη Σιμασίας Λέξης Κλειδί</h4>
+        <h4 id="name_of_check_keyword"></h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" style="display:none" name="keyword_open" id="keyword_open" />
+        <textarea name="meaning_content" id="meaning_content" rows="4" value=""></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary small" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary small" onclick="save_meaning();">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- Scripts -->
 <script src="../assets/js/jquery.min.js"></script>
@@ -251,9 +282,25 @@ if($book['Show_to_user'] == 1){
 <script src="../assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+  $(document).ready(function() {
+
+
+
+        $(".keywords_checkbox").change(function(){
+            if(this.checked){
+                var name = "label[for='";
+                var id = $(this).attr("id");
+                name = name + id + "']";
+                $("#name_of_check_keyword").text($(name).text());
+                $("#keyword_open").val(id);
+                $("#keyword_meaning").modal('show');
+            }
+        });
+    });
+
      function loadSubCategories(){
         var selected = 1;
         $.ajax({
@@ -270,6 +317,19 @@ if($book['Show_to_user'] == 1){
             }
         });
     }
+
+    function save_meaning(){
+        var meaning = $('#meaning_content').val();
+        var key_id= $('#keyword_open').val();
+        $('#meaning_content').val('');
+        $('#keyword_open').val('');
+
+        var input_id = "#M"+key_id;
+        $(input_id).val(meaning);
+        $(input_id).show();
+        $("#keyword_meaning").modal('hide');
+    }
+
     $(".collapse_sub_categories").click(function () {
         $("#collapse_"+$(this).attr('id')).toggle();
         hide="#hide_"+$(this).attr('id');
