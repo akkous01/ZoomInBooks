@@ -7,24 +7,40 @@
  */
 include "../Database/MySqlConnect.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//    print_r($_POST);
+
+// set variables ////////////////////////////////////////////////////////////////////
+
+    $title=$_POST['title'];
+    $writer=$_POST['writer'];
+    $age=$_POST['age'];
+    $percentage_of_images=$_POST['percentage_of_images'];
+    $theme_id=$_POST['theme'];
+    $theme=array(6);
+    for($j=0;$j<6;$j++){
+        $theme[$j]="";
+    }
+    $theme[$theme_id-1]="selected";
+    $keywords=array();
     $list_of_keywords="";
     foreach ($_POST as $key => $value):
         $keyword=substr($key, 0,-1);
         if(strcmp ( $keyword , 'keyword' )==0){
+            array_push($keywords,$value);
             $list_of_keywords=$list_of_keywords." keywords.Name_of_keyword='".$value."' or ";
         }
     endforeach;
     $list_of_keywords=substr($list_of_keywords, 0,-5);
 
-    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE books.Title='".$_POST['title']."' OR books.Writer='".$_POST['writer']."'");
+//queries //////////////////////////////////////////////
+
+    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE books.Title='".$title."' OR books.Writer='".$writer."'");
     $book_query->execute();
     $books_step_1 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_1 ) ;
 
 
-    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE  books.Min_age_no_read='".$_POST['age']."'
-OR books.Min_age_read='".$_POST['age']."'OR books.Persentage_of_images='".$_POST['percentage_of_images']."'");
+    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE  books.Min_age_no_read='".$age."'
+OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_images."'");
     $book_query->execute();
     $books_step_2 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_2 ) ;
@@ -35,28 +51,39 @@ WHERE  ".$list_of_keywords."' ") ;
     $book_query->execute();
     $books_step_3 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_3 ) ;
-
-    $book_query=$conn->prepare("SELECT  DISTINCT   books.Book_id
+    if ($theme_id==6){
+        $book_query=$conn->prepare("SELECT  DISTINCT   books.Book_id
                                 FROM       books
                                 INNER JOIN books_keywords ON books.Book_id = books_keywords.Book_id
                                 INNER JOIN keywords ON keywords.Keyword_id = books_keywords.Keyword_id
                                 INNER JOIN subcategories ON subcategories.Subcategory_id = keywords.Subcategory_id
                                 INNER JOIN categories ON categories.Category_id = subcategories.Category_id
-                                WHERE     categories.Category_id='".$_POST['theme']."'");
+                               ");
+    }else {
+        $book_query = $conn->prepare("SELECT  DISTINCT   books.Book_id
+                                FROM       books
+                                INNER JOIN books_keywords ON books.Book_id = books_keywords.Book_id
+                                INNER JOIN keywords ON keywords.Keyword_id = books_keywords.Keyword_id
+                                INNER JOIN subcategories ON subcategories.Subcategory_id = keywords.Subcategory_id
+                                INNER JOIN categories ON categories.Category_id = subcategories.Category_id
+                                WHERE     categories.Category_id='" . $theme_id . "'");
+    }
     $book_query->execute();
     $books_step_4 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_4 ) ;
 
+// create variable /////////////////////////////////////////////////////////////////
     $list_of_books_Id=array_merge ($books_step_1 ,$books_step_2, $books_step_3,$books_step_4 );
     $list_of_books=array();
     for($i=0;$i<count($list_of_books_Id);$i++){
         array_push($list_of_books,$list_of_books_Id[$i]['Book_id']);
     }
     $list_of_books=array_unique($list_of_books);
+
     $books="";
     $mark=array();
     $index=0;
-    foreach ($list_of_books as $index=>$book_id):
+    foreach ($list_of_books as $index_of_table=>$book_id):
         for($j=0;$j<5;$j++) {
             $mark[$j]="none' name='0'";
         }
@@ -67,6 +94,7 @@ WHERE  ".$list_of_keywords."' ") ;
                                 INNER JOIN subcategories ON subcategories.Subcategory_id = keywords.Subcategory_id
                                 INNER JOIN categories ON categories.Category_id = subcategories.Category_id
                                 WHERE     books.Book_id='".$book_id."'");
+
         $book_query->execute();
         $books_results = $book_query->fetchAll(PDO::FETCH_ASSOC);
         $categories=array();
@@ -77,6 +105,7 @@ WHERE  ".$list_of_keywords."' ") ;
         for($j=0;$j<count($categories);$j++){
             $mark[$categories[$j]-1]="block' name='1'";
         }
+
         if($index%3==0){$books=$books. "<div class='row'>"."\n";}
 
         $books=$books. "<div class='column'>
@@ -89,11 +118,11 @@ WHERE  ".$list_of_keywords."' ") ;
                                                     <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>
                                                 </div>
                                                 <div id='mark_area'>
-                                                      <img class='mark_img' src='images/mark-1-1.png' style='display:".$mark[0]."/>
-                                                      <img class='mark_img' src='images/mark-1-2.png' style='display:".$mark[1]."/>
-                                                      <img class='mark_img' src='images/mark-1-3.png' style='display:".$mark[2]."/>
-                                                      <img class='mark_img' src='images/mark-1-4.png' style='display:".$mark[3]."/>
-                                                      <img class='mark_img' src='images/mark-1-5.png' style='display:".$mark[4]."/>
+                                                      <img class='mark_img' id='m_".$value['Book_id']."_1' src='images/mark-1-1.png' style='display:".$mark[0]."/>
+                                                      <img class='mark_img' id='m_".$value['Book_id']."_2' src='images/mark-1-2.png' style='display:".$mark[1]."/>
+                                                      <img class='mark_img' id='m_".$value['Book_id']."_3' src='images/mark-1-3.png' style='display:".$mark[2]."/>
+                                                      <img class='mark_img' id='m_".$value['Book_id']."_4' src='images/mark-1-4.png' style='display:".$mark[3]."/>
+                                                      <img class='mark_img' id='m_".$value['Book_id']."_5' src='images/mark-1-5.png' style='display:".$mark[4]."/>
                                                 </div>
                                              </div>
                                             <div id='more_button'>
@@ -105,7 +134,7 @@ WHERE  ".$list_of_keywords."' ") ;
                                     </div>"."\n";
         if(($index+1)%3==0){$books=$books. "</div>"."\n";}
 
-        $i++;
+        $index++;
     endforeach;
 
 }

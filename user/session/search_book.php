@@ -1,38 +1,46 @@
 <?php 
 
 session_start();
-// $book_id = $_SESSION["book_id"];
-$book_id = 10;
+if(isset($_GET['submit'])) {
+	$_SESSION["book_id"] = $_GET['book_id'];
+	$_SESSION["ithiki"] = $_GET['ithiki'];
+	$_SESSION["sindesi"] = $_GET['sindesi'];
+	$_SESSION["epipleon"] = $_GET['epipleon'];
+	$_SESSION["gramatiki"] = $_GET['gramatiki'];
+	$_SESSION["analisi"] = $_GET['analisi'];
+	echo $_SESSION['book_id'] . " " . $_SESSION['ithiki'] . " " . $_SESSION['sindesi'] . " " . $_SESSION['epipleon'] . " " . $_SESSION['gramatiki'] . " " . $_SESSION['analisi'] ;
+}
 
+$book_id = $_SESSION["book_id"];
 $mark1 = $mark2 = $mark3 = $mark4 = $mark5 = ""; 
 $tab1 = $tab2 = $tab3 = $tab4 = $tab5 = "";
 
-// $tab4 = "style='display:none'";
-// $tab2 = "style='display:none'";
+ $tab4 = "style='display:none'";
+ $tab2 = "style='display:none'";
 
-// $mark4 = "style='display:none'";
-// $mark2 = "style='display:none'";
+ $mark4 = "style='display:none'";
+ $mark2 = "style='display:none'";
 
-// if($_SESSION["ithiki"] == 0){
-// 	$mark1 = "style='display:none'";
-// 	$tab1 = "style='display:none'";
-// }
-// if($_SESSION["sindesi"] == 0){
-// 	$mark2 = "style='display:none'";
-// 	$tab2 = "style='display:none'";	
-// }
-// if($_SESSION["epipleon"] == 0){
-// 	$mark3 = "style='display:none'";
-// 	$tab3 = "style='display:none'";
-// }
-// if($_SESSION["gramatiki"] == 0){
-// 	$mark4 = "style='display:none'";
-// 	$tab4 = "style='display:none'";
-// }
-// if($_SESSION["analisi"] == 0){
-// 	$mark5 = "style='display:none'";
-// 	$tab5 = "style='display:none'";
-// }
+ if($_SESSION["ithiki"] == 0){
+ 	$mark1 = "style='display:none'";
+ 	$tab1 = "style='display:none'";
+ }
+ if($_SESSION["sindesi"] == 0){
+ 	$mark2 = "style='display:none'";
+ 	$tab2 = "style='display:none'";
+ }
+ if($_SESSION["epipleon"] == 0){
+ 	$mark3 = "style='display:none'";
+ 	$tab3 = "style='display:none'";
+ }
+ if($_SESSION["gramatiki"] == 0){
+ 	$mark4 = "style='display:none'";
+ 	$tab4 = "style='display:none'";
+ }
+ if($_SESSION["analisi"] == 0){
+ 	$mark5 = "style='display:none'";
+ 	$tab5 = "style='display:none'";
+ }
 
 include "../Database/MySqlConnect.php";
 

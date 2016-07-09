@@ -5,7 +5,7 @@ include_once "session/load_data_from_database.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,14 +35,14 @@ include_once "session/load_data_from_database.php";
 
   <header>
     <ul class="my_nav">
-        <li><a href="#"><img src="images/navbar/1_HomePage.png"></a></li>
-        <li><a href="#"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
-        <li><a href="#"><img src="images/navbar/3_Blog.png"></a></li>
-        <li><a href="#"><img src="images/navbar/4_Communicate.png"></a></li>
-        <li><a href="#"><img src="images/navbar/5_LogIn.png"></a></li>
-        <li><a href="#"><img src="images/navbar/6_CreateAccount.png"></a></li>
-        <li><a href="#"><img src="images/navbar/7_Gallery.png"></a></li>
-        <li><a href="#"><img src="images/navbar/8_ZoomIn.png"></a></li>
+        <li><a href="index.php"><img src="images/navbar/1_HomePage.png"></a></li>
+        <li><a href="phylosophy.php"><img src="images/navbar/2_OurPhilosophy.png"></a></li>
+        <li><a href="blog.php"><img src="images/navbar/3_Blog.png"></a></li>
+        <li><a href="contact.php"><img src="images/navbar/4_Communicate.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/5_LogIn.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/6_CreateAccount.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/7_Gallery.png"></a></li>
+        <li><a href="under_construction.php"><img src="images/navbar/8_ZoomIn.png"></a></li>
     </ul>
   </header>
 
@@ -53,23 +53,24 @@ include_once "session/load_data_from_database.php";
 
                 <div class="form-group ">
                     <label for="title">ΤΙΤΛΟΣ ΒΙΒΛΙΟΥ:</label>
-                    <input type="text" class="form-control input-sm" id="title" name="title">
+                    <input type="text" class="form-control input-sm" id="title" name="title" value="<?php echo $title;?>">
                 </div>
                 <div class="form-group ">
                     <label for="theme">ΘΕΜΑ:</label>
                     <select class="form-control input-sm" id="theme" name="theme">
-                        <option value="1">Ηθικά/ Πνευματικά μηνυματα</option>
-                        <option value="2">Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
-                        <option value="3">Γραμματική – Σύνταξη – Λεξιλόγιο</option>
-                        <option value="4">Σύνδεση με διάφορα άλλα θέματα</option>
-                        <option value="5">Επιπλέον χαρακτηριστικά</option>
+                        <option value="1" <?php echo $theme[0];?>>Ηθικά/ Πνευματικά μηνυματα</option>
+                        <option value="2" <?php echo $theme[1];?>>Ανάλυση-κατανόηση και παραγωγή γραπτού λόγου / Σκέφτομαι και Γράφω </option>
+                        <option value="3" <?php echo $theme[2];?>>Γραμματική – Σύνταξη – Λεξιλόγιο</option>
+                        <option value="4" <?php echo $theme[3];?>>Σύνδεση με διάφορα άλλα θέματα</option>
+                        <option value="5" <?php echo $theme[4];?>>Επιπλέον χαρακτηριστικά</option>
+                        <option value="6" <?php echo $theme[5];?>>Όλες οι Κατηγορίες</option>
 
                     </select>
                 </div>
 
                 <div class="form-group ">
                     <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
-                    <input type="text" class="form-control input-sm" id="writer" name="writer">
+                    <input type="text" class="form-control input-sm" id="writer" name="writer" value="<?php echo $writer;?>">
                 </div>
                 <div class="form-group search2_div" id="all_keywards">
                     <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
@@ -84,11 +85,11 @@ include_once "session/load_data_from_database.php";
             <div id="down_box">
                 <div class="form-group ">
                     <label for="percentage_of_images">ΑΝΑΛΟΓΙΑ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
-                    <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
+                    <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" value="<?php echo $percentage_of_images;?>">
                 </div>
                 <div class="form-group ">
                     <label for="age">ΗΛΙΚΙΑ:</label>
-                    <input type="number" class="form-control input-sm" id="age" name="age">
+                    <input type="number" class="form-control input-sm" id="age" name="age" value="<?php echo $age;?>">
                 </div>
                 <div class="form-group ">
                     <label for="price">ΤΙΜΗ:</label>
@@ -116,17 +117,28 @@ include_once "session/load_data_from_database.php";
       <script type="text/javascript" src="js/index.js"></script>
 
       <script>
-//          $( document ).ready(function() {
-//              $(".search_book").click(function(){
-//                  $.get("session/search_book.php",
-//                      {book_id:$tds[0].innerText,
-//                          /////////////////////////////////////////
-//                          submit:'true'},
-//                      function(data, textStatus, jqXHR)
-//                      {
-//                          window.open("edit_book/edit_book_form.php");
-//                      });
-//              });
+          $( document ).ready(function() {
+              $(".search_book").click(function(){
+                  var book_id=$(this).attr('id').split("_")[1];
+                  var ithiki=$("#m_"+book_id+"_1").attr('name');
+                  var sindesi=$("#m_"+book_id+"_2").attr('name');
+                  var epipleon=$("#m_"+book_id+"_3").attr('name');
+                  var gramatiki=$("#m_"+book_id+"_4").attr('name');
+                  var analisi=$("#m_"+book_id+"_5").attr('name');
+
+                  $.get("session/search_book.php",
+                      {book_id:book_id,
+                          ithiki:ithiki,
+                          sindesi:sindesi,
+                          epipleon:epipleon,
+                          gramatiki:gramatiki,
+                          analisi:analisi,
+                          submit:'true'},
+                      function(data, textStatus, jqXHR)
+                      {
+                          window.open("book_profile.php");
+                      });
+              });
 
               $('#title').typeahead({
                   local: <?php echo $titles;?>
@@ -146,7 +158,7 @@ include_once "session/load_data_from_database.php";
 //              });
 //
               $('.tt-query').css('background-color','#fff');
-
+              
           });
       </script>
 </body>
