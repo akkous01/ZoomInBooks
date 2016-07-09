@@ -9,12 +9,12 @@ include "../Database/MySqlConnect.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // set variables ////////////////////////////////////////////////////////////////////
-
     $title=$_POST['title'];
     $writer=$_POST['writer'];
     $age=$_POST['age'];
     $percentage_of_images=$_POST['percentage_of_images'];
     $theme_id=$_POST['theme'];
+    $price=explode("-", $_POST['amount']);
     $theme=array(6);
     for($j=0;$j<6;$j++){
         $theme[$j]="";
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE  books.Min_age_no_read='".$age."'
-OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_images."'");
+OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_images."' OR (books.Price>'".$price[0]."' AND books.Price<'".$price[1]."')");
     $book_query->execute();
     $books_step_2 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_2 ) ;

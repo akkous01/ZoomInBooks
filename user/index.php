@@ -86,7 +86,7 @@ queries -->
                             <input type="number" class="form-control input-sm" id="age" name="age">
                         </div>
                         <div class="form-group">
-                            <label for="percentage_of_images">ΠΟΣΟΣΤΟ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
+                            <label for="percentage_of_images">ΑΝΑΛΟΓΙΑ ΕΙΚΟΝΑΣ/ΓΡΑΠΤΟΥ:</label>
                             <input type="number" class="form-control input-sm" id="percentage_of_images" name="percentage_of_images" placeholder="--%">
                         </div>
                         <div class="form-group" id="all_keywards">
@@ -105,7 +105,7 @@ queries -->
 
                     </div>
                     <div id="search_footer">
-                        <button id="search_submit" type="submit" class="btn btn-info btn-sm">Search</button>
+                        <button id="search_submit" type="submit" class="btn btn-info btn-sm">Ψάξε στα <?php echo count($book);?> Βιβλία ...</button>
                     </div>
 
                 </div>
@@ -188,7 +188,7 @@ queries -->
      
       <script>
           $( document ).ready(function() {
-              
+
 
               $('#title').typeahead({
                   local: <?php echo $titles;?>

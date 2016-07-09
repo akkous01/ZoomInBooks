@@ -97,7 +97,7 @@ include_once "session/load_data_from_database.php";
                     <div id="slider-range"></div>
                 </div>
                 <div id="search_button">
-                    <button id="search_submit" type="submit" class="btn btn-info btn-sm">Search</button>
+                    <button id="search_submit" type="submit" class="btn btn-info btn-sm">Ψάξε Ξανά ...</button>
                 </div>
             </div>
           </form>
@@ -158,7 +158,7 @@ include_once "session/load_data_from_database.php";
 //              });
 //
               $('.tt-query').css('background-color','#fff');
-              
+              $('header').css('z-index','1');
           });
       </script>
 </body>
