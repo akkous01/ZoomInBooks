@@ -15,11 +15,11 @@ $book_id = $_SESSION["book_id"];
 $mark1 = $mark2 = $mark3 = $mark4 = $mark5 = ""; 
 $tab1 = $tab2 = $tab3 = $tab4 = $tab5 = "";
 
- $tab4 = "style='display:none'";
- $tab2 = "style='display:none'";
+ // $tab4 = "style='display:none'";
+ // $tab2 = "style='display:none'";
 
- $mark4 = "style='display:none'";
- $mark2 = "style='display:none'";
+ // $mark4 = "style='display:none'";
+ // $mark2 = "style='display:none'";
 
  if($_SESSION["ithiki"] == 0){
  	$mark1 = "style='display:none'";
@@ -123,7 +123,7 @@ $ithiki = "<div class='keywords_area'>";
 $prev_sub = 0;
 for($i=0 ; $i < count($ithiki_data) ; $i++){
 	if($prev_sub != (int)$ithiki_data[$i]['Subcategory_id']){
-		$ithiki .= "<h3 style='color:#D4A6E0'>".$ithiki_data[$i]['Name_of_subcategory']."</h3>";
+		$ithiki .= "<h3 style='color:black'>".$ithiki_data[$i]['Name_of_subcategory']."</h3>";
 	}
 	$ithiki .= "<h4>".$ithiki_data[$i]['Name_of_keyword']."</h4>";
 
@@ -144,7 +144,7 @@ $sindesi = "<div class='keywords_area'>";
 $prev_sub = 0;
 for($i=0 ; $i < count($sindesi_data) ; $i++){
 	if($prev_sub != (int)$sindesi_data[$i]['Subcategory_id']){
-		$sindesi .= "<h3 style='color:#FFB3B3'>".$sindesi_data[$i]['Name_of_subcategory']."</h3>";
+		$sindesi .= "<h3 style='color:black'>".$sindesi_data[$i]['Name_of_subcategory']."</h3>";
 	}
 	$sindesi .= "<h4>".$sindesi_data[$i]['Name_of_keyword']."</h4>";
 
@@ -166,7 +166,7 @@ $epipleon = "<div class='keywords_area'>";
 $prev_sub = 0;
 for($i=0 ; $i < count($epipleon_data) ; $i++){
 	if($prev_sub != (int)$epipleon_data[$i]['Subcategory_id']){
-		$epipleon .= "<h3 style='color:#87D4FF'>".$epipleon_data[$i]['Name_of_subcategory']."</h3>";
+		$epipleon .= "<h3 style='color:black'>".$epipleon_data[$i]['Name_of_subcategory']."</h3>";
 	}
 	$epipleon .= "<h4>".$epipleon_data[$i]['Name_of_keyword']."</h4>";
 
@@ -187,7 +187,7 @@ $gramatiki = "<div class='keywords_area'>";
 $prev_sub = 0;
 for($i=0 ; $i < count($gramatiki_data) ; $i++){
 	if($prev_sub != (int)$gramatiki_data[$i]['Subcategory_id']){
-		$gramatiki .= "<h3 style='color:#86E886'>".$gramatiki_data[$i]['Name_of_subcategory']."</h3>";
+		$gramatiki .= "<h3 style='color:black'>".$gramatiki_data[$i]['Name_of_subcategory']."</h3>";
 	}
 	$gramatiki .= "<h4>".$gramatiki_data[$i]['Name_of_keyword']."</h4>";
 
@@ -207,7 +207,7 @@ $analisi = "<div class='keywords_area'>";
 $prev_sub = 0;
 for($i=0 ; $i < count($analisi_data) ; $i++){
 	if($prev_sub != (int)$analisi_data[$i]['Subcategory_id']){
-		$analisi .= "<h3 style='color:#FFBA4C'>".$analisi_data[$i]['Name_of_subcategory']."</h3>";
+		$analisi .= "<h3 style='color:black'>".$analisi_data[$i]['Name_of_subcategory']."</h3>";
 	}
 	$analisi .= "<h4>".$analisi_data[$i]['Name_of_keyword']."</h4>";
 
