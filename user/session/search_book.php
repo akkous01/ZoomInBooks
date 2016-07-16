@@ -115,6 +115,10 @@ if($Back_cover == ""){
 }
 
 
+$meanings_queries = $conn->prepare("SELECT * FROM books_keywords_meaning a WHERE a.Book_id='{$book_id}' ORDER BY a.Keyword_id ");
+$meanings_queries->execute();
+$meaning = $meanings_queries->fetchAll(PDO::FETCH_ASSOC);
+
 $ithiki_query = $conn->prepare("SELECT b.Keyword_id, b.Name_of_keyword, c.Name_of_subcategory, c.Subcategory_id, d.Name_of_category FROM books_keywords a, keywords b, subcategories c, categories d WHERE a.Book_id='{$book_id}' AND a.Keyword_id = b.Keyword_id AND b.Subcategory_id = c.Subcategory_id AND C.Category_id = d.Category_id AND d.Category_id=1 ORDER BY c.Subcategory_id ");
 
 $ithiki_query->execute();
@@ -128,8 +132,15 @@ for($i=0 ; $i < count($ithiki_data) ; $i++){
 	if($prev_sub != (int)$ithiki_data[$i]['Subcategory_id']){
 		$ithiki .= "<h3 style='color:black'>".$ithiki_data[$i]['Name_of_subcategory']."</h3>";
 	}
-	$ithiki .= "<h4>".$ithiki_data[$i]['Name_of_keyword']."</h4>";
-
+	$ithiki .= "<h4>".$ithiki_data[$i]['Name_of_keyword'];
+	$Keyword_id = (int)$ithiki_data[$i]['Keyword_id'];
+	for($j=0  ; $j<count($meaning); $j++){
+		if((int)$meaning[$j]['Keyword_id'] == $Keyword_id){
+			$ithiki .= " (". $meaning[$j]['Meaning_content']. ")";
+			break;
+		}
+	}
+	$ithiki .= "</h4>"; 
 	$prev_sub = (int)$ithiki_data[$i]['Subcategory_id'];
 }
 
@@ -149,8 +160,15 @@ for($i=0 ; $i < count($sindesi_data) ; $i++){
 	if($prev_sub != (int)$sindesi_data[$i]['Subcategory_id']){
 		$sindesi .= "<h3 style='color:black'>".$sindesi_data[$i]['Name_of_subcategory']."</h3>";
 	}
-	$sindesi .= "<h4>".$sindesi_data[$i]['Name_of_keyword']."</h4>";
-
+	$sindesi .= "<h4>".$sindesi_data[$i]['Name_of_keyword'];
+	$Keyword_id = (int)$sindesi_data[$i]['Keyword_id'];
+	for($j=0  ; $j<count($meaning); $j++){
+		if((int)$meaning[$j]['Keyword_id'] == $Keyword_id){
+			$sindesi .= " (". $meaning[$j]['Meaning_content']. ")";
+			break;
+		}
+	}
+	$sindesi .= "</h4>"; 
 	$prev_sub = (int)$sindesi_data[$i]['Subcategory_id'];
 }
 
@@ -171,8 +189,15 @@ for($i=0 ; $i < count($epipleon_data) ; $i++){
 	if($prev_sub != (int)$epipleon_data[$i]['Subcategory_id']){
 		$epipleon .= "<h3 style='color:black'>".$epipleon_data[$i]['Name_of_subcategory']."</h3>";
 	}
-	$epipleon .= "<h4>".$epipleon_data[$i]['Name_of_keyword']."</h4>";
-
+	$epipleon .= "<h4>".$epipleon_data[$i]['Name_of_keyword'];
+	$Keyword_id = (int)$epipleon_data[$i]['Keyword_id'];
+	for($j=0  ; $j<count($meaning); $j++){
+		if((int)$meaning[$j]['Keyword_id'] == $Keyword_id){
+			$epipleon .= " (". $meaning[$j]['Meaning_content']. ")";
+			break;
+		}
+	}
+	$epipleon .= "</h4>"; 
 	$prev_sub = (int)$epipleon_data[$i]['Subcategory_id'];
 }
 
@@ -192,8 +217,15 @@ for($i=0 ; $i < count($gramatiki_data) ; $i++){
 	if($prev_sub != (int)$gramatiki_data[$i]['Subcategory_id']){
 		$gramatiki .= "<h3 style='color:black'>".$gramatiki_data[$i]['Name_of_subcategory']."</h3>";
 	}
-	$gramatiki .= "<h4>".$gramatiki_data[$i]['Name_of_keyword']."</h4>";
-
+	$gramatiki .= "<h4>".$gramatiki_data[$i]['Name_of_keyword'];
+	$Keyword_id = (int)$gramatiki_data[$i]['Keyword_id'];
+	for($j=0  ; $j<count($meaning); $j++){
+		if((int)$meaning[$j]['Keyword_id'] == $Keyword_id){
+			$gramatiki .= " (". $meaning[$j]['Meaning_content']. ")";
+			break;
+		}
+	}
+	$gramatiki .= "</h4>"; 
 	$prev_sub = (int)$gramatiki_data[$i]['Subcategory_id'];
 }
 
@@ -212,8 +244,15 @@ for($i=0 ; $i < count($analisi_data) ; $i++){
 	if($prev_sub != (int)$analisi_data[$i]['Subcategory_id']){
 		$analisi .= "<h3 style='color:black'>".$analisi_data[$i]['Name_of_subcategory']."</h3>";
 	}
-	$analisi .= "<h4>".$analisi_data[$i]['Name_of_keyword']."</h4>";
-
+	$analisi .= "<h4>".$analisi_data[$i]['Name_of_keyword'];
+	$Keyword_id = (int)$analisi_data[$i]['Keyword_id'];
+	for($j=0  ; $j<count($meaning); $j++){
+		if((int)$meaning[$j]['Keyword_id'] == $Keyword_id){
+			$analisi .= " (". $meaning[$j]['Meaning_content']. ")";
+			break;
+		}
+	}
+	$analisi .= "</h4>"; 
 	$prev_sub = (int)$analisi_data[$i]['Subcategory_id'];
 }
 

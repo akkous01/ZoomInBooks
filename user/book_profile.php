@@ -56,8 +56,8 @@
         	<div class="data_div" style="width:95%;margin-left:1%"><h4><?php echo $Title?></h4></div>
 	    </div>
       <div id="image_area">
-        <?php echo '<img class="big_img" id="big_cover_img" src="../Database/Covers/'. $Cover.'"/>';?>
-        <?php echo '<img class="big_img" style="display:none" id="big_back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
+        <?php echo '<img class="big_img" id="big_cover_img" alt= "'.$Title.'" src="../Database/Covers/'. $Cover.'"/>';?>
+        <?php echo '<img class="big_img" style="display:none" alt="'.$Title.'" id="big_back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
       </div>
       <div id="mark_area">
         <img class="mark_img" src="images/mark-1-1.png" <?php echo $mark1?>/>
@@ -74,20 +74,20 @@
         <table class="main_characteristics_table">
         <tr>
           <td>
-            <div class="title_div" style="width:30%;margin-left:3%">
+            <div class="title_div" style="width:20%;margin-left:3%">
               <h4>Συγγραφέας</h4>
             </div>
-            <div class="data_div" style="width:55%;margin-left:3%">
+            <div class="data_div" style="width:40%;margin-left:3%">
               <h4><?php echo $Writer?></h4>
             </div>
           </td>
         </tr>
         <tr>
           <td>
-              <div class="title_div" style="width:50%;margin-left:3%" >
+              <div class="title_div" style="width:20%;margin-left:3%" >
                 <h4>Εικονογράφος</h4>
               </div>
-              <div class="data_div" style="width:95%;margin-left:3%">
+              <div class="data_div" style="width:40%;margin-left:3%">
                 <h4><?php echo $Illustrator?></h4>
               </div>
             </td>
@@ -97,7 +97,7 @@
               <div class="title_div" style="width:30%;margin-left:3%">
                 <h4>Εκδόσεις</h4>
               </div>
-              <div class="data_div" style="width:95%;margin-left:3%">
+              <div class="data_div" style="width:60%;margin-left:3%">
                 <h4><?php echo $Publisher?></h4>
               </div>
           </td>
@@ -105,7 +105,7 @@
 
         <tr>
           <td>
-            <div class="title_div" style="width:20%;margin-left:3%" >
+            <div class="title_div" style="width:15%;margin-left:3%" >
               <h4>ISBN</h4>
             </div>
             <div class="data_div" style="width:50%;margin-left:3%">
@@ -116,37 +116,66 @@
 
         <tr>
           <td style="width:25%;" >
-            <div class="title_div" style="width:50%;margin-left:3%" >
+            <div class="title_div" style="width:25%;margin-left:3%" >
               <h4>Σελίδες</h4>
             </div>
-            <div class="data_div" style="width:40%;margin-left:3%"><h4>
+            <div class="data_div" style="width:10%;margin-left:3%"><h4>
               <?php echo $Pages?></h4>
             </div>
             </td>
         </tr>
           <td style="width:25%;">
-            <div class="title_div" style="width:40%;margin-left:3%" >
+            <div class="title_div" style="width:10%;margin-left:3%" >
               <h4>Τιμή</h4>
             </div>
-            <div class="data_div" style="width:50%;margin-left:3%">
+            <div class="data_div" style="width:12%;margin-left:3%">
               <h4><?php echo $Price -3 ;?> - <?php echo $Price +3 ;?>€</h4>
             </div>
           </td>
         <tr>
-        <tr>
+        
           <td>
-            <div class="title_div" style="width:70%;margin-left:3%" >
+            <div class="title_div" style="width:45%;margin-left:3%" >
               <h4>Αναλογία Εικόνων- Κειμένου</h4>
             </div>
-            <div class="data_div" style="width:20%;margin-left:3%">
+            <div class="data_div" style="width:15%;margin-left:3%">
               <h4><?php echo $Persentage_of_images?>:<?php echo 100-$Persentage_of_images?></h4>
             </div>
           </td>
         </tr>  
+        <tr>
+          <td style="width:30%;" >
+              <div class="title_div" style="width:15%;margin-left:3%" >
+                <h4> Ηλικία</h4>
+              </div>
+              <div class="data_div" style="width:20%;margin-left:3%">
+                <h4><?php echo $age?></h4>
+              </div>
+            </td>
         </tr>
+
+        <tr>
+          <td >
+              <div class="data_div" style="width:50%;margin-left:3%;<?php echo $parents_show?>"  >
+                <h4> <?php echo $parents?></h4>
+              </div>
+            </td>
+        </tr>
+        <tr>
+          <td style="width:100%">
+              <div class="title_div" style="width:12%;margin-left:3%" ><h4>Μορφή</h4></div>
+              <div class="data_div" style="width:50%;margin-left:3%"><h4><?php echo $morfi?></h4></div>
+            </td>
+        </tr>
+        <tr <?php echo $link_show?>>
+            <td style="width:100%">
+              <div class="title_div" style="width:12%;margin-left:3%" ><h4>Link</h4></div>
+              <div class="data_div" style="width:70%;margin-left:3%"><h4><?php echo $Link?></h4></div>
+            </td>
+          </tr>
         </table>
 
-        <table class="main_characteristics_table">
+<!--         <table class="main_characteristics_table">
           <tr>
             <td>
               <div class="title_div" style="width:40%;margin-left:3%"><h4>Συγγραφέας</h4></div>
@@ -214,13 +243,13 @@
               <div class="data_div_2" style="width:70%;margin-left:1%"><h4><?php echo $Link?></h4></div>
             </td>
           </tr>
-         <!--  <tr <?php echo $curriculum_show?>>
+          <tr <?php echo $curriculum_show?>>
             <td style="width:100%">
               <div class="title_div" style="width:70%;margin-left:1%" ><h4>Δραστηριότητες και Θέματα προς συζήτηση</h4></div>
               <div class="data_div" style="width:95%;margin-left:1%"><h4><?php echo $Curriculum?></h4></div>
             </td>
-          </tr> -->
-        </table>
+          </tr>
+        </table> -->
         
         
 
@@ -266,11 +295,72 @@
   <!-- </div> -->
 
 
+  <div id="cover_img_modal" class="my-modal">
+    <span class="modal-close">×</span>
+    <img class="my-modal-content" id="cover_big_modal">
+    <div id="modal-caption"></div>
+  </div>
+
+  <div id="back_cover_img_modal" class="my-modal">
+    <span class="modal-close">×</span>
+    <img class="my-modal-content" id="back_cover_big_modal">
+    <div id="modal-caption-2"></div>
+  </div>
+
+
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/front-end.js"></script>
+
+     <script>
+      // Get the modal
+      var modal = document.getElementById('cover_img_modal');
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById('big_cover_img');
+      var modalImg = document.getElementById("cover_big_modal");
+      var captionText = document.getElementById("modal-caption");
+      img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+          captionText.innerHTML = this.alt;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("modal-close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+    </script>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById('back_cover_img_modal');
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById('big_back_cover_img');
+      var modalImg = document.getElementById("back_cover_big_modal");
+      var captionText = document.getElementById("modal-caption-2");
+      img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+          captionText.innerHTML = this.alt;
+      }
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("modal-close")[1];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+    </script>
 
     <script type="text/javascript">
       $( document ).ready(function() {
@@ -288,5 +378,8 @@
       });
 
     </script>
+
+
+   
 </body>
 </html>

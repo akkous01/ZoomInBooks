@@ -45,7 +45,7 @@
 
 			$keywords= $keywords_query->fetchAll(PDO::FETCH_ASSOC);
 			$categories_check_box .= "\r\n<section id='collapse_sub$subcategory_id' style='display:none'><table class='keywords_table'>";
-			for($k = 0; $k < count($keywords) ; $k+=3){
+			for($k = 0; $k < count($keywords) ; $k+=4){
 				$keyword_id = (integer) $keywords[$k]['Keyword_id'];
 				$keyword_name = (string)$keywords[$k]['Name_of_keyword'];
 				$categories_check_box .= "\r\n<td><input type='checkbox'  class='keywords_checkbox' id='K{$keyword_id}' name='K{$keyword_id}'><label for='K{$keyword_id}'>{$keyword_name}</label><input style='display:none' type='text' id='MK{$keyword_id}' name='MK{$keyword_id}'></td>";

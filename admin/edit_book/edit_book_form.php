@@ -286,14 +286,12 @@ if($book['Show_to_user'] == 1){
 
 <script type="text/javascript">
   $(document).ready(function() {
-
-
-
         $(".keywords_checkbox").change(function(){
             if(this.checked){
                 var name = "label[for='";
                 var id = $(this).attr("id");
                 name = name + id + "']";
+                alert($(name).text());
                 $("#name_of_check_keyword").text($(name).text());
                 $("#keyword_open").val(id);
                 $("#keyword_meaning").modal('show');
