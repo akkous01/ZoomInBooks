@@ -45,7 +45,7 @@
       <div id="cover">
         <?php echo '<img class="mini_img" id="cover_img" src="../Database/Covers/'. $Cover.'"/>';?>
       </div>
-      <div id="back_cover">
+      <div id="back_cover" <?php echo $show_back_cover;?>>
         <?php echo '<img class="mini_img" id="back_cover_img" src="../Database/Back_Covers/'. $Back_cover.'"/>';?>
       </div>
 
@@ -71,6 +71,81 @@
     <div id="main_characteristics">
       <div id="main_characteristics_top">
         
+        <table class="main_characteristics_table">
+        <tr>
+          <td>
+            <div class="title_div" style="width:30%;margin-left:3%">
+              <h4>Συγγραφέας</h4>
+            </div>
+            <div class="data_div" style="width:55%;margin-left:3%">
+              <h4><?php echo $Writer?></h4>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <div class="title_div" style="width:50%;margin-left:3%" >
+                <h4>Εικονογράφος</h4>
+              </div>
+              <div class="data_div" style="width:95%;margin-left:3%">
+                <h4><?php echo $Illustrator?></h4>
+              </div>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              <div class="title_div" style="width:30%;margin-left:3%">
+                <h4>Εκδόσεις</h4>
+              </div>
+              <div class="data_div" style="width:95%;margin-left:3%">
+                <h4><?php echo $Publisher?></h4>
+              </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="title_div" style="width:20%;margin-left:3%" >
+              <h4>ISBN</h4>
+            </div>
+            <div class="data_div" style="width:50%;margin-left:3%">
+              <h4><?php echo $ISBN?></h4>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="width:25%;" >
+            <div class="title_div" style="width:50%;margin-left:3%" >
+              <h4>Σελίδες</h4>
+            </div>
+            <div class="data_div" style="width:40%;margin-left:3%"><h4>
+              <?php echo $Pages?></h4>
+            </div>
+            </td>
+        </tr>
+          <td style="width:25%;">
+            <div class="title_div" style="width:40%;margin-left:3%" >
+              <h4>Τιμή</h4>
+            </div>
+            <div class="data_div" style="width:50%;margin-left:3%">
+              <h4><?php echo $Price -3 ;?> - <?php echo $Price +3 ;?>€</h4>
+            </div>
+          </td>
+        <tr>
+        <tr>
+          <td>
+            <div class="title_div" style="width:70%;margin-left:3%" >
+              <h4>Αναλογία Εικόνων- Κειμένου</h4>
+            </div>
+            <div class="data_div" style="width:20%;margin-left:3%">
+              <h4><?php echo $Persentage_of_images?>:<?php echo 100-$Persentage_of_images?></h4>
+            </div>
+          </td>
+        </tr>  
+        </tr>
+        </table>
+
         <table class="main_characteristics_table">
           <tr>
             <td>
@@ -139,12 +214,12 @@
               <div class="data_div_2" style="width:70%;margin-left:1%"><h4><?php echo $Link?></h4></div>
             </td>
           </tr>
-          <tr <?php echo $curriculum_show?>>
+         <!--  <tr <?php echo $curriculum_show?>>
             <td style="width:100%">
               <div class="title_div" style="width:70%;margin-left:1%" ><h4>Δραστηριότητες και Θέματα προς συζήτηση</h4></div>
               <div class="data_div" style="width:95%;margin-left:1%"><h4><?php echo $Curriculum?></h4></div>
             </td>
-          </tr>
+          </tr> -->
         </table>
         
         
@@ -163,17 +238,20 @@
     <div id="ithiki_tab" class="categories_tab" <?php echo $tab1?>>
       <img src="images/ithiki-tab.png" class="tab_img">
     </div>
+     <div id="gramatiki_tab" class="categories_tab" <?php echo $tab4?>>
+      <img src="images/grammatiki-tab.png" class="tab_img">      
+    </div>
+    <div id="analisi_tab" class="categories_tab" <?php echo $tab5?>>
+      <img src="images/analisi-tab.png" class="tab_img">
+    </div>
     <div id="sindesi_tab" class="categories_tab" <?php echo $tab2?>>
       <img src="images/sindesi-tab.png" class="tab_img">
     </div>
     <div id="epipleon_tab" class="categories_tab" <?php echo $tab3?>>
       <img src="images/epipleon-tab.png" class="tab_img">
     </div>
-    <div id="gramatiki_tab" class="categories_tab" <?php echo $tab4?>>
-      <img src="images/grammatiki-tab.png" class="tab_img">      
-    </div>
-    <div id="analisi_tab" class="categories_tab" <?php echo $tab5?>>
-      <img src="images/analisi-tab.png" class="tab_img">
+    <div id="drastiriotites_tab"  class="categories_tab" <?php echo $curriculum_show?>>
+      <img src="images/drastiriotites-tab.png" class="tab_img">
     </div>
   </div>
 
@@ -183,6 +261,8 @@
 	  <div id="epipleon_box" class="categories_box" style="display:none;background-color:#87D4FF"><?php echo $epipleon?></div>
 	  <div id="gramatiki_box" class="categories_box" style="display:none;background-color:#86E886"><?php echo $gramatiki?></div>
 	  <div id="analisi_box" class="categories_box" style="display:none;background-color:#FFBA4C"><?php echo $analisi?></div>
+    <div id="drastiriotites_box" class="categories_box" style="display:none;background-color:#FF6F4D"><h4><?php echo $Curriculum?></h4>
+    </div>
   <!-- </div> -->
 
 

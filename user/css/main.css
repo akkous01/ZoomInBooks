@@ -15,8 +15,11 @@ header{
 	text-align: center;
   position: fixed;
   top: 0;
+  margin-top: 0%;
 	/*background-color: black; */
-	background: url(../images/hed.png) no-repeat center center; 
+	background: url(../images/header-bookelook-5.png) no-repeat center center; 
+    /*background: url(../images/hed.png) no-repeat center center; */
+
 	background-size: 100% 100% ;
   position: relative;
 
@@ -392,19 +395,17 @@ header{
 }
 
 .subcategories_table td a:visited {
-    text-decoration: none;
+  text-decoration: none;
 
 }
 
 .subcategories_table td a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .subcategories_table td a:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .subcategories_table .page_background td{
-    background-color: rgba(195, 185, 185, 0.62);
-
-
+  background-color: rgba(195, 185, 185, 0.62);
 }

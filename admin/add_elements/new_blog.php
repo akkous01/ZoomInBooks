@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   $blog_photo = "";
-  if (!empty($_POST["blog_photo"]["name"])){
+  if (!empty($_FILES["blog_photo"]["name"])){
     $target_dir = '../../Database/Blog_photos/'; // upload directory
     $target_file = $target_dir . basename($_FILES["blog_photo"]["name"]);
     $blog_photo = basename($_FILES["blog_photo"]["name"]);

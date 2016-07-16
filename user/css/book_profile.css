@@ -267,6 +267,10 @@
   /*color: rgb(35, 184, 219);*/
 
 }
+.categories_box h4{
+  margin-left: 5%;
+  margin-right: 5%;
+}
 
 #title_area {
     height: 12%;

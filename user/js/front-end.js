@@ -166,6 +166,8 @@ $(document).ready(
 	        	$("#epipleon_box").hide();
 	        	$("#gramatiki_box").hide();
 	        	$("#analisi_box").hide();
+	        	$("#drastiriotites_box").hide();
+	        	
 	   
 	        	
 	    	}
@@ -178,6 +180,7 @@ $(document).ready(
 	        	$("#epipleon_box").hide();
 	        	$("#gramatiki_box").hide();
 	        	$("#analisi_box").hide();
+	        	$("#drastiriotites_box").hide();
 	  	    	}
 	    );
 
@@ -188,7 +191,7 @@ $(document).ready(
 	        	$("#epipleon_box").show();
 	        	$("#gramatiki_box").hide();
 	        	$("#analisi_box").hide();
-	   
+	   			$("#drastiriotites_box").hide();
 	        	
 	    	}
 	    );
@@ -200,7 +203,7 @@ $(document).ready(
 	        	$("#epipleon_box").hide();
 	        	$("#gramatiki_box").show();
 	        	$("#analisi_box").hide();
-	   
+	   			$("#drastiriotites_box").hide();
 	        	
 	    	}
 	    );
@@ -212,10 +215,22 @@ $(document).ready(
 	        	$("#epipleon_box").hide();
 	        	$("#gramatiki_box").hide();
 	        	$("#analisi_box").show();
-	   
+	   			$("#drastiriotites_box").hide();
 	        	
 	    	}
 	    );
+
+ 		 $("#drastiriotites_tab").click(
+	    	function(){
+	    		$("#ithiki_box").hide();
+	        	$("#sindesi_box").hide();
+	        	$("#epipleon_box").hide();
+	        	$("#gramatiki_box").hide();
+	        	$("#analisi_box").hide();
+	   			$("#drastiriotites_box").show();
+	        	
+	    	}
+	    ); 
 
 
 

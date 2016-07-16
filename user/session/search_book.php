@@ -109,7 +109,10 @@ if($Curriculum == ""){
 
 $Cover = $book[0]["Cover"];
 $Back_cover = $book[0]["Back_cover"];
-
+$show_back_cover = "";
+if($Back_cover == ""){
+	$show_back_cover = "style='display:none'";
+}
 
 
 $ithiki_query = $conn->prepare("SELECT b.Keyword_id, b.Name_of_keyword, c.Name_of_subcategory, c.Subcategory_id, d.Name_of_category FROM books_keywords a, keywords b, subcategories c, categories d WHERE a.Book_id='{$book_id}' AND a.Keyword_id = b.Keyword_id AND b.Subcategory_id = c.Subcategory_id AND C.Category_id = d.Category_id AND d.Category_id=1 ORDER BY c.Subcategory_id ");
