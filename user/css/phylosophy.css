@@ -80,3 +80,14 @@
 	text-decoration: underline;
 }
 
+.blog_title{
+	color:#26B8DB;
+	text-decoration: underline;
+}
+
+.blog_img {
+	width:40%;
+	height: auto;
+	margin-left: 25%;
+}
+

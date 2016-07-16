@@ -321,7 +321,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>
                         <div class="18u$ 12u$(xsmall)">
                             <h4>Εικόνα για την ανακοίνωση</h4>
-                            <input type="file" name="announcement_photo" id="announcement_photo"  required="" />
+                            <input type="file" name="announcement_photo" id="announcement_photo"   />
                         </div>
                          <div class="12u$">
                             <ul class="actions">

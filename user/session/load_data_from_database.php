@@ -21,10 +21,27 @@ $anakinosis_query->execute();
 
 $anakinosis = $anakinosis_query->fetchAll(PDO::FETCH_ASSOC);
 
-$anakinosis_script = "";
+$anakinosis_script_ol = "";
+$anakinosis_script_div = "";
 for($i=0 ; $i<count($anakinosis); $i++){
-	$anakinosis_script = $anakinosis_script ."<h4>".$anakinosis[$i]['announcement_date']."</h4><p>".$anakinosis[$i]['announcement_content']."</p><hr class='myhr'>";
+	if($i == 0){
+		$anakinosis_script_ol .= "<li data-target='#carousel-example-generic' data-slide-to='".$i."' class='active'></li>";
+		$anakinosis_script_div .= "<div class='item active'>";
+	}else{
+		$anakinosis_script_ol .= "<li data-target='#carousel-example-generic' data-slide-to='".$i."'></li>";
+		$anakinosis_script_div .= "<div class='item'>";
+	}
+
+	if($anakinosis[$i]['announcement_photo'] != ""){
+		$anakinosis_script_div .= "<img class='carusel_img' src='../Database/Announcements_photos/".$anakinosis[$i]['announcement_photo']."'>";
+	}else{
+		$anakinosis_script_div .= "<img class='carusel_img' src='images/no.png'>";
+	}
+	$anakinosis_script_div .= "<div class='carousel-caption'><h4>".$anakinosis[$i]['announcement_date']."</h4><p>".$anakinosis[$i]['announcement_content']."</p></div></div>";
+	
+	// $anakinosis_script = $anakinosis_script ."<h4>".$anakinosis[$i]['announcement_date']."</h4><p>".$anakinosis[$i]['announcement_content']."</p><hr class='myhr'>";
 }
+
 
 
 // YPOKATHGORIES ITHIKON MINIMATON

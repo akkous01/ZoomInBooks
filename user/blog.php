@@ -51,6 +51,6 @@ queries -->
 
 
   <script src="js/bootstrap.min.js"></script>
-
+  <?php echo $blog_javascript;?>
 </body>
 </html>

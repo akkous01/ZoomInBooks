@@ -412,6 +412,18 @@ header{
 
 
 .carusel_img{
-  height: 20px;
-  width: 20px;
+  width: 70%;
+  height: inherit;
+  margin: auto;
 }
+
+.item{
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-inner{
+  height: 100%;
+  width: 100%;
+}
+
