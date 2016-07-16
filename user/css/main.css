@@ -162,9 +162,9 @@ header{
 #anakinosis_show{
   height: 50%;
   width: 80%;
-  margin-top: 5%;
+  margin-top: 7%;
   margin-left: 10%;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   text-align: center; 
       /*border:1px solid black ;*/
 }
@@ -408,4 +408,10 @@ header{
 }
 .subcategories_table .page_background td{
   background-color: rgba(195, 185, 185, 0.62);
+}
+
+
+.carusel_img{
+  height: 20px;
+  width: 20px;
 }
