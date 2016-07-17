@@ -100,6 +100,10 @@
 	text-decoration: underline;
 }
 
+#kapelo:hover, #ergalio:hover, .blog_title:hover{
+	font-size: 150%;
+}
+
 #ergalio{
 	color:#26B8DB;
 	text-decoration: underline;

@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/phylosophy.css">
-
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -95,7 +95,7 @@ queries -->
     <div id="contact-info-area-div"><p> Για παραλαβή του <strong>Newsletter</strong> πατήστε <a href="contact.php">εδώ</a></div>
   </div>
 </div>
-
+<footer>Maria Christodoulou © 2016</footer>
 
   <script src="js/bootstrap.min.js"></script>
   <script>

@@ -17,6 +17,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/phylosophy.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 queries -->
@@ -53,7 +54,7 @@ queries -->
   </div>
 </div>
 
-
+<footer>Maria Christodoulou © 2016</footer>
   <script src="js/bootstrap.min.js"></script>
   <?php echo $blog_javascript;?>
 </body>

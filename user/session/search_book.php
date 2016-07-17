@@ -26,20 +26,20 @@ $tab1 = $tab2 = $tab3 = $tab4 = $tab5 = "";
  	$tab1 = "style='display:none'";
  }
  if($_SESSION["sindesi"] == 0){
- 	$mark2 = "style='display:none'";
- 	$tab2 = "style='display:none'";
- }
- if($_SESSION["epipleon"] == 0){
- 	$mark3 = "style='display:none'";
- 	$tab3 = "style='display:none'";
- }
- if($_SESSION["gramatiki"] == 0){
  	$mark4 = "style='display:none'";
  	$tab4 = "style='display:none'";
  }
- if($_SESSION["analisi"] == 0){
+ if($_SESSION["epipleon"] == 0){
  	$mark5 = "style='display:none'";
  	$tab5 = "style='display:none'";
+ }
+ if($_SESSION["gramatiki"] == 0){
+ 	$mark2 = "style='display:none'";
+ 	$tab2 = "style='display:none'";
+ }
+ if($_SESSION["analisi"] == 0){
+ 	$mark3 = "style='display:none'";
+ 	$tab3 = "style='display:none'";
  }
 
 include "../Database/MySqlConnect.php";

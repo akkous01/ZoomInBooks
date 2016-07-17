@@ -12,10 +12,11 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/book_profile.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -265,22 +266,22 @@
   
   <div id="categories_nav">
     <div id="ithiki_tab" class="categories_tab" <?php echo $tab1?>>
-      <img src="images/ithiki-tab.png" class="tab_img">
+      <a href="#ithiki_box"><img src="images/ithiki-tab.png" class="tab_img"></a>
     </div>
      <div id="gramatiki_tab" class="categories_tab" <?php echo $tab4?>>
-      <img src="images/grammatiki-tab.png" class="tab_img">      
+      <a href="#gramatiki_box"><img src="images/grammatiki-tab.png" class="tab_img"></a>      
     </div>
     <div id="analisi_tab" class="categories_tab" <?php echo $tab5?>>
-      <img src="images/analisi-tab.png" class="tab_img">
+      <a href="#analisi_box"><img src="images/analisi-tab.png" class="tab_img"></a>
     </div>
     <div id="sindesi_tab" class="categories_tab" <?php echo $tab2?>>
-      <img src="images/sindesi-tab.png" class="tab_img">
+      <a href="#sindesi_box"><img src="images/sindesi-tab.png" class="tab_img"></a>
     </div>
     <div id="epipleon_tab" class="categories_tab" <?php echo $tab3?>>
-      <img src="images/epipleon-tab.png" class="tab_img">
+      <a href="#epipleon_box"><img src="images/epipleon-tab.png" class="tab_img"></a>
     </div>
     <div id="drastiriotites_tab"  class="categories_tab" <?php echo $curriculum_show?>>
-      <img src="images/drastiriotites-tab.png" class="tab_img">
+      <a href="#drastiriotites_box"><img src="images/drastiriotites-tab.png" class="tab_img"></a>
     </div>
   </div>
 
@@ -307,6 +308,7 @@
     <div id="modal-caption-2"></div>
   </div>
 
+  <footer>Maria Christodoulou © 2016</footer>
 
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
