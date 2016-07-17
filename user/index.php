@@ -15,6 +15,7 @@ include_once "session/load_data_from_database.php";
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,7 +57,7 @@ queries -->
                 <div class="search_box_dropdown_elements" style="display: none">
                     <div id="search_header">
                         <div id="close_button">
-                            <a href="#" ><img  src="images/close_button.ico"></a>
+                            <a href="#" ><img  src="images/close.png"></a>
                         </div>
                     </div>
                     <div id="search_elements">
@@ -203,10 +204,11 @@ queries -->
 		    <!-- <?php echo $anakinosis_script; ?> -->
       </div>
     </div>
+
+
+
   </div>
 </div>
-
-
 <!-- <div id="cotact-side"></div> -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
