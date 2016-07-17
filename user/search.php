@@ -72,14 +72,21 @@ include_once "session/load_data_from_database.php";
                     <label for="writer">ΣΥΓΓΡΑΦΕΑΣ:</label>
                     <input type="text" class="form-control input-sm" id="writer" name="writer" value="<?php echo $writer;?>">
                 </div>
-                <div class="form-group search2_div" id="all_keywards">
-                    <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
-                    <input type="hidden" name="count" value="1" />
-                    <div id="field">
-                        <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text" />
-                        <button  id="b1" class="btn btn-sm add-more keywords_button" type="button">+</button>
+                <div class="form-group ">
+                    <label for="searched_keywords">ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
+                    <div style="width:100%;">
+                        <input style="width: 75%;float: left;"  readonly="readonly" type="text" class="form-control input-sm" id="searched_keywords" name="searched_keywords" value="">
+                        <button  style="width: 25%" id="b1" class="btn btn-sm" type="button" data-toggle="modal" data-target="#change_keywords_modal">Αλλαγή</button>
                     </div>
                 </div>
+<!--                <div class="form-group search2_div" id="all_keywards">-->
+<!--                    <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>-->
+<!--                    <input type="hidden" name="count" value="1" />-->
+<!--                    <div id="field">-->
+<!--                        <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text" />-->
+<!--                        <button  id="b1" class="btn btn-sm add-more keywords_button" type="button">+</button>-->
+<!--                    </div>-->
+<!--                </div>-->
 
             </div>
             <div id="down_box">
@@ -92,8 +99,10 @@ include_once "session/load_data_from_database.php";
                     <input type="number" class="form-control input-sm" id="age" name="age" value="<?php echo $age;?>">
                 </div>
                 <div class="form-group ">
-                    <label for="price">ΤΙΜΗ:</label>
-                    <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <div style="width:100%;margin-bottom: 10px;">
+                        <label for="price" style="width:20%;float:left;">ΤΙΜΗ:</label>
+                        <input type="text" id="amount" name="amount" readonly style=" width:80%; border:0; color:#f6931f; font-weight:bold;">
+                    </div>
                     <div id="slider-range"></div>
                 </div>
                 <div id="search_button">
@@ -108,7 +117,46 @@ include_once "session/load_data_from_database.php";
             <?php echo $books; ?>
         </div>
     </div>
-<!--      <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>-->
+
+
+      <!-- change Keywords Modal -->
+      <div class="modal fade" id="change_keywords_modal" role="dialog">
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Αλλαγή των Λέξεων κλειδιών που επιλέξατε</h4>
+                  </div>
+                  <div class="modal-body">
+                          <p>Διάγρεψε ή Πρόσθεσε λέξεις κλειδιά για την αναζήτηση:</p>
+                          <div class="all_keywords"></div>
+                          <div class="keyword">
+                              <div id="keywords_Autofill_div" >
+                                <input   class=" form-control input-sm " id="keywords_Autofill"  name="keywords_Autofill" type="text" />
+                              </div>
+                              <button  id="keywords_button_add" class="btn btn-sm " type="button">+</button>
+                              <p id="keyword_required">*Γράψετε μία Λέξη Κλειδί !</p>
+                              <br>
+                          </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" id="save_keywords" class="btn btn-default">Αποθήκευση</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+
+
+
+
+
+
+      <!--      <img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>-->
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
@@ -118,6 +166,7 @@ include_once "session/load_data_from_database.php";
 
       <script>
           $( document ).ready(function() {
+              var num_of_keywords=0;
               $(".search_book").click(function(){
                   var book_id=$(this).attr('id').split("_")[1];
                   var ithiki=$("#m_"+book_id+"_1").attr('name');
@@ -146,19 +195,44 @@ include_once "session/load_data_from_database.php";
               $('#writer').typeahead({
                   local: <?php echo $writers;?>
               });
-//              // $('.keywords').typeahead({
-//              //     local: <?php //echo $keywords;?>
-//              // });
-//
-//              $(function() {
-//                  var keywords_tags = <?php //echo $keywords;?>//;
-//                  $(".keywords").autocomplete({
-//                      source:keywords_tags
-//                  });
-//              });
-//
+               $('#keywords_Autofill').typeahead({
+                   local: <?php echo $keywords;?>
+               });
               $('.tt-query').css('background-color','#fff');
-              $('header').css('z-index','1');
+              $('header').css('z-index','3');
+
+              $( "#keywords_button_add" ).click(function() {
+                  var value=$("#keywords_Autofill").val();
+                  if(value!=""){
+                      $('#keyword_required').css("display","none");
+                      var div_keyword = "<div class='keyword' id='div_k_"+num_of_keywords+"'>" +
+                          "<input  style='width: 85%;float: left;' class=' form-control input-sm ' id='k_"+num_of_keywords+"'  name='k"+num_of_keywords+"' type='text' readonly='readonly' value='"+value+"'/>"+
+                          "<button  style='width: 15%' id='"+num_of_keywords+"' class='btn btn-sm btn-danger keywords_button_remove' type='button'>-</button>"+
+                          "</div>";
+                      num_of_keywords++;
+                      $(".all_keywords").append(div_keyword);
+                      $("#keywords_Autofill").val('');
+                      $( ".keywords_button_remove" ).click(function() {
+                          var id=$(this).attr('id');
+                          $('#div_k_'+id).remove();
+                      });
+                  }else{
+                     $('#keyword_required').css("display","block");
+                  }
+
+              });
+
+              $( "#save_keywords").click(function() {
+                  var list_of_keywords="";
+                  for(i=0;i<num_of_keywords;i++){
+                      if($('#div_k_'+i).length){
+                          list_of_keywords=list_of_keywords+$('#k_'+i).val()+" , ";
+                      }
+                  }
+                  list_of_keywords=list_of_keywords+$("#keywords_Autofill").val()+"...";
+                  $('#searched_keywords').val(list_of_keywords);
+                  $('#change_keywords_modal').modal('toggle');
+              });
           });
       </script>
 </body>
