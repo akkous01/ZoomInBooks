@@ -92,15 +92,21 @@ queries -->
                         </div>
                         <div class="form-group" id="all_keywards">
                             <label >ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
-                            <input type="hidden" name="count" value="1" />
-                            <div id="field" style="text-align: center">
-                                <input   class=" form-control input-sm keywords" id="field1"  name="keyword1" type="text"/>
-                                <button  id="b1" class="btn btn-xs add-more" type="button">+</button>
+                            <div class="all_keywords"></div>
+                            <div class="keyword">
+                                <div id="keywords_Autofill_div" >
+                                    <input   class=" form-control input-sm " id="keywords_Autofill"  name="keywords_Autofill" type="text" />
+                                </div>
+                                <button  id="keywords_button_add" class="btn btn-sm " type="button">+</button>
+                                <p id="keyword_required">*Γράψετε μία Λέξη Κλειδί !</p>
+                                <br>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="price">ΤΙΜΗ:</label>
-                            <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            <div style="width:100%;margin-bottom: 10px;">
+                                <label for="price" style="width:20%;float:left;">ΤΙΜΗ: </label>
+                                <input type="text" id="amount" name="amount" readonly style=" width:80%; border:0; color:#f6931f; font-weight:bold;">
+                            </div>
                             <div id="slider-range"></div>
                         </div>
 
@@ -226,9 +232,9 @@ queries -->
               $('#writer').typeahead({
                   local: <?php echo $writers;?>
               });
-              // $('.keywords').typeahead({
-              //     local: <?php echo $keywords;?>
-              // });
+               $('#keywords_Autofill').typeahead({
+                   local: <?php echo $keywords;?>
+               });
 
               $(function() {
                   var keywords_tags = <?php echo $keywords;?>;

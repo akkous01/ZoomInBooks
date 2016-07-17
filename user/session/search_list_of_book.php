@@ -22,15 +22,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $theme[$theme_id-1]="selected";
     $keywords=array();
     $list_of_keywords="";
+    $list_for_input="";
     foreach ($_POST as $key => $value):
         $keyword=substr($key, 0,-1);
-        if(strcmp ( $keyword , 'keyword' )==0){
+        if(strcmp ( $keyword , 'k' )==0 or strcmp ( $key , 'keywords_Autofill' )==0){
             array_push($keywords,$value);
             $list_of_keywords=$list_of_keywords." keywords.Name_of_keyword='".$value."' or ";
+            $list_for_input=$list_for_input.$value.",";
         }
     endforeach;
-    $list_of_keywords=substr($list_of_keywords, 0,-5);
 
+    if(isset($_POST['searched_keywords'])){
+        $searched_keywords=explode(",",$_POST['searched_keywords']);
+        for ($i=0;$i<count($searched_keywords)-1;$i++){
+            echo $searched_keywords[$i];
+            $list_for_input=$list_for_input.$searched_keywords[$i].",";
+            $list_of_keywords=$list_of_keywords." keywords.Name_of_keyword='".$searched_keywords[$i]."' or ";
+        }
+    }
+    $list_for_input=$list_for_input."...";
+    $list_of_keywords=substr($list_of_keywords, 0,-5);
 //queries //////////////////////////////////////////////
 
     $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE books.Title='".$title."' OR books.Writer='".$writer."'");

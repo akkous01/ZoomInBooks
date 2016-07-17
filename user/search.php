@@ -76,7 +76,7 @@ include_once "session/load_data_from_database.php";
                 <div class="form-group ">
                     <label for="searched_keywords">ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
                     <div style="width:100%;">
-                        <input style="width: 75%;float: left;"  readonly="readonly" type="text" class="form-control input-sm" id="searched_keywords" name="searched_keywords" value="">
+                        <input style="width: 75%;float: left;"  readonly="readonly" type="text" class="form-control input-sm" id="searched_keywords" name="searched_keywords" value="<?php echo $list_for_input;?>">
                         <button  style="width: 25%" id="b1" class="btn btn-sm" type="button" data-toggle="modal" data-target="#change_keywords_modal">Αλλαγή</button>
                     </div>
                 </div>
@@ -135,7 +135,7 @@ include_once "session/load_data_from_database.php";
                           <div class="all_keywords"></div>
                           <div class="keyword">
                               <div id="keywords_Autofill_div" >
-                                <input   class=" form-control input-sm " id="keywords_Autofill"  name="keywords_Autofill" type="text" />
+                                <input   class=" form-control input-sm " id="keywords_Autofill"  name="keywords_Autofill" type="text"  />
                               </div>
                               <button  id="keywords_button_add" class="btn btn-sm " type="button">+</button>
                               <p id="keyword_required">*Γράψετε μία Λέξη Κλειδί !</p>
