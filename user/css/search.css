@@ -1,4 +1,7 @@
-
+label{
+  font-family: "Open Sans"; 
+  font-weight: bold;
+}
 #main_search {
   height: 100%;
   width:80%;
