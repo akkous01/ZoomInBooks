@@ -90,6 +90,10 @@ queries -->
       </ul>
     </div>
   </div>
+
+  <div id="contact-info-area">
+    <div id="contact-info-area-div"><p> Για παραλαβή του <strong>Newsletter</strong> πατήστε <a href="contact.php">εδώ</a></div>
+  </div>
 </div>
 
 

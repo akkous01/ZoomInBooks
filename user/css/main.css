@@ -58,13 +58,43 @@ header{
   margin-left: 10%;
   background: url(../images/main-wide-01.png) no-repeat center top;
   background-size: 96% 100% ;
+  /*float: left;*/
 
+}
+
+#cotact-side{
+  /*float: left;*/
+  width: 8%;
+  margin-left: 0%;
+  margin-top: 15%;
+  height: 15%;
+  background: url(../images/dialog-side-3.png) no-repeat center center;
+  background-size: 100% 100%;
 }
 
 #main-top{
   /*border:4px solid black ; */
   height: 65% ;
   width:100%
+}
+
+#contact-info{
+  float:left;
+  height: 100%;
+  width: 10%;
+}
+
+#contact-link-div{
+  width: 100%;
+  height: 9%;
+  background: url(../images/dialog.png) no-repeat center center;
+  background-size: 100% 100%; 
+  text-align: center;
+}
+
+#contact-link-div p {
+  padding-top: 3%;
+  font-size: 12px;
 }
 
 #main-bottom{
@@ -173,6 +203,8 @@ header{
   height: 100%;
   width:70%;
   margin-left: 15%;
+  float:left;
+  margin-right: 0%;
   /*border:4px solid red ;*/
 }
 
