@@ -1,7 +1,6 @@
 <?php
 session_start();
 $list_of_books=$_SESSION['list_of_books'];
-
 include "session/search_list_of_book.php";
 include_once "session/load_data_from_database.php";
 
@@ -117,6 +116,7 @@ include_once "session/load_data_from_database.php";
       </div>
 
     <div id="results">
+        <div id="not_found_query" style="display:<?php echo $not_found_search;?>;"><h4>Δεν βρέθηκαν αποτελέσματα με αυτή την αναζήτηση ...</h4><h5 style="text-decoration: underline;">'Ολα τα Βιβλία:</h5></div>
         <div id="table_of_books">
             <?php echo  $books ?>
         </div>

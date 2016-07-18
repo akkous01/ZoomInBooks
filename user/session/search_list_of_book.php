@@ -6,35 +6,27 @@
  * Time: 6:11 PM
  */
 include "../Database/MySqlConnect.php";
+$title = $writer =  $age = $percentage_of_images = "none";
+$theme_id = 6;
+$price=array(2);
+$price[0]=0;
+$price[1]=0;
+$list_for_input = ",...";
+$list_of_keywords =  "keywords.Name_of_keyword='none";
+$not_found_search="none";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // set variables ////////////////////////////////////////////////////////////////////
-    if (isset($_POST['title'])) {
-        $title = $_POST['title'];
-    } else {
-        $title = " ";
-    }
-    if (isset($_POST['writer'])) {
-        $writer = $_POST['writer'];
-    } else {
-        $writer = " ";
-    }
-    if (isset($_POST['age'])) {
-        $age = $_POST['age'];
-    } else {
-        $age = " ";
-    }
-    if (isset($_POST['percentage_of_images'])) {
-        $percentage_of_images = $_POST['percentage_of_images'];
-    } else {
-        $percentage_of_images = " ";
-    }
-    if (isset($_POST['theme'])) {
-        $theme_id = $_POST['theme'];
-    } else {
-        $theme_id = 6;
-    }
-    $price = explode("-", $_POST['amount']);
+    $title = $_POST['title'];
+    $writer = $_POST['writer'];
+    $age = $_POST['age'];
+    $percentage_of_images = $_POST['percentage_of_images'];
+    $theme_id = $_POST['theme'];
+    $not_fount=true;
+
+    $price=array(2);
+    $price = explode("  ", preg_replace("/[^A-Za-z0-9 ]/", '',$_POST['amount']));
     $list_of_books=array();
 
     $keywords = array();
@@ -42,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $list_for_input = "";
     foreach ($_POST as $key => $value):
         $keyword = substr($key, 0, -1);
-        if (strcmp($keyword, 'k') == 0 or strcmp($key, 'keywords_Autofill') == 0) {
+        if ((strcmp($keyword, 'k') == 0 and strcmp($value, '') != 0)or (strcmp($key, 'keywords_Autofill') == 0 and strcmp($value, '') != 0)) {
             array_push($keywords, $value);
-            $list_of_keywords = $list_of_keywords . " keywords.Name_of_keyword='" . $value . "' or ";
+            $list_of_keywords = $list_of_keywords . " keywords.Name_of_keyword LIKE '%" . $value . "%' or ";
             $list_for_input = $list_for_input . $value . ",";
         }
     endforeach;
@@ -52,23 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['searched_keywords'])) {
         $searched_keywords = explode(",", $_POST['searched_keywords']);
         for ($i = 0; $i < count($searched_keywords) - 1; $i++) {
-            $list_for_input = $list_for_input . $searched_keywords[$i] . ",";
-            $list_of_keywords = $list_of_keywords . " keywords.Name_of_keyword='" . $searched_keywords[$i] . "' or ";
+            if(strcmp($searched_keywords[$i], "") != 0) {
+                $list_for_input = $list_for_input . $searched_keywords[$i] . ",";
+                $list_of_keywords = $list_of_keywords . " keywords.Name_of_keyword LIKE'%" . $searched_keywords[$i] . "%' or ";
+            }
         }
     }
     $list_for_input = $list_for_input . "...";
     $list_of_keywords = substr($list_of_keywords, 0, -5);
-}else{
-    $title=" ";
-    $writer=" ";
-    $age=" ";
-    $percentage_of_images=" ";
-    $theme_id=6;
-    $list_for_input = ",...";
-    $price=array(2);
-    $price[0]=5;
-    $price[1]=15;
-    $list_of_keywords =  "keywords.Name_of_keyword='";
 
 }
     $theme = array(6);
@@ -77,18 +60,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $theme[$theme_id - 1] = "selected";
 
+/// check if empty ////////////////////////////////////////////////////////////////////
 
+    if(strcmp($title," ")==0 or strcmp($title,"")==0){
+        $title='none';
+    }
+    if(strcmp($writer," ")==0 or strcmp($writer,"")==0){
+        $writer='none';
+    }
+
+
+    if(strcmp($list_of_keywords,"")==0){
+        $not_fount=false;
+        $list_of_keywords="keywords.Name_of_keyword LIKE '%none%";
+
+    }
 
 //queries //////////////////////////////////////////////
 
-    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE books.Title='".$title."' OR books.Writer='".$writer."'");
+    $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE books.Title LIKE '%".$title."%' OR books.Writer LIKE '%".$writer."%'");
     $book_query->execute();
     $books_step_1 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_1 ) ;
 
 
     $book_query=$conn->prepare("SELECT DISTINCT books.Book_id FROM books WHERE  books.Min_age_no_read='".$age."'
-OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_images."' OR (books.Price>'".$price[0]."' AND books.Price<'".$price[1]."')");
+OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_images."' OR (books.Price>'".$price[0]."' AND books.Price < '".$price[1]."')");
     $book_query->execute();
     $books_step_2 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 //    print_r($books_step_2 ) ;
@@ -98,7 +95,7 @@ OR books.Min_age_read='".$age."'OR books.Persentage_of_images='".$percentage_of_
 WHERE  ".$list_of_keywords."' ") ;
     $book_query->execute();
     $books_step_3 = $book_query->fetchAll(PDO::FETCH_ASSOC);
-//    print_r($books_step_3 ) ;
+    print_r($books_step_3 ) ;
 
     if ($theme_id!=6 ){
         $book_query = $conn->prepare("SELECT  DISTINCT   books.Book_id
@@ -108,17 +105,25 @@ WHERE  ".$list_of_keywords."' ") ;
                                 INNER JOIN subcategories ON subcategories.Subcategory_id = keywords.Subcategory_id
                                 INNER JOIN categories ON categories.Category_id = subcategories.Category_id
                                 WHERE     categories.Category_id='" . $theme_id . "'");
+        $book_query->execute();
+        $books_step_4 = $book_query->fetchAll(PDO::FETCH_ASSOC);
+        print_r($books_step_4 ) ;
+    }else{
+        $books_step_4 = array();
     }
-    $book_query->execute();
-    $books_step_4 = $book_query->fetchAll(PDO::FETCH_ASSOC);
-//    print_r($books_step_4 ) ;
+    print_r($books_step_4 ) ;
 
     $book_query = $conn->prepare("SELECT  DISTINCT   books.Book_id FROM books ");
     $book_query->execute();
     $books_step_5 = $book_query->fetchAll(PDO::FETCH_ASSOC);
 
 // create variable /////////////////////////////////////////////////////////////////
-    $list_of_books_Id=array_merge ($books_step_1 ,$books_step_2, $books_step_3,$books_step_4,$books_step_5 );
+    $list_of_books_Id=array_merge ($books_step_1 ,$books_step_2, $books_step_3,$books_step_4 );
+    if(empty($list_of_books_Id) && empty($list_of_books)){
+        $not_found_search="block";
+        $list_of_books_Id=array_merge ($books_step_5 );
+    }
+
     for($i=0;$i<count($list_of_books_Id);$i++){
         array_push($list_of_books,$list_of_books_Id[$i]['Book_id']);
     }
@@ -127,6 +132,7 @@ WHERE  ".$list_of_keywords."' ") ;
     $mark=array();
     $index=0;
 //print_r($list_of_books);
+
    foreach ($list_of_books as $index_of_table=>$book_id):
        for($j=0;$j<5;$j++) {
            $mark[$j]="none' name='0'";
@@ -186,9 +192,23 @@ WHERE  ".$list_of_keywords."' ") ;
        $index++;
    endforeach;
 
+if(strcmp($title,"none")==0){
+    $title='';
+}
+if(strcmp($writer,"none")==0 or strcmp($writer,"")==0){
+    $writer='';
+}
+// not fount words ///////////////////////////////////
+
+    if($not_fount and empty($books_step_3)){
+        $not_fount_keywords=explode(",",$list_for_input);
+        for($i=0;$i<count($not_fount_keywords)-1;$i++){
+            $not_found_keywords_query=$conn->prepare("INSERT INTO `not_found_keywords` (`Not_found_keyword_id`, `Not_found_keyword`) VALUES (NULL, '".$not_fount_keywords[$i]."');");
+            $not_found_keywords_query->execute();
+        }
+    }
 
 
 
 ?>
-<!--<img class='small_img' id='big_cover_img' src='../Database/Covers/". $value['Cover']."'/>-->
-<!--<button id='search_submit' type='submit' class='btn btn-info btn-sm'>Search</button>-->
+
