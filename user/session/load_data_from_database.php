@@ -52,9 +52,11 @@ $ithika_table = "<table id='ithika_table' class='subcategories_table' style='dis
 
 for($i=0; $i<count($ithika_sub) ; $i+=2){
 
-	$ithika_table = $ithika_table."<tr><td>".$ithika_sub[$i]['Name_of_subcategory']."</a></td>";
+	$href = "session/search_subcategory_books.php?sub_id=".$ithika_sub[$i]['Subcategory_id'];
+
+	$ithika_table = $ithika_table."<tr><td><a href='".$href."'>".$ithika_sub[$i]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	if($i+1 < count($ithika_sub)){
-		$ithika_table = $ithika_table."<td>".$ithika_sub[$i+1]['Name_of_subcategory']."</a></td>";
+		$ithika_table = $ithika_table."<td><a href='".$href."'>".$ithika_sub[$i+1]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	}
 	$ithika_table = $ithika_table."</tr>";
 }
@@ -68,10 +70,10 @@ $sindesi_sub = $sindesi_query->fetchAll(PDO::FETCH_ASSOC);
 $sindesi_table = "<table id='sindesi_table' class='subcategories_table' style='display: none'>";
 
 for($i=0; $i<count($sindesi_sub) ; $i+=2){
-
-	$sindesi_table = $sindesi_table."<tr><td><a href='#'>".$sindesi_sub[$i]['Name_of_subcategory']."</a></td>";
+	$href = "session/search_subcategory_books.php?sub_id=".$sindesi_sub[$i]['Subcategory_id'];
+	$sindesi_table = $sindesi_table."<tr><td><a href='".$href."'>".$sindesi_sub[$i]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	if($i+1 < count($sindesi_sub)){
-		$sindesi_table = $sindesi_table."<td><a href='#'>".$sindesi_sub[$i+1]['Name_of_subcategory']."</a></td>";
+		$sindesi_table = $sindesi_table."<td><a href='".$href."'>".$sindesi_sub[$i+1]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	}
 	$sindesi_table = $sindesi_table."</tr>";
 }
@@ -85,10 +87,10 @@ $epipleon_sub = $epipleon_query->fetchAll(PDO::FETCH_ASSOC);
 $epipleon_table = "<table id='epipleon_table' class='subcategories_table' style='display: none'>";
 
 for($i=0; $i<count($epipleon_sub) ; $i+=2){
-
-	$epipleon_table = $epipleon_table."<tr><td><a href='#'>".$epipleon_sub[$i]['Name_of_subcategory']."</a></td>";
+	$href = "session/search_subcategory_books.php?sub_id=".$epipleon_sub[$i]['Subcategory_id'];
+	$epipleon_table = $epipleon_table."<tr><td><a href='".$href."'>".$epipleon_sub[$i]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	if($i+1 < count($epipleon_sub)){
-		$epipleon_table = $epipleon_table."<td><a href='#'>".$epipleon_sub[$i+1]['Name_of_subcategory']."</a></td>";
+		$epipleon_table = $epipleon_table."<td><a href='".$href."'>".$epipleon_sub[$i+1]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	}
 	$epipleon_table = $epipleon_table."</tr>";
 }
@@ -103,10 +105,10 @@ $analisi_sub = $analisi_query->fetchAll(PDO::FETCH_ASSOC);
 $analisi_table = "<table id='analisi_table' class='subcategories_table' style='display: none'>";
 
 for($i=0; $i<count($analisi_sub) ; $i+=2){
-
-	$analisi_table = $analisi_table."<tr><td><a href='#'>".$analisi_sub[$i]['Name_of_subcategory']."</a></td>";
+	$href = "session/search_subcategory_books.php?sub_id=".$analisi_sub[$i]['Subcategory_id'];
+	$analisi_table = $analisi_table."<tr><td><a href='".$href."'>".$analisi_sub[$i]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	if($i+1 < count($analisi_sub)){
-		$analisi_table = $analisi_table."<td><a href='#'>".$analisi_sub[$i+1]['Name_of_subcategory']."</a></td>";
+		$analisi_table = $analisi_table."<td><a href='".$href."'>".$analisi_sub[$i+1]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	}
 	$analisi_table = $analisi_table."</tr>";
 }
@@ -122,14 +124,20 @@ $gramatiki_sub = $gramatiki_query->fetchAll(PDO::FETCH_ASSOC);
 $gramatiki_table = "<table id='gramatiki_table' class='subcategories_table' style='display: none'>";
 
 for($i=0; $i<count($gramatiki_sub) ; $i+=2){
+	$href = "session/search_subcategory_books.php?sub_id=".$gramatiki_sub[$i]['Subcategory_id'];
 
-	$gramatiki_table = $gramatiki_table."<tr><td><a href='#'>".$gramatiki_sub[$i]['Name_of_subcategory']."</a></td>";
+	$gramatiki_table = $gramatiki_table."<tr><td><a href='".$href."'>".$gramatiki_sub[$i]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	if($i+1 < count($gramatiki_sub)){
-		$gramatiki_table = $gramatiki_table."<td><a href='#'>".$gramatiki_sub[$i+1]['Name_of_subcategory']."</a></td>";
+		$gramatiki_table = $gramatiki_table."<td><a href='".$href."'>".$gramatiki_sub[$i+1]['Name_of_subcategory']."</a><hr class='myhr_2'></td>";
 	}
 	$gramatiki_table = $gramatiki_table."</tr>";
 }
 $gramatiki_table = $gramatiki_table."</table>";
+
+
+
+
+
 
 $book_query=$conn->prepare("SELECT books.Title,books.Writer FROM books");
 $book_query->execute();

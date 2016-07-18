@@ -86,6 +86,8 @@ $(document).ready(
 
 	    $("#ithika_new").click(
 	    	function(){
+	    		$(".book_img").css("background", "url(images/book.png) no-repeat center");
+	    		$(".book_img").css("background-size", "100% 100%");
 	    		$("#first_table").hide();
         	   	$("#ithika_table").show();
 	        	$("#sindesi_table").hide();
@@ -99,6 +101,8 @@ $(document).ready(
 
 	   	$("#sindesi_new").click(
 	    	function(){
+	    		$(".book_img").css("background", "url(images/book.png) no-repeat center");
+	    		$(".book_img").css("background-size", "100% 100%");
 	    		$("#first_table").hide();
         	   	$("#ithika_table").hide();
 	        	$("#sindesi_table").show();
@@ -112,6 +116,8 @@ $(document).ready(
 
 	    $("#epipleon_new").click(
 	    	function(){
+	    		$(".book_img").css("background", "url(images/book.png) no-repeat center");
+	    		$(".book_img").css("background-size", "100% 100%");
 	    		$("#first_table").hide();
         	   	$("#ithika_table").hide();
 	        	$("#sindesi_table").hide();
@@ -125,6 +131,8 @@ $(document).ready(
 
 	    $("#analisi_new").click(
 	    	function(){
+	    		$(".book_img").css("background", "url(images/book.png) no-repeat center");
+	    		$(".book_img").css("background-size", "100% 100%");
 	    		$("#first_table").hide();
         	   	$("#ithika_table").hide();
 	        	$("#sindesi_table").hide();
@@ -137,6 +145,8 @@ $(document).ready(
 
 	    $("#gramatiki_new").click(
 	    	function(){
+	    		$(".book_img").css("background", "url(images/book.png) no-repeat center");
+	    		$(".book_img").css("background-size", "100% 100%");
 	    		$("#first_table").hide();
         	   	$("#ithika_table").hide();
 	        	$("#sindesi_table").hide();

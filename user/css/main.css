@@ -9,7 +9,7 @@ html, body {
 }
 
 
-h1, h2, h3, h4, p, a{
+h1, h2, h3, h4, p, a, label, td, li{
   font-family: "Open Sans"; 
   font-weight: bold;
 }
@@ -219,6 +219,8 @@ footer{
   /*border:4px solid red ;*/
 }
 
+
+
 #search{
     width:60%;
     height: 21%;
@@ -235,6 +237,7 @@ footer{
     /*border:1px solid red;*/
 
 }
+
 #search_box_dropdown{
 
     width:35%;
@@ -431,6 +434,15 @@ footer{
   border-top: 2px solid #8a6d3b;
 }
 
+.myhr_2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width:70%;
+  margin-left: 15%;
+  border: 0;
+  border-top: 2px solid #8a6d3b;
+}
+
 
 #subcategories_area{
   height: 81%;
@@ -447,22 +459,28 @@ footer{
   width: 100%;
   margin: 0% 0% 0% 0%;
     padding: 0px 0px 0px 0px;
-    text-align: left;
+    text-align: center;
 
 }
 .subcategories_table td{
   width: 45%;
   padding-left: 1%;
   padding-right: 1%;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    font-weight: bold;
+    /*font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;*/
+    /*font-weight: bold;*/
+    /*border-bottom:1pt solid black;*/
   /*margin: 5% 5% 5% 5%;*/
 
   /*background-color: #ffe6b3; */
 }
-.subcategories_table td a:link{
-    color:black;
+
+.subcategories_table td a{
+  color:#8a6d3b;
 }
+
+/*.subcategories_table td a:link{
+  color:black;
+}*/
 
 .subcategories_table td a:visited {
   text-decoration: none;

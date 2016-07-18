@@ -143,7 +143,7 @@ queries -->
           <div id="subcategories_area">
             <table id = "first_table" class="subcategories_table">
               <tr>
-                <td><h4>Δες τους σελιδοδείκτες για...</h4></td>
+                <td style="text-align:center"><h4 style="color:#8a6d3b">Δες τους σελιδοδείκτες και βιβλία βρες...</h4></td>
                 <td></td>
               </tr>
             </table>
