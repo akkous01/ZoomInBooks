@@ -1,7 +1,10 @@
 <?php
+session_start();
+$list_of_books=$_SESSION['list_of_books'];
 
 include "session/search_list_of_book.php";
 include_once "session/load_data_from_database.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +118,7 @@ include_once "session/load_data_from_database.php";
 
     <div id="results">
         <div id="table_of_books">
-            <?php echo  $books=createListOfBooks($list_of_books,$conn); ?>
+            <?php echo  $books ?>
         </div>
     </div>
 
