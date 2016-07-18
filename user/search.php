@@ -77,7 +77,7 @@ include_once "session/load_data_from_database.php";
                     <label for="searched_keywords">ΛΕΞΕΙΣ ΚΛΕΙΔΙΑ:</label>
                     <div style="width:100%;">
                         <input style="width: 75%;float: left;"  readonly="readonly" type="text" class="form-control input-sm" id="searched_keywords" name="searched_keywords" value="<?php echo $list_for_input;?>">
-                        <button  style="width: 25%" id="b1" class="btn btn-sm" type="button" data-toggle="modal" data-target="#change_keywords_modal">Αλλαγή</button>
+                        <button  style="width: 25%" id="button_change" class="btn btn-sm" type="button" >Αλλαγή</button>
                     </div>
                 </div>
 <!--                <div class="form-group search2_div" id="all_keywards">-->
@@ -115,7 +115,7 @@ include_once "session/load_data_from_database.php";
 
     <div id="results">
         <div id="table_of_books">
-            <?php echo $books; ?>
+            <?php echo  $books=createListOfBooks($list_of_books,$conn); ?>
         </div>
     </div>
 
@@ -133,7 +133,7 @@ include_once "session/load_data_from_database.php";
                   <div class="modal-body">
                           <p>Διάγρεψε ή Πρόσθεσε λέξεις κλειδιά για την αναζήτηση:</p>
                           <div class="all_keywords"></div>
-                          <div class="keyword">
+                          <div class="keyword_main">
                               <div id="keywords_Autofill_div" >
                                 <input   class=" form-control input-sm " id="keywords_Autofill"  name="keywords_Autofill" type="text"  />
                               </div>
@@ -201,39 +201,42 @@ include_once "session/load_data_from_database.php";
                });
               $('.tt-query').css('background-color','#fff');
               $('header').css('z-index','3');
+//              var list_of_keywords=$("#keywords_Autofill").val().split();
+//              for()
 
-              $( "#keywords_button_add" ).click(function() {
-                  var value=$("#keywords_Autofill").val();
-                  if(value!=""){
-                      $('#keyword_required').css("display","none");
-                      var div_keyword = "<div class='keyword' id='div_k_"+num_of_keywords+"'>" +
-                          "<input  style='width: 85%;float: left;' class=' form-control input-sm ' id='k_"+num_of_keywords+"'  name='k"+num_of_keywords+"' type='text' readonly='readonly' value='"+value+"'/>"+
-                          "<button  style='width: 15%' id='"+num_of_keywords+"' class='btn btn-sm btn-danger keywords_button_remove' type='button'>-</button>"+
-                          "</div>";
-                      num_of_keywords++;
-                      $(".all_keywords").append(div_keyword);
-                      $("#keywords_Autofill").val('');
-                      $( ".keywords_button_remove" ).click(function() {
-                          var id=$(this).attr('id');
-                          $('#div_k_'+id).remove();
-                      });
-                  }else{
-                     $('#keyword_required').css("display","block");
-                  }
+//              $( "#keywords_button_add" ).click(function() {
+//                  var value=$("#keywords_Autofill").val();
+//                  if(value!=""){
+//                      $('#keyword_required').css("display","none");
+//                      var div_keyword = "<div class='keyword' id='div_k_"+num_of_keywords+"'>" +
+//                          "<input  style='width: 85%;float: left;' class=' form-control input-sm ' id='k_"+num_of_keywords+"'  name='k"+num_of_keywords+"' type='text' readonly='readonly' value='"+value+"'/>"+
+//                          "<button  style='width: 15%' id='"+num_of_keywords+"' class='btn btn-sm btn-danger keywords_button_remove' type='button'>-</button>"+
+//                          "</div>";
+//                      num_of_keywords++;
+//                      $(".all_keywords").append(div_keyword);
+//                      $("#keywords_Autofill").val('');
+//                      $( ".keywords_button_remove" ).click(function() {
+//                          var id=$(this).attr('id');
+//                          $('#div_k_'+id).remove();
+//                      });
+//                  }else{
+//                     $('#keyword_required').css("display","block");
+//                  }
+//
+//              });
+//
+//              $( "#save_keywords").click(function() {
+//                  var list_of_keywords="";
+//                  for(i=0;i<num_of_keywords;i++){
+//                      if($('#div_k_'+i).length){
+//                          list_of_keywords=list_of_keywords+$('#k_'+i).val()+" , ";
+//                      }
+//                  }
+//                  list_of_keywords=list_of_keywords+$("#keywords_Autofill").val()+"...";
+//                  $('#searched_keywords').val(list_of_keywords);
+//                  $('#change_keywords_modal').modal('toggle');
+//              });
 
-              });
-
-              $( "#save_keywords").click(function() {
-                  var list_of_keywords="";
-                  for(i=0;i<num_of_keywords;i++){
-                      if($('#div_k_'+i).length){
-                          list_of_keywords=list_of_keywords+$('#k_'+i).val()+" , ";
-                      }
-                  }
-                  list_of_keywords=list_of_keywords+$("#keywords_Autofill").val()+"...";
-                  $('#searched_keywords').val(list_of_keywords);
-                  $('#change_keywords_modal').modal('toggle');
-              });
           });
       </script>
 </body>

@@ -48,6 +48,30 @@ $( document ).ready(function() {
                   }
               });
               var num_of_keywords=0;
+              $( "#button_change" ).click(function() {
+                    var list_of_keywords = $("#searched_keywords").val().split(',');
+                    for (var i = 0; i < list_of_keywords.length - 1; i++) {
+                        if(list_of_keywords[i]!=""){
+                            var div_keyword = "<div class='keyword' id='div_k_" + num_of_keywords + "'>" +
+                                "<input  style='width: 85%;float: left;' class=' form-control input-sm ' id='k_" + num_of_keywords + "'  name='k" + num_of_keywords + "' type='text' readonly='readonly' value='" + list_of_keywords[i] + "'/>" +
+                                "<button  style='width: 15%' id='" + num_of_keywords + "' class='btn btn-sm btn-danger keywords_button_remove' type='button'>-</button>" +
+                                "</div>";
+                            $(".all_keywords").append(div_keyword);
+                            $("#keywords_Autofill").val('');
+                            $( ".keywords_button_remove" ).click(function() {
+                                console.log(num_of_keywords);
+                                var id=$(this).attr('id');
+                                console.log(id);
+                                $('#div_k_'+id).remove();
+                            });
+                            num_of_keywords++;
+
+                        }
+
+                    }
+                  $('#change_keywords_modal').modal('toggle');
+              });
+
               $( "#keywords_button_add" ).click(function() {
                     var value=$("#keywords_Autofill").val();
                     if(value!=""){
@@ -60,7 +84,9 @@ $( document ).ready(function() {
                         $(".all_keywords").append(div_keyword);
                         $("#keywords_Autofill").val('');
                         $( ".keywords_button_remove" ).click(function() {
+                            console.log(num_of_keywords);
                             var id=$(this).attr('id');
+                            console.log(id);
                             $('#div_k_'+id).remove();
                         });
                     }else{
@@ -73,12 +99,15 @@ $( document ).ready(function() {
                     var list_of_keywords="";
                     for(i=0;i<num_of_keywords;i++){
                         if($('#div_k_'+i).length){
-                            list_of_keywords=list_of_keywords+$('#k_'+i).val()+" , ";
+                            list_of_keywords=list_of_keywords+$('#k_'+i).val()+",";
                         }
                     }
-                    list_of_keywords=list_of_keywords+$("#keywords_Autofill").val()+"...";
+                    list_of_keywords=list_of_keywords+$("#keywords_Autofill").val()+",...";
                     $('#searched_keywords').val(list_of_keywords);
                     $('#change_keywords_modal').modal('toggle');
+                    num_of_keywords=0;
+                    $('.keyword').remove();
+                    $("#keywords_Autofill").val('');
               });
 
               $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
