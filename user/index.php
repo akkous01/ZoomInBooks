@@ -161,8 +161,8 @@ queries -->
             <img id="gramatiki_new" src="images/bookmark-5-new.png" class="bookmark_tag_new" style="display: none">
           </div>
         </div>
+      </div>
 
-      </div>  
     </div>
   
   <div id="contact-info">
@@ -186,18 +186,15 @@ queries -->
     <div id="anakinosis">
       <div id="anakinosis_show">
 
-		    <div id="carousel-example-generic" class="carousel slide" style="height:100%;width:100%" data-ride="carousel">
-			  <!-- Indicators -->
+		    <!-- <div id="carousel-example-generic" class="carousel slide" style="height:100%;width:100%" data-ride="carousel">
 			  <ol class="carousel-indicators">
 			  	<?php echo $anakinosis_script_ol ?>
 			  </ol>
 
-			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 			    <?php echo $anakinosis_script_div;?>
 			  </div>
 
-			  <!-- Controls -->
 			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			    <span class="sr-only">Previous</span>
@@ -206,15 +203,36 @@ queries -->
 			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			    <span class="sr-only">Next</span>
 			  </a>
-			</div>
-		    <!-- <?php echo $anakinosis_script; ?> -->
+			</div> -->
+
+<div id="text-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-11">
+            <div class="carousel-inner">
+            <?php echo $anakinosis_script; ?>
+            </div>
+        </div>
+    </div>
+    <!-- Controls --> <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+ <a class="right carousel-control" href="#text-carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+
+</div>
+
+
       </div>
     </div>
 
-
-
   </div>
-</div>
+
+<!-- </div> -->
+
+<footer><strong>Maria Christodoulou © 2016</strong></footer>
+
 <!-- <div id="cotact-side"></div> -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->

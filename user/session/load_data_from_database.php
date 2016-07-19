@@ -23,13 +23,16 @@ $anakinosis = $anakinosis_query->fetchAll(PDO::FETCH_ASSOC);
 
 $anakinosis_script_ol = "";
 $anakinosis_script_div = "";
+$anakinosis_script = "";
 for($i=0 ; $i<count($anakinosis); $i++){
 	if($i == 0){
 		$anakinosis_script_ol .= "<li data-target='#carousel-example-generic' data-slide-to='".$i."' class='active'></li>";
 		$anakinosis_script_div .= "<div class='item active'>";
+		$anakinosis_script .=  '<div class="item active"><div class="carousel-content"><p>'.$anakinosis[$i]['announcement_date'].'</p><p>'.$anakinosis[$i]['announcement_content'].'</p></div></div>';
 	}else{
 		$anakinosis_script_ol .= "<li data-target='#carousel-example-generic' data-slide-to='".$i."'></li>";
 		$anakinosis_script_div .= "<div class='item'>";
+		$anakinosis_script .=  '<div class="item"><div class="carousel-content"><p>'.$anakinosis[$i]['announcement_date'].'</p><p>'.$anakinosis[$i]['announcement_content'].'</p></div></div>';
 	}
 
 	if($anakinosis[$i]['announcement_photo'] != ""){

@@ -46,7 +46,7 @@ queries -->
   <!-- <div class="container"> -->
     <p>Παρακαλώ συμπληρώστε την πιο κάτω φόρμα για να επικοινωνήσετε μαζί μας</p>
 
-    <form id="condact_form" method="post" class="form-horizontal" action="sent_email.php">
+    <form id="condact_form" method="post" class="form-horizontal" action="session/sent_email.php">
        <div class="form-group">
           <label class="control-label col-sm-4" for="name">Όνομα: *</label>
           <div class="col-sm-5"><input type="text" class="form-control" id="name" name="name"></div>
@@ -79,13 +79,13 @@ queries -->
         <label>Ενδιαφέρομαι για:</label>
         <div style="width:70%; margin-left:15%; text-align:left">
           <div class="checkbox">
-            <label><input type="checkbox" value="">Πιθανή συνεργασία</label>
+            <label><input id="sinergasia" name="sinergasia" type="checkbox" value="">Πιθανή συνεργασία</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" value="">Παραγγελία έντυπου οδηγού</label>
+            <label><input id="paraggelia" name="paraggelia" type="checkbox" value="">Παραγγελία έντυπου οδηγού</label>
           </div>
           <div class="checkbox disabled">
-            <label><input type="checkbox" value="">Εγγραφή στο newsletter</label>
+            <label><input type="checkbox" id="newsletter" name="newslatter" value="">Εγγραφή στο newsletter</label>
           </div>
         </div>
         <div style="margin-top:4%;width:70%; margin-left:15%; text-align:left">
@@ -93,12 +93,12 @@ queries -->
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" ></label>
-          <div class="col-sm-8"><textarea class="form-control" rows="4" id="msg" name="msg"></textarea> 
+          <div class="col-sm-8" style="margin-bottom:3%"><textarea class="form-control" rows="4" id="msg" name="msg"></textarea> 
         </div>
-        <br>
+        </div>
         <div style="margin-top:4%;width:70%; margin-left:15%; text-align:left">
         <!-- <div class="form-group"> -->
-          <input type="submit" class="btn btn-default" value="Αποστολή">
+          <input type="submit" class="btn btn-info" value="Αποστολή">
         </div>
 
     </form>
